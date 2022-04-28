@@ -1,0 +1,55 @@
+env:
+  TERM: xterm-256color
+
+window:
+  decorations: "none"
+  padding:
+    x: 18
+    y: 10
+
+font:
+  normal:
+    family: Mono
+    style: Regular
+
+  bold:
+    family: Mono
+    style: Bold
+
+  italic:
+    family: Mono
+    style: Italic
+
+# Transparancy
+# background_opacity: 0.95
+window.opacity: 1
+
+# Nord Color Scheme
+colors:
+   # Default colors
+   primary:
+     # background: '#181618'
+     background: '#1C1C1C'
+     foreground: '#D8DEE9'
+
+   # Normal colors
+   normal:
+     black:   '#3B4252'
+     red:     '#BF616A'
+     green:   '#A3BE8C'
+     yellow:  '#EBCB8B'
+     blue:    '#81A1C1'
+     magenta: '#B48EAD'
+     cyan:    '#88C0D0'
+     white:   '#E5E9F0'
+
+   # Bright colors
+   bright:
+     black:   '#4C566A'
+     red:     '#BF616A'
+     green:   '#A3BE8C'
+     yellow:  '#EBCB8B'
+     blue:    '#81A1C1'
+     magenta: '#B48EAD'
+     cyan:    '#8FBCBB'
+     white:   '#ECEFF4'
