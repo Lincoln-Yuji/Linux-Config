@@ -20,3 +20,14 @@ Stow has many uses and we can use it to easily create symbolic links.
 cd ~/.config/zz-config-setup
 stow <dir-01> <dir-02> ...
 ```
+
+Stow uses the parent directory as target directory by default. This is why we cloned the repo into ~/.config so stow
+will use that as target directory.
+
+It's possible to change the target directory though:
+
+```
+stow --target=<path> ALACRITTY/ NVIM/ ...
+```
+
+So in case the repo is not into ~/.config we can use --target flag to force a different target.
