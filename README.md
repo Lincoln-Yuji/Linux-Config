@@ -32,7 +32,7 @@ stow --target=<path> ALACRITTY/ NVIM/ ...
 
 So in case the repo is not into ~/.config we can use --target flag to force a different target.
 
-Another we also use -t as a simpler aproach:
+We can also use -t as a simpler aproach:
 
 ```
 stow -t <path> ALACRITTY/ NVIM/ ...
@@ -45,7 +45,7 @@ directory:
 
 
 ```
-stow --dotfiles -t HOME/
+stow --dotfiles -t $HOME HOME/
 ```
 
 We are using the --dotfiles so we can force stow to replace the "dot-" suffix from files to a period.
