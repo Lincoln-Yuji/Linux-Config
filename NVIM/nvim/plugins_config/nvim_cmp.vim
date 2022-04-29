@@ -2,12 +2,13 @@ lua << EOF
 
 local cmp = require'cmp'
 cmp.setup({
+
   snippet = {
-    -- REQUIRED - you must specify a snippet engine
     expand = function(args)
-      vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+      vim.fn["vsnip#anonymous"](args.body)
     end,
   },
+
   mapping = cmp.mapping.preset.insert({
     ['<C-b>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
@@ -44,13 +45,28 @@ cmp.setup({
   },
 
   sources = {
-    { name = 'nvim_lsp' },
-    { name = 'vsnip' },
-	{ name = 'buffer'},
-	{ name = 'path'},
+    { name = 'nvim_lsp', max_item_count = 5 },
+    { name = 'vsnip', max_item_count = 4 },
+	{ name = 'buffer', max_item_count = 5 },
+	{ name = 'path', max_item_count = 7 },
   }, 
+
+	window = {
+		documentation = {
+			border  = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+			max_height = 24,
+		    max_width = 106,
+			winhighlight = "FloatBorder:NormalFloat",
+		},
+		
+		completion = {
+			border  = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+		}
+	}
+
 })
 
+-- Auto completions for  commands
 cmp.setup.cmdline(':', {
   mapping = cmp.mapping.preset.cmdline(),
   sources = cmp.config.sources({
@@ -59,13 +75,5 @@ cmp.setup.cmdline(':', {
     { name = 'cmdline' }
   })
 })
-
--- Setup lspconfig -> connect cmp_nvim with the lsp plugin
--- local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
--- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
--- In this case e are connected to the clangd sever.
---require('lspconfig')['clangd'].setup {
---  capabilities = capabilities
---}
 
 EOF
