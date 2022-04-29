@@ -24,6 +24,10 @@ source ~/.config/nvim/plugins_config/startify.vim
 :set mouse=nicr
 :set mouse=a
 
+" 'Fixing' vim split priority
+:set splitright
+:set splitbelow
+
 :colorscheme nord " Personal default color scheme
 
 " Navigation through splits similar to DOOM Emacs 
@@ -31,6 +35,11 @@ nnoremap <Space>wh <C-w>h
 nnoremap <Space>wj <C-w>j
 nnoremap <Space>wk <C-w>k
 nnoremap <Space>wl <C-w>l
+
+" Surrounding selected text [Note: this overwrites the yank buffer]
+map <Space>) di()<ESC>P
+map <Space>] di[]<ESC>P
+map <Space>" di""<ESC>P
 
 " Post from stack overflow:
 " https://stackoverflow.com/questions/6821033/vim-how-to-run-a-command-immediately-when-starting-vim
