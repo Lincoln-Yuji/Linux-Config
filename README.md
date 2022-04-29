@@ -31,3 +31,23 @@ stow --target=<path> ALACRITTY/ NVIM/ ...
 ```
 
 So in case the repo is not into ~/.config we can use --target flag to force a different target.
+
+Another we also use -t as a simpler aproach:
+
+```
+stow -t <path> ALACRITTY/ NVIM/ ...
+```
+
+## A plus
+
+Since I'm interested on tracking other files such as ~/.bashrc we can use -t to change the target directory to our home
+directory:
+
+
+```
+stow --dotfiles -t HOME/
+```
+
+We are using the --dotfiles so we can force stow to replace the "dot-" suffix from files to a period.
+For example this will create a symlink ~/.bashrc to ~/(stow-dir)/HOME/dot-bashrc.
+We are using this strategy to avoid creating directories full of hidden files.
