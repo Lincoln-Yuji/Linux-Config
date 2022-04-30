@@ -137,19 +137,6 @@ function extract() {
     fi
 }
 
-
-# This function executes some shell scripts before shudown the system and turn off the machine
-function desligamento() {
-    echo "Are you sure? [Y/n]"
-    read INPUT
-    if [ ${INPUT} == 'Y' ] || [ ${INPUT} == 'y' ]
-    then
-        $SCRIPTS/update_git_repositories.sh && sudo shutdown -P now
-    else
-        echo "Aborted..."
-    fi
-}
-
 # Functions in development:
 # function memram() {
 #     echo "======================="
