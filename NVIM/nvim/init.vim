@@ -22,6 +22,7 @@ set tabstop=4
 set shiftwidth=4
 set smarttab
 set softtabstop=4
+set expandtab
 
 " We can use mouse too
 set mouse=nicr
@@ -31,6 +32,16 @@ set mouse=a
 set splitright
 set splitbelow
 
+" Don't break lines on display
+set nowrap
+
+" Don't break line when comments are too long
+set formatoptions-=cro
+
+" Smaller pop-up window
+set pumheight=10
+
+set t_Co=256
 colorscheme nord " Personal default color scheme
 
 " ================================ "
@@ -43,7 +54,7 @@ map <Leader>wj <C-w>j
 map <Leader>wk <C-w>k
 map <Leader>wl <C-w>l
 
-" Quick vertical split
+" Quick split
 map <Leader>wv :vs<CR>
 map <Leader>ws :sp<CR>
 
@@ -53,6 +64,11 @@ map <Leader>fs :w<CR>
 " Writing and closing
 map <Leader>wc :wq<CR>
 map <Leader>zz :wqall<CR>
+
+" Select multiple lines in visual mode and tab all of them.
+" No need to reselect or press dot (.) to repeat!
+vmap > >gv
+vmap < <gv
 
 " Alacritty doesn't resize properly when the window changes its dimension.
 " That fixes it!

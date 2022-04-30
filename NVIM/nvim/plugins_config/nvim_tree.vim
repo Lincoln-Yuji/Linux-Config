@@ -30,6 +30,9 @@ lua << EOF
 
 -- Using default configuration
 require'nvim-tree'.setup {
+	view = {
+		width = 35,
+	},
 	renderer = {
 		indent_markers = {
 			enable = true,
