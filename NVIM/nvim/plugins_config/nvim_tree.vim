@@ -4,7 +4,7 @@ nnoremap <F8> :NvimTreeToggle<CR>
 " Tree Icons
 let g:nvim_tree_icons = {
     \ 'default': " ",
-    \ 'symlink': "x",
+    \ 'symlink': "*",
     \ 'git': {
     \   'unstaged': "✗",
     \   'staged': "✓",
