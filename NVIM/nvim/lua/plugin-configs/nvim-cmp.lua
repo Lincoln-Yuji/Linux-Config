@@ -1,5 +1,3 @@
-lua << EOF
-
 local cmp = require'cmp'
 
 cmp.setup({
@@ -76,5 +74,3 @@ cmp.setup.cmdline(':', {
     { name = 'cmdline', max_item_count = 10 }
   })
 })
-
-EOF
