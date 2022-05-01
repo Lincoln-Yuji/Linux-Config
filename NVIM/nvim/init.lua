@@ -58,13 +58,20 @@ map('n', '<Leader>fs', ':w<CR>', opt)
 map('v', '<', '<gv', opt)
 map('v', '>', '>gv', opt)
 
-vim.cmd [[ autocmd VimEnter * :silent exec "!kill -s SIGWINCH $PPID" ]]
-
--- Error hightlight = SpellBad highlight
+-- Important: the colorschemes can affect these options. Config based on 'nord' colorscheme
+-- Better highlight for error messages
 vim.cmd [[ autocmd VimEnter * :highlight! link Error SpellBad ]]
+vim.cmd [[ autocmd VimEnter * :highlight! link ErrorMsg SpellBad ]]
+
 -- Pop-Up menu highlight
 vim.cmd [[ autocmd VimEnter * :highlight! link Pmenu NormalNC ]]
+vim.cmd [[ autocmd VimEnter * :highlight! link PmenuSel Visual ]]
+vim.cmd [[ autocmd VimEnter * :highlight! link PmenuSbar Visual ]]
+vim.cmd [[ autocmd VimEnter * :highlight! link PmenuThumb Visual ]]
 
 -- Git Add and Diff highlight
 vim.cmd [[ autocmd VimEnter * :highlight! link DiffAdd GitGutterAdd ]]
 vim.cmd [[ autocmd VimEnter * :highlight! link DiffDelete GitGutterDelete ]]
+
+-- Fix window redimension
+vim.cmd [[ autocmd VimEnter * :silent exec "!kill -s SIGWINCH $PPID" ]]

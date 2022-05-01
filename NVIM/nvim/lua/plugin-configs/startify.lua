@@ -26,9 +26,9 @@ let g:startify_custom_header = [
 \ ]
 
 let g:startify_bookmarks = [
-    \ '~/.bashrc',
-    \ '~/.config/nvim/',
-    \ '~/Documentos/Cpp-playground/mini-projects', 
+    \ { 'z': '~/.bashrc' },
+    \ { 'x': '~/.config/zz-config-setup/' },
 \ ]
 
 ]])
+

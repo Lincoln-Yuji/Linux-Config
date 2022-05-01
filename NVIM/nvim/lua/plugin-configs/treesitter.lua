@@ -5,8 +5,7 @@
 
 require'nvim-treesitter.configs'.setup {
     ensure_installed = {
-        "cpp",
-        "lua",
+        "cpp", "lua", "bash",
     },
 	highlight = {
 		enable = true,

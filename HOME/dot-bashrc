@@ -96,30 +96,7 @@ alias df='df -h'
 alias ll='ls -alhF'
 alias la='ls -A'
 alias br='br -spd'
-alias bt='/usr/bin/bashtop'
-alias unity='$HOME/Unity/Launcher/UnityHub.AppImage'
-alias godot='$HOME/Godot_Engine/Godot_v3.4.4-stable_x11.64 &'
-alias libresprite='$HOME/software/bin/libresprite &'
-
-alias gcommit='git commit'
-alias gstatus='git status'
-alias gpull='git pull'
-alias gpush='git push'
-alias glog='git log --graph --decorate --oneline'
-alias gadd='git add'
-
 alias wttr='curl wttr.in'
-alias racket='$HOME/racket/bin/racket'
-alias drrack='$HOME/racket/bin/drracket'
-
-# Unactive
-# alias rg='ranger'
-# alias edp='xdg-open https://edisciplinas.usp.br'
-# alias gch='xdg-open https://moot.us/lounges/407'
-
-function cdusp() {
-    cd $HOME/Documents/usp-files/Semestre-0${1}-USP
-}
 
 # Genereic function created to make life easier when I need to extract some files
 function extract() {
