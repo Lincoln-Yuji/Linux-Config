@@ -31,7 +31,7 @@ set.mouse = 'a' -- We can now use mouse inside vim
 set.splitright = true
 set.splitbelow = true
 
-set.wrap = false
+set.wrap = false -- Don't break lines when the text is too large
 
 set.pumheight = 10 -- Smaller pop-up window
 

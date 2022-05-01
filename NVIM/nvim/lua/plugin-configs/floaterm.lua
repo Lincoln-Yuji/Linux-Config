@@ -4,4 +4,7 @@
 -- map('n', '<Leader>t', ':FloatermToggle<CR>', opt)
 vim.g.floaterm_keymap_toggle = '<F7>'
 
+vim.g.floaterm_width = 0.65
+vim.g.floaterm_height = 0.9
+
 vim.cmd [[ autocmd VimEnter * hi FloatermBorder guibg=black guifg=black<CR>]]
