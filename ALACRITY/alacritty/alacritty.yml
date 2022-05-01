@@ -9,16 +9,12 @@ window:
 
 font:
   normal:
-    family: Mono
-    style: Regular
+    family: Hack Nerd Font
+    # style: Regular
 
   bold:
-    family: Mono
-    style: Bold
-
-  italic:
-    family: Mono
-    style: Italic
+    family: Hack Nerd Font
+    # style: Bold
 
 # Transparancy
 # background_opacity: 0.95
