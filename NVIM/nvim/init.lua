@@ -11,6 +11,7 @@ require('plugin-configs/startify')
 require('plugin-configs/lang-servers')
 require('plugin-configs/treesitter')
 require('plugin-configs/nvim-cmp')
+require('plugin-configs/floaterm')
 
 -- Global Settings:
 local set = vim.opt
@@ -58,3 +59,8 @@ map('v', '<', '<gv', opt)
 map('v', '>', '>gv', opt)
 
 vim.cmd [[ autocmd VimEnter * :silent exec "!kill -s SIGWINCH $PPID" ]]
+
+-- Error hightlight = SpellBad highlight
+vim.cmd [[ autocmd VimEnter * :highlight! link Error SpellBad ]]
+-- Pop-Up menu highlight
+vim.cmd [[ autocmd VimEnter * :highlight! link Pmenu NormalNC ]]
