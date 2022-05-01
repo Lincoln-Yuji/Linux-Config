@@ -64,3 +64,7 @@ vim.cmd [[ autocmd VimEnter * :silent exec "!kill -s SIGWINCH $PPID" ]]
 vim.cmd [[ autocmd VimEnter * :highlight! link Error SpellBad ]]
 -- Pop-Up menu highlight
 vim.cmd [[ autocmd VimEnter * :highlight! link Pmenu NormalNC ]]
+
+-- Git Add and Diff highlight
+vim.cmd [[ autocmd VimEnter * :highlight! link DiffAdd GitGutterAdd ]]
+vim.cmd [[ autocmd VimEnter * :highlight! link DiffDelete GitGutterDelete ]]
