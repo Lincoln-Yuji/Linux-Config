@@ -11,4 +11,5 @@ vim.g.floaterm_height = 0.9
 -- Vplit when open new window
 vim.g.floaterm_opener = 'vsplit'
 
-vim.cmd [[ autocmd VimEnter * hi FloatermBorder guibg=black guifg=black<CR>]]
+-- Black Border
+vim.cmd [[ hi FloatermBorder guibg=black guifg=black<CR>]]
