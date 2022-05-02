@@ -35,8 +35,6 @@ set.wrap = false -- Don't break lines when the text is too large
 
 set.pumheight = 10 -- Smaller pop-up window
 
-vim.cmd [[colorscheme nord]] -- Set colorscheme
-
 -- Key Mappings
 local map = vim.api.nvim_set_keymap
 local opt = { noremap = true }
@@ -57,6 +55,9 @@ map('n', '<Leader>fs', ':w<CR>', opt)
 -- Multitab
 map('v', '<', '<gv', opt)
 map('v', '>', '>gv', opt)
+
+-- Colors
+vim.cmd [[ colorscheme nord ]] -- Set colorscheme
 
 -- Important: the colorschemes can affect these options. Config based on 'nord' colorscheme
 -- Better highlight for error messages

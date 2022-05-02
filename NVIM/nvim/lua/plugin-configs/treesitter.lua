@@ -5,7 +5,8 @@
 
 require'nvim-treesitter.configs'.setup {
     ensure_installed = {
-        "cpp", "lua", "bash", "latex",
+        "cpp", "lua", "bash",
+        "vim", "latex",
     },
 	highlight = {
 		enable = true,
