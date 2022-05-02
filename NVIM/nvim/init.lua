@@ -57,8 +57,9 @@ map('v', '<', '<gv', opt)
 map('v', '>', '>gv', opt)
 
 -- Inside floaterm
-map('t', '<C-q>', 'exit<CR>', opt)              -- Close (Kill) the instance
-map('t', '<C-f>', 'floaterm $(fzf)<CR>', opt)   -- Open fzf
+map('t', '<C-q>', 'exit<CR>', opt)  -- Close (Kill) the instance
+-- Open fzf
+map('t', '<C-f>', 'a=$(fzf); if [ -z "$a" ]; then exit; else floaterm $a; exit; fi<CR>', opt)
 
 -- Colors
 vim.cmd [[ colorscheme nord ]] -- Set colorscheme
