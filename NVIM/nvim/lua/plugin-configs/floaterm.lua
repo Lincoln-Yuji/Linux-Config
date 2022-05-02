@@ -5,7 +5,7 @@
 vim.g.floaterm_keymap_toggle = '<F7>'
 
 -- Float Window proportions
-vim.g.floaterm_width = 0.65
+vim.g.floaterm_width = 0.75
 vim.g.floaterm_height = 0.9
 
 -- Vplit when open new window

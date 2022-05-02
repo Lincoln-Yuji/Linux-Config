@@ -97,6 +97,12 @@ alias ll='ls -alhF'
 alias la='ls -A'
 alias br='br -spd'
 alias wttr='curl wttr.in'
+# alias fzf="fzf --border=rounded --preview-window=right:65% --preview 'cat {}'"
+
+# Source my fzf configs
+if [ -f ~/.config/fzf/fzf-config.sh ]; then
+    source ~/.config/fzf/fzf-config.sh
+fi
 
 # Genereic function created to make life easier when I need to extract some files
 function extract() {
@@ -127,24 +133,4 @@ function extract() {
 
 # function cputemp() {
 #     sensors | awk '/^temp/ {print $1 $2}' | sed "s/temp/Core /g"
-# }
-
-# Generic function to open some types of files
-# (Usually this function won't be used, but it can be useful some times)
-# function open() {
-#     if [ -f $1 ]
-#     then
-#         case $1 in
-#             *.java) emacs $1 &  ;;
-#             *.c)    emacs $1 &  ;;
-#             *.py)   emacs $1 &  ;;
-#             *.cpp)  emacs $1 &  ;;
-#             *.tex)  emacs $1 &  ;;
-#             *rc)    emacs $1 &  ;;
-#             *.pdf)  evince $1 & ;;
-#             *) echo "This file can't be open via this cammand..."
-#         esac
-#     else
-#         echo "This file does not exist"
-#     fi
 # }
