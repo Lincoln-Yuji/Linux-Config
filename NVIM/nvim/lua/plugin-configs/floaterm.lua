@@ -5,11 +5,11 @@
 vim.g.floaterm_keymap_toggle = '<F7>'
 
 -- Float Window proportions
-vim.g.floaterm_width = 0.75
+vim.g.floaterm_width = 0.85
 vim.g.floaterm_height = 0.9
 
 -- Vplit when open new window
 vim.g.floaterm_opener = 'edit'
 
 -- Black Border
-vim.cmd [[ hi FloatermBorder guibg=black guifg=black<CR>]]
+vim.cmd [[ hi FloatermBorder guibg=black guifg=black ]]

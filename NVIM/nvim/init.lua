@@ -56,6 +56,10 @@ map('n', '<Leader>fs', ':w<CR>', opt)
 map('v', '<', '<gv', opt)
 map('v', '>', '>gv', opt)
 
+-- Inside floaterm
+map('t', '<C-q>', 'exit<CR>', opt)              -- Close (Kill) the instance
+map('t', '<C-f>', 'floaterm $(fzf)<CR>', opt)   -- Open fzf
+
 -- Colors
 vim.cmd [[ colorscheme nord ]] -- Set colorscheme
 
