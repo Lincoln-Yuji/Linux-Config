@@ -1,4 +1,7 @@
 require'nvim-tree'.setup {
+    view = {
+        width=33,
+    },
     renderer = {
         indent_markers = {
             enable = true,
