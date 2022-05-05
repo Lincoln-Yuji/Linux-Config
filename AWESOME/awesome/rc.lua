@@ -6,18 +6,18 @@ pcall(require, "luarocks.loader")
 local gears = require("gears")
 local awful = require("awful")
 require("awful.autofocus")
+
 -- Widget and layout library
 local wibox = require("wibox")
 
 -- Set my own theme
 local beautiful = require("themes.theme")
 
-local radical = require("radical")
-
 -- Notification library
 local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
+
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
@@ -249,8 +249,8 @@ root.buttons(gears.table.join(
 -- Key Binding Settings
 local key_settings = require("settings.key-settings")
 clientkeys = key_settings.set_client_keys(awful, gears)
-globalkeys = key_settings.set_global_keys(awful, gears, client)    
-globalkeys = gears.table.join(globalkeys,
+globalkeys = gears.table.join(
+    key_settings.set_global_keys(awful, gears, client),
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"})
 )
@@ -336,11 +336,6 @@ client.connect_signal("manage", function (c)
         awful.placement.no_offscreen(c)
     end
 end)
-
--- Enable sloppy focus, so that focus follows mouse.
--- client.connect_signal("mouse::enter", function(c)
---     c:emit_signal("request::activate", "mouse_enter", {raise = false})
--- end)
 
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)

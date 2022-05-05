@@ -196,7 +196,14 @@ for i = 1, 9 do
                           end
                       end
                   end,
-                  {description = "toggle focused client on tag #" .. i, group = "tag"})
+                  {description = "toggle focused client on tag #" .. i, group = "tag"}),
+
+        awful.key({ modkey }, "F5", function () awful.util.spawn("amixer set Master 1%-") end,
+            {description = "Decrease Master Volume", group = "Audio"} ),
+
+        awful.key({ modkey }, "F6", function () awful.util.spawn("amixer set Master 1%+") end,
+            {description = "Increase Master Volume", group = "Audio"} )
+
     )
 end
 
