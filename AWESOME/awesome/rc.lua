@@ -65,22 +65,28 @@ modkey = "Mod4"
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
     awful.layout.suit.tile,
-    awful.layout.suit.floating,
+    -- awful.layout.suit.floating,
     awful.layout.suit.tile.left,
     awful.layout.suit.tile.bottom,
     awful.layout.suit.tile.top,
-    awful.layout.suit.fair,
-    awful.layout.suit.fair.horizontal,
-    awful.layout.suit.spiral,
-    awful.layout.suit.spiral.dwindle,
-    awful.layout.suit.max,
-    awful.layout.suit.max.fullscreen,
-    awful.layout.suit.magnifier,
-    awful.layout.suit.corner.nw,
+    -- awful.layout.suit.fair,
+    -- awful.layout.suit.fair.horizontal,
+    -- awful.layout.suit.spiral,
+    -- awful.layout.suit.spiral.dwindle,
+    -- awful.layout.suit.max,
+    -- awful.layout.suit.max.fullscreen,
+    -- awful.layout.suit.magnifier,
+    -- awful.layout.suit.corner.nw,
     -- awful.layout.suit.corner.ne,
     -- awful.layout.suit.corner.sw,
     -- awful.layout.suit.corner.se,
 }
+
+local HOME = os.getenv("HOME")
+
+-- Widgets
+local battery_widget = require("awesome-wm-widgets.battery-widget.battery")
+local volume_widget  = require("awesome-wm-widgets.volume-widget.volume")
 -- }}}
 
 -- {{{ Menu
@@ -223,14 +229,21 @@ awful.screen.connect_for_each_screen(function(s)
             layout = wibox.layout.fixed.horizontal,
             mylauncher,
             s.mytaglist,
-            s.mypromptbox,
-            s.mytasklist,
+            -- s.mypromptbox,
+            -- s.mytasklist,
         },
         wibox.widget.base.empty_widget(), -- "Spliter"
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
+            volume_widget({
+                widget_type = 'arc'
+            }),
             wibox.widget.systray(),
             mytextclock,
+            battery_widget({
+                path_to_icons = HOME  .. "/.icons/Arc/status/symbolic/",
+                show_current_level = true
+            }),
             mykeyboardlayout,
             s.mylayoutbox,
         },
@@ -248,12 +261,17 @@ root.buttons(gears.table.join(
 
 -- Key Binding Settings
 local key_settings = require("settings.key-settings")
-clientkeys = key_settings.set_client_keys(awful, gears)
+clientkeys = key_settings.set_client_keys()
 globalkeys = gears.table.join(
-    key_settings.set_global_keys(awful, gears, client),
+    key_settings.set_global_keys(),
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
-              {description="show help", group="awesome"})
+              {description="show help", group="awesome"}),
+    awful.key({ modkey }, "]",  function() volume_widget:inc(5) end),
+    awful.key({ modkey }, "[",  function() volume_widget:dec(5) end),
+    awful.key({ modkey }, "\\", function() volume_widget:toggle() end)
 )
+-- Set keys
+root.keys(globalkeys)
 
 clientbuttons = gears.table.join(
     awful.button({ }, 1, function (c)
@@ -269,8 +287,6 @@ clientbuttons = gears.table.join(
     end)
 )
 
--- Set keys
-root.keys(globalkeys)
 -- }}}
 
 -- {{{ Rules
@@ -286,39 +302,8 @@ awful.rules.rules = {
                      buttons = clientbuttons,
                      screen = awful.screen.preferred,
                      placement = awful.placement.no_overlap+awful.placement.no_offscreen
-     }
-    },
-
-    -- Floating clients.
-    { rule_any = {
-        instance = {
-          "DTA",  -- Firefox addon DownThemAll.
-          "copyq",  -- Includes session name in class.
-          "pinentry",
-        },
-        class = {
-          "Arandr",
-          "Blueman-manager",
-          "Gpick",
-          "Kruler",
-          "MessageWin",  -- kalarm.
-          "Sxiv",
-          "Tor Browser", -- Needs a fixed window size to avoid fingerprinting by screen size.
-          "Wpa_gui",
-          "veromix",
-          "xtightvncviewer"},
-
-        -- Note that the name property shown in xprop might be set slightly after creation of the client
-        -- and the name shown there might not match defined rules here.
-        name = {
-          "Event Tester",  -- xev.
-        },
-        role = {
-          "AlarmWindow",  -- Thunderbird's calendar.
-          "ConfigManager",  -- Thunderbird's about:config.
-          "pop-up",       -- e.g. Google Chrome's (detached) Developer Tools.
         }
-      }, properties = { floating = true }},
+    }
 }
 -- }}}
 
@@ -342,4 +327,4 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- }}}
 
 -- Startup Commands
-require("autostart").start(awful)
+require("autostart")
