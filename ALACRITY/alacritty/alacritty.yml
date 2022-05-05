@@ -4,8 +4,8 @@ env:
 window:
   decorations: "none"
   padding:
-    x: 18
-    y: 10
+    x: 9
+    y: 5
 
 font:
   normal:
@@ -15,6 +15,8 @@ font:
   bold:
     family: Hack Nerd Font
     # style: Bold
+
+  size: 7.0
 
 # Transparancy
 # background_opacity: 0.95
