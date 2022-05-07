@@ -11,7 +11,8 @@ theme.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 -----------------
 theme.font = "Hack Nerd Font 12"
 
-theme.wallpaper    = theme_dir .. "/wallpapers/galen-crout-175291.jpg"
+-- theme.wallpaper    = theme_dir .. "/wallpapers/galen-crout-175291.jpg"
+theme.wallpaper = theme_dir .. "/wallpapers/pop.png"
 theme.awesome_icon = theme_dir .. "/icons/pop-os.png"
 
 theme.useless_gap = 2
