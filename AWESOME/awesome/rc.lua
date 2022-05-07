@@ -230,8 +230,8 @@ clientkeys = key_settings.set_client_keys()
 globalkeys = gears.table.join(
     key_settings.set_global_keys(),
     awful.key({ modkey }, "s",  hotkeys_popup.show_help),
-    awful.key({ modkey }, "]",  function() volume_widget:inc(5) end),
-    awful.key({ modkey }, "[",  function() volume_widget:dec(5) end),
+    awful.key({ modkey }, "]",  function() volume_widget:inc(5)   end),
+    awful.key({ modkey }, "[",  function() volume_widget:dec(5)   end),
     awful.key({ modkey }, "\\", function() volume_widget:toggle() end)
 )
 -- Set keys

@@ -1,89 +1,43 @@
+local gears = require("gears")
+local awful = require("awful")
+
+local map = function (cmd, key, f, text)
+    return awful.key(cmd, key, f, { description = text, group = "Key Binding List:" })
+end
+
 return {
 
 -- Client Keys
 set_client_keys = function ()
-    local gears = require("gears")
-    local awful = require("awful")
     return gears.table.join(
-
-        awful.key({ modkey }, "f",
-            function (c)
-                c.fullscreen = not c.fullscreen
-                c:raise()
-            end,
-            {description = "toggle fullscreen", group = "client"}),
-
-        awful.key({ modkey }, "q",
-            function (c)
-                c:kill()
-            end,
-           {description = "close", group = "client"}),
-
-        awful.key({ modkey, "Control" }, "Return",
-            function (c)
-                c:swap(awful.client.getmaster())
-            end,
-            {description = "move to master", group = "client"}),
-
-        awful.key({ modkey }, "o",
-            function (c)
-                c:move_to_screen()
-            end,
-            {description = "move to screen", group = "client"}),
-
-        awful.key({ modkey }, "m",
-            function (c)
-                c.maximized = not c.maximized
-                c:raise()
-            end ,
-            {description = "(un)maximize", group = "client"})
+        map({modkey}, "f", function(c) c.fullscreen = not c.fullscreen; c:raise() end,       "Toggle Fullscreen"),
+        map({modkey}, "q", function(c) c:kill() end,                                         "Close Window"),
+        map({modkey}, "o", function(c) c:move_to_screen() end,                               "Move to Screen"),
+        map({modkey}, "m", function(c) c.maximized = not c.maximized; c:raise() end,         "Toggle Maximize"),
+        map({modkey, "Control"}, "Return", function(c) c:swap(awful.client.getmaster()) end, "Promotion to Master")
 )
 end,
 
 -- Global Keys
 set_global_keys = function ()
-    local awful = require("awful")
-    local gears = require("gears")
+    globalkeys = gears.table.join(
 
-    local globalkeys = gears.table.join(
+        map({modkey, "Control"}, "h", function () awful.tag.incmwfact(-0.05) end, "Master Width --"),
+        map({modkey, "Control"}, "l", function () awful.tag.incmwfact( 0.05) end, "Master Width ++"),
+        map({modkey},"Escape", awful.tag.history.restore,                         "Previous Tag"),
 
-        -- Move through tags
-        awful.key({ modkey, "Control" }, "h",
-            awful.tag.viewprev,
-            {description = "view previous", group = "tag"}),
-        awful.key({ modkey, "Control" }, "l",
-            awful.tag.viewnext,
-            {description = "view next", group = "tag"}),
-        awful.key({ modkey }, "Escape",
-            awful.tag.history.restore,
-            {description = "go back", group = "tag"}),
-
-        -- Move through clients
-        awful.key({ modkey }, "j", function ()
-            awful.client.focus.byidx( 1)
-            end,
-            {description = "focus next by index", group = "client"}),
-        awful.key({ modkey }, "k", function ()
-            awful.client.focus.byidx(-1)
-            end,
-            {description = "focus previous by index", group = "client"}
-        ),
+        map({modkey}, "l", awful.tag.viewnext, "Tag++"),
+        map({modkey}, "h", awful.tag.viewprev, "Tag--"),
 
         -- Standard program
-        awful.key({ modkey }, "Return", function () awful.spawn(terminal) end,
-                  {description = "open a terminal", group = "launcher"}),
-        awful.key({ modkey, "Control" }, "r", awesome.restart,
-                  {description = "reload awesome", group = "awesome"}),
-        awful.key({ modkey, "Shift"   }, "q", awesome.quit,
-                  {description = "quit awesome", group = "awesome"}),
-        awful.key({ modkey }, "b", function () awful.util.spawn(browser) end,
-                  {description = "Open Browser", group = "launcher"}),
-        
-        -- Adjust clients width
-        awful.key({ modkey }, "l", function () awful.tag.incmwfact( 0.05) end,
-                  { description = "increase master width factor", group = "layout" }),
-        awful.key({ modkey }, "h", function () awful.tag.incmwfact(-0.05) end,
-                  { description = "decrease master width factor", group = "layout" }),
+        map({modkey}, "Return", function() awful.spawn(terminal) end, "Launch Terminal"),
+        map({modkey}, "b", function() awful.spawn(browser) end,       "Launch Browser"),
+
+        map({modkey, "Control"}, "r", awesome.restart, "Reload Awesome WM"),
+        map({modkey, "Shift"  }, "q", awesome.quit,    "Quit Awesome WM"),
+
+        map({modkey}, "j", function() awful.client.focus.byidx(-1) end, "Client Next"),
+        map({modkey}, "k", function() awful.client.focus.byidx( 1) end, "Client Previous"),
 
         -- Prompt (rofi)
         awful.key({ modkey }, "p", function () awful.util.spawn("rofi -show drun") end,
