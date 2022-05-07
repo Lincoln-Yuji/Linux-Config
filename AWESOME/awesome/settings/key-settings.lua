@@ -43,7 +43,8 @@ set_global_keys = function ()
         awful.key({ modkey }, "p", function () awful.util.spawn("rofi -show-icons -show drun") end,
                   { description = "app launcher (rofi)", group = "launcher" }),
         awful.key({ modkey }, "r", function () awful.util.spawn("rofi -show run")  end,
-                  { description = "run command (rofi)", group = "launcher" })
+                  { description = "run command (rofi)", group = "launcher" }),
+        map({modkey}, "a", function() awful.util.spawn("rofi -show-icons -show window") end, "See All Windows")
     )
 
     for i = 1, 9 do
