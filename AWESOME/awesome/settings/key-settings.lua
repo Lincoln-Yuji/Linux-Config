@@ -40,7 +40,7 @@ set_global_keys = function ()
         map({modkey}, "k", function() awful.client.focus.byidx( 1) end, "Client Previous"),
 
         -- Prompt (rofi)
-        awful.key({ modkey }, "p", function () awful.util.spawn("rofi -show drun") end,
+        awful.key({ modkey }, "p", function () awful.util.spawn("rofi -show-icons -show drun") end,
                   { description = "app launcher (rofi)", group = "launcher" }),
         awful.key({ modkey }, "r", function () awful.util.spawn("rofi -show run")  end,
                   { description = "run command (rofi)", group = "launcher" })
