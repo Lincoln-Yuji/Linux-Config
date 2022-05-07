@@ -86,8 +86,9 @@ awful.layout.layouts = {
 }
 
 -- Widgets
-local battery_widget = require("awesome-wm-widgets.battery-widget.battery")
-local volume_widget  = require("awesome-wm-widgets.volume-widget.volume")
+local battery_widget  = require("awesome-wm-widgets.battery-widget.battery")
+local volume_widget   = require("awesome-wm-widgets.volume-widget.volume")
+local logout_menu     = require("awesome-wm-widgets.logout-menu-widget.logout-menu")
 
 local battery_widget_config = {
     show_current_level = true
@@ -209,6 +210,7 @@ awful.screen.connect_for_each_screen( function(s)
             wibox.widget.systray(),
             mytextclock,
             battery_widget(battery_widget_config),
+            logout_menu(),
             mykeyboardlayout,
             s.mylayoutbox,
         },
