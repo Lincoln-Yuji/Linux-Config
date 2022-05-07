@@ -20,7 +20,8 @@ map('v', '<', '<gv', opt)
 map('v', '>', '>gv', opt)
 
 -- Keybindings Inside Floaterm
-map('t', '<C-q>', 'exit<CR>', opt)
+-- map('t', '<C-q>', 'exit<CR>', opt)
+map('t', '<ESC>', 'exit<CR>', opt)
 map('t', '<C-f>', 'a=$(fzf); if [ -z "$a" ]; then exit; else floaterm $a; exit; fi<CR>', opt)
 
 -- F* keys
