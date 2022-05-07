@@ -8,7 +8,7 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 
 # Personal exports definitions
-export HISTCONTROL=ignoreboth            # Don't put duplicate lines or lines starting with space in the history
+export HISTCONTROL=ignoreboth            # Ignore duplicate lines or lines starting with space in the history
 export BROWSER="firefox"                 # Firefox is my default browser
 # export EDITOR="/usr/bin/emacs -a -n"   # Emacs is my default Text Editor
 # export VISUAL="/usr/bin/emacs -a -n"   # $VISUAL will use Emacs in GUI mode as well
@@ -62,7 +62,8 @@ parse_git_branch() {
 
 # Customizing the shell prompt
 if [ "$color_prompt" = yes ]; then
-    PS1='[\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]]\[\e[91m\]($(parse_git_branch))\[\033[00m\]\n> '
+    PS1='[\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]]\[\e[91m\]' # Prompt
+    PS1="$PS1 ($(parse_git_branch))\[\033[00m\]\n> " # Git branch, if there is a git repo
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
@@ -97,6 +98,9 @@ alias ll='ls -alhF'
 alias la='ls -A'
 alias br='br -spd'
 alias wttr='curl wttr.in'
+
+alias poweroff='$HOME/Programs/scripts/shutdown.sh'
+
 # alias fzf="fzf --border=rounded --preview-window=right:65% --preview 'cat {}'"
 
 # Source my fzf configs
