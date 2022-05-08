@@ -138,9 +138,7 @@ screen.connect_signal("property::geometry", set_wallpaper)
 awful.screen.connect_for_each_screen( function(s)
     -- Wallpaper
     set_wallpaper(s)
-
     -- Each screen has its own tag table.
-    -- awful.tag({ "Ⓐ", "Ⓦ", "Ⓔ", "Ⓢ", "Ⓞ", "Ⓜ", "Ⓔ", "Ⓦ", "Ⓜ" }, s, awful.layout.layouts[1])
     awful.tag({ "[1]", "[2]", "[3]", "[4]", "[5]", "[6]", "[7]", "[8]", "[9]" },
               s, awful.layout.layouts[1])
 
@@ -150,7 +148,6 @@ awful.screen.connect_for_each_screen( function(s)
                           awful.button({ }, 3, function () awful.layout.inc(-1) end),
                           awful.button({ }, 4, function () awful.layout.inc( 1) end),
                           awful.button({ }, 5, function () awful.layout.inc(-1) end)))
-
     -- Create a taglist widget
     s.mytaglist = awful.widget.taglist {
         screen  = s,
