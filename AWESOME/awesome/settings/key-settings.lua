@@ -1,8 +1,8 @@
 local gears = require("gears")
 local awful = require("awful")
 
-local map = function (cmd, key, f, text)
-    return awful.key(cmd, key, f, { description = text, group = "Key Binding List:" })
+local map = function(cmd, key, info, f)
+    return awful.key(cmd, key, f, { group = info[1], description = info[2]})
 end
 
 return {
@@ -10,11 +10,16 @@ return {
 -- Client Keys
 set_client_keys = function ()
     return gears.table.join(
-        map({modkey}, "f", function(c) c.fullscreen = not c.fullscreen; c:raise() end,       "Toggle Fullscreen"),
-        map({modkey}, "q", function(c) c:kill() end,                                         "Close Window"),
-        map({modkey}, "o", function(c) c:move_to_screen() end,                               "Move to Screen"),
-        map({modkey}, "m", function(c) c.maximized = not c.maximized; c:raise() end,         "Toggle Maximize"),
-        map({modkey, "Control"}, "Return", function(c) c:swap(awful.client.getmaster()) end, "Promotion to Master")
+        map({modkey}, "f", {"Client:", "Toggle Fullscreen"},
+           function(c) c.fullscreen = not c.fullscreen; c:raise() end),
+        map({modkey}, "q", {"Client:", "Close Client"},
+           function(c) c:kill() end),
+        map({modkey}, "o", {"Client:", "Move to Screen"},
+           function(c) c:move_to_screen() end),
+        map({modkey}, "m", {"Client:", "Toggle Maximize"},
+           function(c) c.maximized = not c.maximized; c:raise() end),
+        map({modkey, "Control"}, "Return", {"Client:", "Swap with Master"},
+            function(c) c:swap(awful.client.getmaster()) end)
 )
 end,
 
@@ -22,29 +27,32 @@ end,
 set_global_keys = function ()
     globalkeys = gears.table.join(
 
-        map({modkey, "Control"}, "h", function () awful.tag.incmwfact(-0.05) end, "Master Width --"),
-        map({modkey, "Control"}, "l", function () awful.tag.incmwfact( 0.05) end, "Master Width ++"),
-        map({modkey},"Escape", awful.tag.history.restore,                         "Previous Tag"),
+        map({modkey, "Control"}, "h", {"Layout:", "Master Width --"},
+           function () awful.tag.incmwfact(-0.05) end),
+        map({modkey, "Control"}, "l", {"Layout:", "Master Width ++"},
+           function () awful.tag.incmwfact( 0.05) end),
 
-        map({modkey}, "l", awful.tag.viewnext, "Tag++"),
-        map({modkey}, "h", awful.tag.viewprev, "Tag--"),
 
-        -- Standard program
-        map({modkey}, "Return", function() awful.spawn(terminal) end, "Launch Terminal"),
-        map({modkey}, "b", function() awful.spawn(browser) end,       "Launch Browser"),
+        map({modkey}, "j",      {"Navigation:", "Client Next"},
+           function() awful.client.focus.byidx( 1) end),
+        map({modkey}, "k",      {"Navigation:", "Client Previous"},
+           function() awful.client.focus.byidx(-1) end),
+        map({modkey}, "Escape", {"Navigation:", "Previous Tag"},
+           awful.tag.history.restore),
 
-        map({modkey, "Control"}, "r", awesome.restart, "Reload Awesome WM"),
-        map({modkey, "Shift"  }, "q", awesome.quit,    "Quit Awesome WM"),
+        map({modkey}, "l", {"Navigation:", "Right Tag"}, awful.tag.viewnext),
+        map({modkey}, "h", {"Navigation:", "Left Tag"}, awful.tag.viewprev),
 
-        map({modkey}, "j", function() awful.client.focus.byidx(-1) end, "Client Next"),
-        map({modkey}, "k", function() awful.client.focus.byidx( 1) end, "Client Previous"),
+        map({modkey}, "Return", {"Application:", "Open Terminal"},
+           function() awful.spawn(terminal) end),
+        map({modkey}, "b",      {"Application:", "Open Firefox"},
+           function() awful.spawn(browser) end),
 
-        -- Prompt (rofi)
-        awful.key({ modkey }, "p", function () awful.util.spawn("rofi -show-icons -show drun") end,
-                  { description = "app launcher (rofi)", group = "launcher" }),
-        awful.key({ modkey }, "r", function () awful.util.spawn("rofi -show run")  end,
-                  { description = "run command (rofi)", group = "launcher" }),
-        map({modkey}, "a", function() awful.util.spawn("rofi -show-icons -show window") end, "See All Windows")
+        map({modkey, "Control"}, "r", {"Awesome:", "Restart"}, awesome.restart),
+        map({modkey, "Shift"  }, "q", {"Awesome:", "Quit"}, awesome.quit),
+
+        map({modkey}, "p", {"Rofi", "Launch on drun mode"},
+            function() awful.util.spawn("rofi -show drun") end)
     )
 
     for i = 1, 9 do
@@ -58,7 +66,7 @@ set_global_keys = function ()
                 tag:view_only()
             end
         end,
-        {description = "view tag #"..i, group = "tag"}),
+        {description = "View tag #"..i, group = "Tags"}),
         -- Move client to tag.
         awful.key({ modkey, "Shift" }, "#" .. i + 9,
         function ()
@@ -69,7 +77,7 @@ set_global_keys = function ()
                 end
             end
         end,
-        {description = "move focused client to tag #"..i, group = "tag"})
+        {description = "MMove focused client to tag #"..i, group = "Tags"})
         )
     end
 

@@ -22,10 +22,6 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
 
--- Load Debian menu entries
-local debian = require("debian.menu")
-local has_fdo, freedesktop = pcall(require, "freedesktop")
-
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -97,10 +93,7 @@ local volume_widget_config  = {
     widget_type = 'arc'
 }
 
--- }}}
-
--- {{{ Menu
--- Create a launcher widget and a main menu
+-- Pop Menu
 myawesomemenu = {
    { "- Hotkeys", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
    { "- Manual", terminal .. " -e man awesome" },
@@ -108,33 +101,18 @@ myawesomemenu = {
    { "- Restart", awesome.restart },
    { "- Quit", function() awesome.quit() end },
 }
-
 local menu_awesome  = { "Awesome", myawesomemenu, beautiful.awesome_icon }
 local menu_terminal = { "Open Terminal", terminal }
 
-if has_fdo then
-    mymainmenu = freedesktop.menu.build({
-        before = { menu_awesome },
-        after =  { menu_terminal }
-    })
-else
-    mymainmenu = awful.menu({
-        items = {
-            menu_awesome,
-            { "Debian", debian.menu.Debian_menu.Debian },
-            menu_terminal,
-        }
-    })
-end
-
+mymainmenu = awful.menu({
+    items = {menu_awesome, menu_terminal}
+})
 mylauncher = awful.widget.launcher({image = beautiful.awesome_icon, menu = mymainmenu})
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
--- }}}
 
 -- Keyboard map indicator and switcher
 mykeyboardlayout = awful.widget.keyboardlayout()
 
--- {{{ Wibar
 -- Create a textclock widget
 mytextclock = wibox.widget.textclock()
 
@@ -218,15 +196,13 @@ awful.screen.connect_for_each_screen( function(s)
         },
     }
 end)
--- }}}
 
--- {{{ Mouse bindings
+-- Mouse Bindings
 root.buttons(gears.table.join(
     awful.button({ }, 3, function () mymainmenu:toggle() end),
     awful.button({ }, 4, awful.tag.viewnext),
     awful.button({ }, 5, awful.tag.viewprev)
 ))
--- }}}
 
 -- Key Binding Settings
 local key_settings = require("settings.key-settings")
@@ -255,32 +231,26 @@ clientbuttons = gears.table.join(
     end)
 )
 
--- }}}
-
--- {{{ Rules
 -- Rules to apply to new clients (through the "manage" signal).
 awful.rules.rules = {
     -- All clients will match this rule.
     { rule = { },
-      properties = { border_width = beautiful.border_width,
-                     border_color = beautiful.border_normal,
-                     focus = awful.client.focus.filter,
-                     raise = true,
-                     keys = clientkeys,
-                     buttons = clientbuttons,
-                     screen = awful.screen.preferred,
-                     placement = awful.placement.no_overlap+awful.placement.no_offscreen
+        properties = { 
+            border_width = beautiful.border_width,
+            border_color = beautiful.border_normal,
+            focus     = awful.client.focus.filter,
+            raise     = true,
+            keys      = clientkeys,
+            buttons   = clientbuttons,
+            screen    = awful.screen.preferred,
+            placement = awful.placement.no_overlap+awful.placement.no_offscreen
         }
     }
 }
--- }}}
 
--- {{{ Signals
 -- Signal function to execute when a new client appears.
 client.connect_signal("manage", function (c)
     -- Set the windows at the slave,
-    -- i.e. put it at the end of others instead of setting it master.
-    -- if not awesome.startup then awful.client.setslave(c) end
     if awesome.startup
       and not c.size_hints.user_position
       and not c.size_hints.program_position then
@@ -288,10 +258,8 @@ client.connect_signal("manage", function (c)
         awful.placement.no_offscreen(c)
     end
 end)
-
 client.connect_signal("focus",   function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
--- }}}
 
 -- Startup Commands
 require("autostart")
