@@ -6,7 +6,6 @@ local map = function(cmd, key, info, f)
 end
 
 return {
-
 -- Client Keys
 set_client_keys = function ()
     return gears.table.join(
@@ -22,7 +21,6 @@ set_client_keys = function ()
             function(c) c:swap(awful.client.getmaster()) end)
 )
 end,
-
 -- Global Keys
 set_global_keys = function ()
     globalkeys = gears.table.join(
