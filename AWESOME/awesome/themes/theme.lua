@@ -9,15 +9,16 @@ theme.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 -----------------
 -- Tweak theme --
 -----------------
-theme.font = "Hack Nerd Font 12"
+theme.font = "Hack Nerd Font 10"
 
 -- theme.wallpaper    = theme_dir .. "/wallpapers/galen-crout-175291.jpg"
-theme.wallpaper = theme_dir .. "/wallpapers/pop.png"
+theme.wallpaper    = theme_dir .. "/wallpapers/pop.png"
 theme.awesome_icon = theme_dir .. "/icons/pop-os.png"
 
 theme.useless_gap = 2
 
 -- Menu standard width and height
+theme.bg_normal = "#28282C"
 theme.menu_width  = 200
 theme.menu_height = 24
 

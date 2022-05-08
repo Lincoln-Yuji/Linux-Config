@@ -1,4 +1,9 @@
-require'nvim-tree'.setup {
+local ok, configs = pcall(require, 'nvim-tree')
+if not ok then
+    return
+end
+
+configs.setup {
     view = {
         width=33,
     },
