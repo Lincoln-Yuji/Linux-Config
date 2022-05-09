@@ -19,13 +19,13 @@ map('n', '<Leader>fs', ':w<CR>', opt)
 map('v', '<', '<gv', opt)
 map('v', '>', '>gv', opt)
 
--- Keybindings Inside Floaterm
--- map('t', '<C-q>', 'exit<CR>', opt)
+-- Floaterm
 map('t', '<ESC>', '<cmd>FloatermKill<CR>', opt)
-map('t', '<C-f>', 'a=$(fzf); if [ -z "$a" ]; then exit; else floaterm $a; exit; fi<CR>', opt)
-
--- F* keys
+-- map('t', '<C-f>', 'a=$(fzf); if [ -z "$a" ]; then exit; else floaterm $a; exit; fi<CR>', opt)
 map('n', '<F7>', '<cmd>FloatermToggle<CR>', opt) -- Toggle Floaterm focused window
 map('t', '<F7>', '<cmd>FloatermToggle<CR>', opt) -- Toggle Floaterm focused window
 
-map('n', '<F8>', ':NvimTreeToggle<CR>', opt) -- Toggle NvimTree window
+map('n', '<F8>', '<cmd>NvimTreeToggle<CR>', opt) -- Toggle NvimTree window
+
+-- Telescope
+map('n', '<Leader>ff', '<cmd>Telescope find_files<CR>', opt)
