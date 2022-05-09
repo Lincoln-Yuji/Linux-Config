@@ -18,36 +18,31 @@ local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
 
--- Enable hotkeys help widget for VIM and other apps
--- when client with a matching name is opened:
-require("awful.hotkeys_popup.keys")
+-- require("awful.hotkeys_popup.keys")
 
--- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
 if awesome.startup_errors then
-    naughty.notify({ preset = naughty.config.presets.critical,
-                     title = "Oops, there were errors during startup!",
-                     text = awesome.startup_errors })
+    naughty.notify(
+    { preset = naughty.config.presets.critical,
+      title = "Oops, there were errors during startup!",
+      text = awesome.startup_errors })
 end
 
 -- Handle runtime errors after startup
 do
     local in_error = false
     awesome.connect_signal("debug::error", function (err)
-        -- Make sure we don't go into an endless error loop
         if in_error then return end
         in_error = true
-
-        naughty.notify({ preset = naughty.config.presets.critical,
-                         title = "Oops, an error happened!",
-                         text = tostring(err) })
+        naughty.notify(
+            { preset = naughty.config.presets.critical,
+              title = "Oops, an error happened!",
+              text = tostring(err) })
         in_error = false
     end)
 end
--- }}}
 
--- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
 editor   = os.getenv("EDITOR")
 browser  = os.getenv("BROWSER")
@@ -68,9 +63,9 @@ awful.layout.layouts = {
 }
 
 -- Widgets
-local battery_widget  = require("awesome-wm-widgets.battery-widget.battery")
-local volume_widget   = require("awesome-wm-widgets.volume-widget.volume")
-local logout_menu     = require("awesome-wm-widgets.logout-menu-widget.logout-menu")
+local battery_widget = require("awesome-wm-widgets.battery-widget.battery")
+local volume_widget  = require("awesome-wm-widgets.volume-widget.volume")
+local logout_menu    = require("awesome-wm-widgets.logout-menu-widget.logout-menu")
 
 local battery_widget_config = {
     show_current_level = true
@@ -161,13 +156,13 @@ awful.screen.connect_for_each_screen( function(s)
     -- Add widgets to the wibox
     s.mywibox:setup {
         layout = wibox.layout.align.horizontal,
-        { -- Left widgets
+        { -- Left
             layout = wibox.layout.fixed.horizontal,
             mylauncher,
             s.mytaglist,
         },
         wibox.widget.base.empty_widget(), -- "Spliter"
-        { -- Right widgets
+        { -- Right
             layout = wibox.layout.fixed.horizontal,
             volume_widget(volume_widget_config),
             wibox.widget.systray(),
@@ -218,16 +213,16 @@ clientbuttons = gears.table.join(
 awful.rules.rules = {
     -- All clients will match this rule.
     { rule = { },
-        properties = { 
-            border_width = beautiful.border_width,
-            border_color = beautiful.border_normal,
-            focus     = awful.client.focus.filter,
-            raise     = true,
-            keys      = clientkeys,
-            buttons   = clientbuttons,
-            screen    = awful.screen.preferred,
-            placement = awful.placement.no_overlap+awful.placement.no_offscreen
-        }
+      properties = { 
+          border_width = beautiful.border_width,
+          border_color = beautiful.border_normal,
+          focus     = awful.client.focus.filter,
+          raise     = true,
+          keys      = clientkeys,
+          buttons   = clientbuttons,
+          screen    = awful.screen.preferred,
+          placement = awful.placement.no_overlap+awful.placement.no_offscreen
+       }
     }
 }
 

@@ -43,14 +43,16 @@ set_global_keys = function ()
 
         map({modkey}, "Return", {"Application:", "Open Terminal"},
            function() awful.spawn(terminal) end),
-        map({modkey}, "b",      {"Application:", "Open Firefox"},
-           function() awful.spawn(browser) end),
+        -- map({modkey}, "b",      {"Application:", "Open Firefox"},
+        --    function() awful.spawn(browser) end),
 
         map({modkey, "Control"}, "r", {"Awesome:", "Restart"}, awesome.restart),
         map({modkey, "Shift"  }, "q", {"Awesome:", "Quit"}, awesome.quit),
 
         map({modkey}, "p", {"Rofi", "Launch on drun mode"},
-            function() awful.util.spawn("rofi -show drun") end)
+            function() awful.util.spawn("rofi -show drun") end),
+        map({modkey}, "b",      {"Application:", "Open Firefox"},
+            function() awful.spawn(os.getenv("HOME") .. "/Programs/scripts/browser-bookmark.sh") end)
     )
 
     for i = 1, 9 do
