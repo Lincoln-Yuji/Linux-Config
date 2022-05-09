@@ -101,8 +101,6 @@ alias wttr='curl wttr.in'
 
 alias poweroff='$HOME/Programs/scripts/shutdown.sh'
 
-# alias fzf="fzf --border=rounded --preview-window=right:65% --preview 'cat {}'"
-
 # Source my fzf configs
 if [ -f ~/.config/fzf/fzf-config.sh ]; then
     source ~/.config/fzf/fzf-config.sh

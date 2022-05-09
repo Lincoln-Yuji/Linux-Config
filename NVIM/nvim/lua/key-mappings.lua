@@ -21,9 +21,11 @@ map('v', '>', '>gv', opt)
 
 -- Keybindings Inside Floaterm
 -- map('t', '<C-q>', 'exit<CR>', opt)
-map('t', '<ESC>', 'exit<CR>', opt)
+map('t', '<ESC>', '<cmd>FloatermKill<CR>', opt)
 map('t', '<C-f>', 'a=$(fzf); if [ -z "$a" ]; then exit; else floaterm $a; exit; fi<CR>', opt)
 
 -- F* keys
-map('n', '<F7>', ':FloatermToggle<CR>', opt) -- Toggle Floaterm focused window
+map('n', '<F7>', '<cmd>FloatermToggle<CR>', opt) -- Toggle Floaterm focused window
+map('t', '<F7>', '<cmd>FloatermToggle<CR>', opt) -- Toggle Floaterm focused window
+
 map('n', '<F8>', ':NvimTreeToggle<CR>', opt) -- Toggle NvimTree window

@@ -9,13 +9,18 @@ require('packer').startup( function()
 
     use 'romgrk/barbar.nvim'          -- Friendly Tabs
     use 'kyazdani42/nvim-tree.lua'    -- File Tree
-    use 'mhinz/vim-startify'          -- Start Screen
 
     use 'neovim/nvim-lspconfig'            -- Language Server Config
     use {
         'nvim-treesitter/nvim-treesitter', -- Advanced Syntax Highlight
         run = ':TSUpdate',
     }
+
+    use {
+        'nvim-telescope/telescope.nvim',   -- Telescope Plugin (Fuzzy Finder)
+        requires = { {'nvim-lua/plenary.nvim'} }
+    }
+    use 'startup-nvim/startup.nvim'        -- Start Screen (requires telescope)
 
     use 'hrsh7th/nvim-cmp'         -- Completion plugin
     use 'hrsh7th/cmp-nvim-lsp'     -- Integration with LSP
