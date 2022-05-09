@@ -27,7 +27,7 @@
     background-color: @background;
     border:           1;
     padding:          5;
-    width:          40%;
+    width:          35%;
 }
 
 #mainbox {

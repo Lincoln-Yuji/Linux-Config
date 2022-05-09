@@ -1,5 +1,5 @@
 configuration {
-    modi: "window,drun";
+    modi: "run,window,drun";
     font: "Hack Nerd Font 12";
     theme: "~/.config/rofi/dark.rasi";
 }
