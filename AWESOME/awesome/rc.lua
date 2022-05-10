@@ -61,15 +61,21 @@ awful.layout.layouts = {
 }
 
 -- Widgets
-local battery_widget = require("awesome-wm-widgets.battery-widget.battery")
-local volume_widget  = require("awesome-wm-widgets.volume-widget.volume")
-local logout_menu    = require("awesome-wm-widgets.logout-menu-widget.logout-menu")
+local battery_widget  = require("awesome-wm-widgets.battery-widget.battery")
+local volume_widget   = require("awesome-wm-widgets.volume-widget.volume")
+local logout_menu     = require("awesome-wm-widgets.logout-menu-widget.logout-menu")
+local calendar_widget = require("awesome-wm-widgets.calendar-widget.calendar")
 
 local battery_widget_config = {
     show_current_level = true
 }
 local volume_widget_config  = {
     widget_type = 'arc'
+}
+local calendar_widget_config = {
+    theme = 'nord',
+    placement = 'top_right',
+    start_sunday = true
 }
 
 -- Pop Menu
@@ -94,6 +100,11 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- Create a textclock widget
 mytextclock = wibox.widget.textclock()
+local cw = calendar_widget(calendar_widget_config)
+mytextclock:connect_signal("button::press",
+    function(_, _, _, button)
+        if button == 1 then cw.toggle() end
+    end)
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
