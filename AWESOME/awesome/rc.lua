@@ -65,6 +65,11 @@ local battery_widget  = require("awesome-wm-widgets.battery-widget.battery")
 local volume_widget   = require("awesome-wm-widgets.volume-widget.volume")
 local logout_menu     = require("awesome-wm-widgets.logout-menu-widget.logout-menu")
 local calendar_widget = require("awesome-wm-widgets.calendar-widget.calendar")
+local net_wireless    = require("awesome-wm-widgets.net-widget.wireless")
+local net_internet    = require("awesome-wm-widgets.net-widget.internet")
+
+local spliter = wibox.widget.textbox()
+spliter:set_text(" | ")
 
 local battery_widget_config = {
     show_current_level = true
@@ -73,9 +78,15 @@ local volume_widget_config  = {
     widget_type = 'arc'
 }
 local calendar_widget_config = {
-    theme = 'nord',
+    -- theme = 'nord',
     placement = 'top_right',
     start_sunday = true
+}
+local net_wireless_config = {
+    interface = "wlo1"
+}
+local net_internet_config = {
+    showconnected = true
 }
 
 -- Pop Menu
@@ -173,9 +184,15 @@ awful.screen.connect_for_each_screen( function(s)
         wibox.widget.base.empty_widget(), -- "Spliter"
         { -- Right
             layout = wibox.layout.fixed.horizontal,
+            net_internet(net_internet_config),
+            spliter,
+            net_wireless(net_wireless_config),
+            spliter,
             volume_widget(volume_widget_config),
+            spliter,
             wibox.widget.systray(),
             mytextclock,
+            spliter,
             battery_widget(battery_widget_config),
             logout_menu(),
             mykeyboardlayout,
