@@ -3,6 +3,8 @@ require('packer').startup( function()
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
 
+    use 'kyazdani42/nvim-web-devicons'    -- Icon Package
+
     use 'vim-airline/vim-airline'         -- Bottom status bar
     use 'tpope/vim-commentary'            -- Quickly commenting lines
     use 'rafi/awesome-vim-colorschemes'   -- Set of color schemes
@@ -21,6 +23,7 @@ require('packer').startup( function()
         requires = { {'nvim-lua/plenary.nvim'} }
     }
     use 'startup-nvim/startup.nvim'        -- Start Screen (requires telescope)
+    use 'nvim-telescope/telescope-file-browser.nvim' -- Telescope extension
 
     use 'hrsh7th/nvim-cmp'         -- Completion plugin
     use 'hrsh7th/cmp-nvim-lsp'     -- Integration with LSP

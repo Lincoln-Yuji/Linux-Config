@@ -6,7 +6,7 @@ map('n', '<S-Tab>', ':BufferPrevious<CR>', opt)
 map('n', '<Leader>bc', ':BufferClose<CR>', opt)
 
 vim.g.bufferline = {
-    icons = false,
-    icon_close_tab = 'x',
+    -- icons = false,
+    -- icon_close_tab = 'x',
     icon_separator_active = '|$',
 }

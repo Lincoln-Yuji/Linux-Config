@@ -2,10 +2,10 @@
 
 sudo apt update && apt full-upgrade
 
-sudo apt install timeshift discord bashtop neofetch acpi;
+sudo apt install timeshift discord bashtop neofetch acpi \
+    ripgrep nodejs npm;
 sudo apt install ibx11-dev libxcursor-dev ninja-build cmake;
 sudo apt install gettext libtool libtool-bin autoconf automake pkg-config unzip;
-sudo apt install nodejs npm;
 
 # If we want to install latex, we don't want to make the full instaltion
 # This one is the recomended for us:
