@@ -29,3 +29,4 @@ map('n', '<F8>', '<cmd>NvimTreeToggle<CR>', opt) -- Toggle NvimTree window
 
 -- Telescope
 map('n', '<Leader>ff', '<cmd>Telescope find_files<CR>', opt)
+map('n', '<Leader>of', '<cmd>Telescope oldfiles<CR>'  , opt)

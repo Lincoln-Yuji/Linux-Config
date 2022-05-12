@@ -13,6 +13,8 @@ require('packer').startup( function()
     use 'kyazdani42/nvim-tree.lua'    -- File Tree
 
     use 'neovim/nvim-lspconfig'            -- Language Server Config
+    use 'williamboman/nvim-lsp-installer'  -- Installer extension for LSP
+
     use {
         'nvim-treesitter/nvim-treesitter', -- Advanced Syntax Highlight
         run = ':TSUpdate',

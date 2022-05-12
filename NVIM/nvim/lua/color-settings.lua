@@ -10,7 +10,7 @@ vim.cmd [[ highlight! link ErrorMsg SpellBad ]]
 vim.cmd [[ highlight! link Pmenu NormalNC ]]
 vim.cmd [[ highlight! link PmenuSel Visual ]]
 vim.cmd [[ highlight! link PmenuSbar Visual ]]
-vim.cmd [[ highlight! link PmenuThumb Visual ]]
+vim.cmd [[ highlight! link PmenuThumb TermCursor ]]
 
 -- Git Add and Diff highlight
 vim.cmd [[ highlight! link DiffAdd GitGutterAdd ]]
@@ -18,3 +18,8 @@ vim.cmd [[ highlight! link DiffDelete GitGutterDelete ]]
 
 -- FloatermBorder Black Border
 vim.cmd [[ hi FloatermBorder guibg=black guifg=black ]]
+
+-- Barbar setup
+vim.cmd [[ highlight! link BufferInactive Comment ]]
+vim.cmd [[ highlight! link BufferInactiveMod Comment ]]
+vim.cmd [[ highlight! link BufferInactiveSign Comment ]]
