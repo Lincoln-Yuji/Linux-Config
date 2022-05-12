@@ -13,7 +13,7 @@ map('n', '<Leader>wv', ':vs<CR>', opt)
 map('n', '<Leader>ws', ':sp<CR>', opt)
 
 -- Save file
-map('n', '<Leader>fs', ':w<CR>', opt) 
+map('n', '<Leader>fs', ':w<CR>', opt)
 
 -- Multitab
 map('v', '<', '<gv', opt)
@@ -28,5 +28,6 @@ map('t', '<F7>', '<cmd>FloatermToggle<CR>', opt) -- Toggle Floaterm focused wind
 map('n', '<F8>', '<cmd>NvimTreeToggle<CR>', opt) -- Toggle NvimTree window
 
 -- Telescope
-map('n', '<Leader>ff', '<cmd>Telescope find_files<CR>', opt)
-map('n', '<Leader>of', '<cmd>Telescope oldfiles<CR>'  , opt)
+map('n', '<Leader>ff', '<cmd>Telescope find_files<CR>'  , opt)
+map('n', '<Leader>of', '<cmd>Telescope oldfiles<CR>'    , opt)
+map('n', '<Leader>fb', '<cmd>Telescope file_browser<CR>', opt)
