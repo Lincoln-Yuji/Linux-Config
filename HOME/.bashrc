@@ -16,6 +16,9 @@ export EDITOR="/usr/local/bin/nvim"      # Neovim as default text editor
 export VISUAL="/usr/local/bin/nvim"
 export TERM="xterm-256color"             # Pretty colors to terminal
 
+export XDG_DATA_HOME="$HOME/.local/share/"
+export XDG_CONFIG_HOME="$HOME/.config/"
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -99,8 +102,11 @@ alias la='ls -A'
 alias br='br -spd'
 alias wttr='curl wttr.in'
 
-alias poweroff='$HOME/Scripts/shutdown.sh'
-alias ccc='$HOME/Scripts/clang-compile-commands.sh'
+SCRIPT="$HOME/Scripts"
+if [ -d "$SCRIPT" ]; then
+    alias poweroff="$SCRIPT/shutdown.sh"
+    alias ccc="$SCRIPT/clang-compile-commands.sh"
+fi
 
 # Source my fzf configs
 if [ -f ~/.config/fzf/fzf-config.sh ]; then
