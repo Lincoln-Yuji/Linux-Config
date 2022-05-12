@@ -38,7 +38,7 @@ We can also use -t as a simpler aproach:
 stow -t <path> ALACRITTY/ NVIM/ ...
 ```
 
-## A plus
+## Optional
 
 Since I'm interested on tracking other files such as ~/.bashrc we can use -t to change the target directory to our home
 directory:
@@ -48,6 +48,6 @@ directory:
 stow --dotfiles -t $HOME HOME/
 ```
 
-We are using the --dotfiles so we can force stow to replace the "dot-" suffix from files to a period.
+The flag --dotfiles is optional. It allows you to force stow to replace the "dot-" suffix from files to a period.
 For example this will create a symlink ~/.bashrc to ~/(stow-dir)/HOME/dot-bashrc.
-We are using this strategy to avoid creating directories full of hidden files.
+You can use this strategy to avoid creating directories full of hidden files. It's up to the user.

@@ -99,8 +99,8 @@ alias la='ls -A'
 alias br='br -spd'
 alias wttr='curl wttr.in'
 
-alias poweroff='$HOME/Programs/scripts/shutdown.sh'
-alias ccc='$HOME/Programs/scripts/clang-compile-commands.sh'
+alias poweroff='$HOME/Scripts/shutdown.sh'
+alias ccc='$HOME/Scripts/clang-compile-commands.sh'
 
 # Source my fzf configs
 if [ -f ~/.config/fzf/fzf-config.sh ]; then

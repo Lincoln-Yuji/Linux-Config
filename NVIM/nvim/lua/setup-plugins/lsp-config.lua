@@ -18,12 +18,14 @@ local map_attach = function(client, bufnr)
   map_buff(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
   map_buff(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   map_buff(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  -- map_buff(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
 end
 
 require("nvim-lsp-installer").setup {
     -- Ensure all the enabled language servers are installed
-    automatic_installation = true
+    ensure_installed = { "clangd", "sumneko_lua" },
+    automatic_installation = true,
+    -- Limit for the maximum amount of servers to be installed at the same time
+    max_concurrent_installers = 6
 }
 
 local lspconfig = require('lspconfig')
@@ -49,7 +51,6 @@ lspconfig.clangd.setup {
             arguments = {
               "-o",
               "bin/main",
-              "P04-3d_projection/main.cpp",
               "-I",
               "/home/lincoln/.local/lib",
             },
