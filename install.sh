@@ -17,3 +17,27 @@ sudo apt-file update
 # $ apt-file search <file-name>
 # This will find the pakages that conatain <file-name>, for example:
 # $ apt-file search titling.sty
+
+# ===================================================================================================== #
+
+# Arco Linux session
+
+# ================ #
+# DELETING GARBAGE #
+# ================ #
+# Purge urxvt:
+# sudo pacman -Rn rxvt-unicode rxvt-unicode-terminfo urxvt-fullscreen urxvt-perls urxvt-resize-font-git
+
+# Purge picom:
+# sudo pacman -Rn picom
+
+# Purge termite:
+# sudo pacman -Rn termite
+
+# Purge variety and nitrogen (awesome can set wallpaper by itself)
+# sudo pacman -Rn nitrogen variety
+
+# =============== #
+# NSTALLING STUFF #
+# =============== #
+# sudo pacman -S acpi ripgrep
