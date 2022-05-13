@@ -5,19 +5,17 @@
 #   |_|  |_|\__, | |_.__/ \__,_|___/_| |_|_|  \___|
 #           |___/
 
-# ~/.bashrc: executed by bash(1) for non-login shells.
-
 # Personal exports definitions
 export HISTCONTROL=ignoreboth            # Ignore duplicate lines or lines starting with space in the history
 export BROWSER="firefox"                 # Firefox is my default browser
-# export EDITOR="/usr/bin/emacs -a -n"   # Emacs is my default Text Editor
-# export VISUAL="/usr/bin/emacs -a -n"   # $VISUAL will use Emacs in GUI mode as well
 export EDITOR="/usr/local/bin/nvim"      # Neovim as default text editor
 export VISUAL="/usr/local/bin/nvim"
 export TERM="xterm-256color"             # Pretty colors to terminal
 
-export XDG_DATA_HOME="$HOME/.local/share/"
-export XDG_CONFIG_HOME="$HOME/.config/"
+export XDG_DATA_HOME="$HOME/.local/share"    # Clean Home
+export XDG_CONFIG_HOME="$HOME/.config"       # Clean Home
+
+export CARGO_HOME="$HOME/.local/share/rust/.cargo" # Binaries and Environment for rust projects
 
 # If not running interactively, don't do anything
 case $- in
@@ -43,9 +41,6 @@ fi
 force_color_prompt=yes
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
 	color_prompt=yes
     else
 	color_prompt=
@@ -72,9 +67,7 @@ else
 fi
 unset color_prompt force_color_prompt
 
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
+# Enable bash completion
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
     . /usr/share/bash-completion/bash_completion
@@ -82,9 +75,6 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-
-# Acceleration!!!
-xset r rate 300 50
 
 # My aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -113,7 +103,15 @@ if [ -f ~/.config/fzf/fzf-config.sh ]; then
     source ~/.config/fzf/fzf-config.sh
 fi
 
-# Genereic function created to make life easier when I need to extract some files
+# Source cargo environment and add rust binaries to PATH
+if [ -d "${CARGO_HOME}/env" ]; then
+    source "${CARGO_HOME}/env"
+fi
+if [ -d "${CARGO_HOME}/bin" ]; then
+    PATH="${CARGO_HOME}/bin:${PATH}"
+fi
+
+# Generic decompressor
 function extract() {
     if [ -f $1 ]
     then
@@ -128,18 +126,3 @@ function extract() {
         echo "This file does not exist"
     fi
 }
-
-# Functions in development:
-# function memram() {
-#     echo "======================="
-#     free --mega | awk '/^Mem/ {print "  Used:      " $3 " MB" "\n" "  Available: " $7 " MB"}'
-#     echo "======================="
-# }
-
-# function diskuse() {
-#     df -h | grep '/dev/sda5' | awk '{print "Total: " $2 "\n" "Used:  " $3 }'
-# }
-
-# function cputemp() {
-#     sensors | awk '/^temp/ {print $1 $2}' | sed "s/temp/Core /g"
-# }
