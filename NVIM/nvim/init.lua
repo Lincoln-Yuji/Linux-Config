@@ -1,10 +1,6 @@
 -- Space as new Leader key
 vim.g.mapleader = ' '
 
--- Main Settings
-require('color-settings')
-require('key-mappings')
-
 -- Global Settings:
 local set = vim.opt
 
@@ -27,6 +23,9 @@ set.wrap = false -- Don't break lines when the text is too large
 
 set.pumheight = 10 -- Smaller pop-up window
 
+-- Key binding Settings
+require('key-mappings')
+
 -- Load Plugins
 require('load-plugins')
 
@@ -39,6 +38,9 @@ require('setup-plugins.nvim-cmp')
 require('setup-plugins.floaterm')
 require('setup-plugins.telescope')
 require('setup-plugins.startup-screen')
+
+-- Setup color scheme
+require('color-settings')
 
 -- Fix window redimension
 vim.cmd [[ autocmd VimEnter * :silent exec "!kill -s SIGWINCH $PPID" ]]

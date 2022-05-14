@@ -8,8 +8,8 @@
 # Personal exports definitions
 export HISTCONTROL=ignoreboth            # Ignore duplicate lines or lines starting with space in the history
 export BROWSER="firefox"                 # Firefox is my default browser
-export EDITOR="/usr/local/bin/nvim"      # Neovim as default text editor
-export VISUAL="/usr/local/bin/nvim"
+export EDITOR="nvim"                     # Neovim as default text editor
+export VISUAL="nvim"
 export TERM="xterm-256color"             # Pretty colors to terminal
 
 export XDG_DATA_HOME="$HOME/.local/share"    # Clean Home
