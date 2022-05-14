@@ -5,7 +5,7 @@ local naughty       = require("naughty")
 local gears         = require("gears")
 local cairo         = require("lgi").cairo
 -- local module_path = (...):match ("(.+/)[^/]+$") or ""
-local src_path = os.getenv("HOME") .. "~/.config/awesome/awesome-wm-widgets/net-widget"
+local src_path = os.getenv("HOME") .. "/.config/awesome/awesome-wm-widgets/net-widget"
 
 local theme = beautiful.get()
 
@@ -237,8 +237,8 @@ function wireless:attach(widget, args)
             awful.button({}, 1, function() awful.util.spawn(onclick) end)
             ))
     end
-    widget:connect_signal('mouse::enter', function () wireless:show(0) end)
-    widget:connect_signal('mouse::leave', function () wireless:hide() end)
+    -- widget:connect_signal('mouse::enter', function () wireless:show(0) end)
+    -- widget:connect_signal('mouse::leave', function () wireless:hide() end)
     return widget
 end
 
