@@ -82,8 +82,14 @@ local calendar_widget_config = {
     placement = 'top_right',
     start_sunday = true
 }
+
+local my_interface = nil
+awful.spawn.easy_async_with_shell(HOME.."/Scrpits/network-interface.sh", function(out)
+    my_interface = out
+end)
+
 local net_wireless_config = {
-    interface = "wlo1"
+    interface = my_interface
 }
 local net_internet_config = {
     showconnected = true
