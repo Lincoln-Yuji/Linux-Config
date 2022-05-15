@@ -11,12 +11,12 @@ font:
   normal:
     family: Hack Nerd Font
     # family: mononoki Nerd Font
-    # style: Regular
+    style: Bold
 
   bold:
     family: Hack Nerd Font
     # family: mononoki Nerd Font
-    # style: Bold
+    style: Bold
 
   size: 7.0
 

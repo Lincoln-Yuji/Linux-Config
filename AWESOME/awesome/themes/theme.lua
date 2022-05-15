@@ -9,7 +9,7 @@ theme.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 -----------------
 -- Tweak theme --
 -----------------
-theme.font = "Hack Nerd Font 10"
+theme.font = "Hack Nerd Font Bold 10"
 
 -- theme.wallpaper    = theme_dir .. "/wallpapers/galen-crout-175291.jpg"
 theme.wallpaper    = theme_dir .. "/wallpapers/pop.png"
