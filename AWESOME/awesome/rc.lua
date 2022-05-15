@@ -60,6 +60,9 @@ awful.layout.layouts = {
     awful.layout.suit.tile.top,
 }
 
+local kernel_widget = require("awesome-wm-widgets.kernel-version")
+local date_widget   = require("awesome-wm-widgets.date-clock")
+
 -- Widgets
 local battery_widget  = require("awesome-wm-widgets.battery-widget.battery")
 local volume_widget   = require("awesome-wm-widgets.volume-widget.volume")
@@ -89,9 +92,6 @@ local net_internet_config = {
     showconnected = true
 }
 
-local calendar_icon = wibox.widget.textbox()
-calendar_icon:set_text(" ")
-
 -- Pop Menu
 myawesomemenu = {
    { "- Hotkeys", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
@@ -113,12 +113,10 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- Create a textclock widget
-mytextclock = wibox.widget.textclock()
 local cw = calendar_widget(calendar_widget_config)
-mytextclock:connect_signal("button::press",
-    function(_, _, _, button)
-        if button == 1 then cw.toggle() end
-    end)
+date_widget:connect_signal("button::press",
+    function(_, _, _, button) if button == 1 then cw.toggle() end end
+)
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -190,7 +188,8 @@ awful.screen.connect_for_each_screen( function(s)
         wibox.widget.base.empty_widget(), -- "Spliter"
         { -- Right
             layout = wibox.layout.fixed.horizontal,
-            awful.widget.watch('bash -c "$HOME/Scripts/kernel-version.sh"', 500),
+            -- awful.widget.watch('bash -c "$HOME/Scripts/kernel-version.sh"', 500),
+            kernel_widget,
             spliter,
             awful.widget.watch('bash -c "$HOME/Scripts/cpu.sh"', 8),
             spliter,
@@ -203,7 +202,7 @@ awful.screen.connect_for_each_screen( function(s)
             volume_widget(volume_widget_config),
             spliter,
             wibox.widget.systray(),
-            awful.widget.watch('bash -c "$HOME/Scripts/clock.sh"', 15),
+            date_widget,
             spliter,
             battery_widget(battery_widget_config),
             logout_menu(),
