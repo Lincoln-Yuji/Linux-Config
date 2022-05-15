@@ -10,10 +10,12 @@ window:
 font:
   normal:
     family: Hack Nerd Font
+    # family: mononoki Nerd Font
     # style: Regular
 
   bold:
     family: Hack Nerd Font
+    # family: mononoki Nerd Font
     # style: Bold
 
   size: 7.0
