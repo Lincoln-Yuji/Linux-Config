@@ -190,15 +190,10 @@ awful.screen.connect_for_each_screen( function(s)
         wibox.widget.base.empty_widget(), -- "Spliter"
         { -- Right
             layout = wibox.layout.fixed.horizontal,
-<<<<<<< HEAD
             awful.widget.watch('bash -c "$HOME/Scripts/cpu.sh"', 8),
             spliter,
             awful.widget.watch('bash -c "$HOME/Scripts/ram.sh"', 8),
             spliter,
-            internet_icon,
-=======
-            -- awful.widget.watch('bash -c "printf \"🌐\""', 60),
->>>>>>> a69920af8aa8eb286483abcacc1852bae0dbec58
             net_internet(net_internet_config),
             spliter,
             net_wireless(net_wireless_config),
