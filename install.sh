@@ -22,22 +22,23 @@ sudo apt-file update
 
 # Arco Linux session
 
-# ================ #
-# DELETING GARBAGE #
-# ================ #
-# Purge urxvt:
-# sudo pacman -Rn rxvt-unicode rxvt-unicode-terminfo urxvt-fullscreen urxvt-perls urxvt-resize-font-git
-
-# Purge picom:
-# sudo pacman -Rn picom
-
-# Purge termite:
-# sudo pacman -Rn termite
-
-# Purge variety and nitrogen (awesome can set wallpaper by itself)
-# sudo pacman -Rn nitrogen variety
-
 # =============== #
 # NSTALLING STUFF #
 # =============== #
-# sudo pacman -S acpi ripgrep
+# sudo pacman -Ssyu  # Update
+# sudo pacman -S alacritty xorg firefox picom acpi ripgrep font-manager vim
+# sudo pacman -S xf86-video-<depende>
+# sudo pacman -S base-devel awesome
+
+# cp /etc/X11/xinit/xinitrc $HOME/.xinitrc
+
+# === Awesome Autostart === #
+
+# Configuração no final do xinitrc
+# picom &
+# exec awesome
+
+# Configuração no final do .bash_profile
+# [[ $(fgconsole 2>/dev/null) == 1 ]] && exec startx -- vt1
+
+# ========================= #

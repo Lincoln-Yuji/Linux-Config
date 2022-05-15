@@ -90,9 +90,7 @@ local net_internet_config = {
 }
 
 local calendar_icon = wibox.widget.textbox()
-calendar_icon:set_text("📅")
-local internet_icon = wibox.widget.textbox()
-internet_icon:set_text("🌐 ")
+calendar_icon:set_text(" ")
 
 -- Pop Menu
 myawesomemenu = {
@@ -179,7 +177,6 @@ awful.screen.connect_for_each_screen( function(s)
     s.mywibox = awful.wibar({ position = "top", screen = s })
 
     -- Add widgets to the wibox
-
     s.mywibox:setup {
         layout = wibox.layout.align.horizontal,
         { -- Left
@@ -193,11 +190,15 @@ awful.screen.connect_for_each_screen( function(s)
         wibox.widget.base.empty_widget(), -- "Spliter"
         { -- Right
             layout = wibox.layout.fixed.horizontal,
+<<<<<<< HEAD
             awful.widget.watch('bash -c "$HOME/Scripts/cpu.sh"', 8),
             spliter,
             awful.widget.watch('bash -c "$HOME/Scripts/ram.sh"', 8),
             spliter,
             internet_icon,
+=======
+            -- awful.widget.watch('bash -c "printf \"🌐\""', 60),
+>>>>>>> a69920af8aa8eb286483abcacc1852bae0dbec58
             net_internet(net_internet_config),
             spliter,
             net_wireless(net_wireless_config),
