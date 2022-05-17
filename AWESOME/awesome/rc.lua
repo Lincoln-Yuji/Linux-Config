@@ -68,7 +68,6 @@ local battery_widget  = require("awesome-wm-widgets.battery-widget.battery")
 local volume_widget   = require("awesome-wm-widgets.volume-widget.volume")
 local logout_menu     = require("awesome-wm-widgets.logout-menu-widget.logout-menu")
 local calendar_widget = require("awesome-wm-widgets.calendar-widget.calendar")
-local net_wireless    = require("awesome-wm-widgets.net-widget.wireless")
 local net_internet    = require("awesome-wm-widgets.net-widget.internet")
 
 local spliter = wibox.widget.textbox()
@@ -84,9 +83,6 @@ local calendar_widget_config = {
     -- theme = 'nord',
     placement = 'top_right',
     start_sunday = true
-}
-local net_wireless_config = {
-    interface = "wlan0"
 }
 local net_internet_config = {
     showconnected = true
@@ -183,12 +179,10 @@ awful.screen.connect_for_each_screen( function(s)
             spliter,
             s.mytaglist,
             spliter,
-            -- awful.widget.watch('bash -c date', 30),
         },
         wibox.widget.base.empty_widget(), -- "Spliter"
         { -- Right
             layout = wibox.layout.fixed.horizontal,
-            -- awful.widget.watch('bash -c "$HOME/Scripts/kernel-version.sh"', 500),
             kernel_widget,
             spliter,
             awful.widget.watch('bash -c "$HOME/Scripts/cpu.sh"', 8),
@@ -196,8 +190,6 @@ awful.screen.connect_for_each_screen( function(s)
             awful.widget.watch('bash -c "$HOME/Scripts/ram.sh"', 8),
             spliter,
             net_internet(net_internet_config),
-            spliter,
-            net_wireless(net_wireless_config),
             spliter,
             volume_widget(volume_widget_config),
             spliter,
