@@ -18,7 +18,8 @@ theme.awesome_icon = theme_dir .. "/icons/pop-os.png"
 theme.useless_gap = 2
 
 -- Menu standard width and height
-theme.bg_normal = "#28282C"
+theme.bg_normal  = "#28282C"
+theme.bg_systray = theme.bg_normal
 theme.menu_width  = 200
 theme.menu_height = 24
 
