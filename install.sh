@@ -26,9 +26,9 @@ sudo apt-file update
 # NSTALLING STUFF #
 # =============== #
 # sudo pacman -Ssyu  # Update
-# sudo pacman -S alacritty xorg firefox picom acpi ripgrep font-manager vim
-# sudo pacman -S xf86-video-<depende>
+# sudo pacman -S xorg picom xf86-video-<depende>
 # sudo pacman -S base-devel awesome
+# sudo pacman -S alacritty firefox acpi ripgrep font-manager vim stow
 
 # cp /etc/X11/xinit/xinitrc $HOME/.xinitrc
 
@@ -40,5 +40,7 @@ sudo apt-file update
 
 # Configuração no final do .bash_profile
 # [[ $(fgconsole 2>/dev/null) == 1 ]] && exec startx -- vt1
+
+# sudo pacman -S rofi neovim # Remember to install the packer plugin from github
 
 # ========================= #
