@@ -22,7 +22,7 @@ end
 
 require("nvim-lsp-installer").setup {
     -- Ensure all the enabled language servers are installed
-    ensure_installed = { "clangd", "sumneko_lua" },
+    ensure_installed = { "clangd", "rust_analyzer" },
     automatic_installation = true,
     -- Limit for the maximum amount of servers to be installed at the same time
     max_concurrent_installers = 6
@@ -30,17 +30,22 @@ require("nvim-lsp-installer").setup {
 
 local lspconfig = require('lspconfig')
 
-lspconfig.sumneko_lua.setup {
+-- lspconfig.sumneko_lua.setup {
+--     on_attach = map_attach,
+--     flags = { debounce_text_changes = 150 },
+--     settings = {
+--         Lua = {
+--             diagnostics = {
+--                 -- vim and use are global variables
+--                 globals = { 'vim', 'use' }
+--             }
+--         }
+--     }
+-- }
+
+lspconfig.rust_analyzer.setup {
     on_attach = map_attach,
     flags = { debounce_text_changes = 150 },
-    settings = {
-        Lua = {
-            diagnostics = {
-                -- vim and use are global variables
-                globals = { 'vim', 'use' }
-            }
-        }
-    }
 }
 
 lspconfig.clangd.setup {

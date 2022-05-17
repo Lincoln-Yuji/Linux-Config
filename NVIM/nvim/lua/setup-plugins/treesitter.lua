@@ -10,7 +10,7 @@ end
 configs.setup {
     ensure_installed = {
         "cpp", "lua", "bash",
-        "vim", "latex",
+        "vim", "latex", "rust",
     },
 	highlight = {
 		enable = true,
