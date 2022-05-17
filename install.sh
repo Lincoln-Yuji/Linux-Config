@@ -28,7 +28,7 @@ sudo apt-file update
 # sudo pacman -Ssyu  # Update
 # sudo pacman -S xorg picom xf86-video-<depende>
 # sudo pacman -S base-devel awesome
-# sudo pacman -S alacritty firefox acpi ripgrep font-manager vim stow
+# sudo pacman -S alacritty firefox acpi ripgrep font-manager vim stow unzip
 
 # cp /etc/X11/xinit/xinitrc $HOME/.xinitrc
 
