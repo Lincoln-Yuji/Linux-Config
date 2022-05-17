@@ -98,11 +98,6 @@ if [ -d "$SCRIPT" ]; then
     alias ccc="$SCRIPT/clang-compile-commands.sh"
 fi
 
-# Source my fzf configs
-if [ -f ~/.config/fzf/fzf-config.sh ]; then
-    source ~/.config/fzf/fzf-config.sh
-fi
-
 # Source cargo environment and add rust binaries to PATH
 if [ -d "${CARGO_HOME}/env" ]; then
     source "${CARGO_HOME}/env"
