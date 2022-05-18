@@ -3,3 +3,4 @@ local awful = require("awful")
 
 awful.util.spawn("setxkbmap -option 'caps:swapescape'")
 awful.util.spawn("xset r rate 300 50")
+awful.util.spawn("nm-applet")
