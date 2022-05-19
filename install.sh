@@ -20,14 +20,23 @@ sudo apt-file update
 
 # ===================================================================================================== #
 
-# Arco Linux session
+# Arch Linux session
 
 # =============== #
 # NSTALLING STUFF #
 # =============== #
+
+# Start
 # sudo pacman -Ssyu  # Update
-# sudo pacman -S xorg picom xf86-video-<depende>
-# sudo pacman -S base-devel awesome
+# sudo pacman -S base-devel 
+
+# Video
+# sudo pacman -S xorg xorg-xinit xf86-video-<depende> awesome
+
+# Audio
+# sudo pacman -S alsa-utils pulseaudio pulseaudio-alsa
+
+# Tools
 # sudo pacman -S alacritty firefox acpi ripgrep font-manager vim stow unzip
 
 # cp /etc/X11/xinit/xinitrc $HOME/.xinitrc
@@ -35,12 +44,16 @@ sudo apt-file update
 # === Awesome Autostart === #
 
 # Configuração no final do xinitrc
-# picom &
 # exec awesome
 
 # Configuração no final do .bash_profile
-# [[ $(fgconsole 2>/dev/null) == 1 ]] && exec startx -- vt1
+# echo "# Using startx on login"
+# echo "[[ $(fgconsole 2>/dev/null) == 1 ]] && exec startx -- vt1" >> ~/.bash_profile
 
+# Apps
 # sudo pacman -S rofi neovim # Remember to install the packer plugin from github
+
+# If you need to fix your localtime for some reason, see the actual correct time HH:MM:SS
+# And then update the system time with systemd: $ timedatectl set-time 'HH:MM:SS'
 
 # ========================= #
