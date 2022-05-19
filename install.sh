@@ -37,7 +37,10 @@ sudo apt-file update
 # sudo pacman -S alsa-utils pulseaudio pulseaudio-alsa
 
 # Tools
-# sudo pacman -S alacritty firefox acpi ripgrep font-manager vim stow unzip
+# sudo pacman -S alacritty firefox acpi ripgrep font-manager vim stow unzip git
+# Git user config
+# git config --global user.email "lincolnyuji@hotmail.com"
+# git config --global user.name "Lincoln Yuji de Oliveira"
 
 # cp /etc/X11/xinit/xinitrc $HOME/.xinitrc
 
