@@ -15,7 +15,8 @@ export TERM="xterm-256color"             # Pretty colors to terminal
 export XDG_DATA_HOME="$HOME/.local/share"    # Clean Home
 export XDG_CONFIG_HOME="$HOME/.config"       # Clean Home
 
-export CARGO_HOME="$HOME/.local/share/rust/.cargo" # Binaries and Environment for rust projects
+export CARGO_HOME="$HOME/.local/share/rust/cargo" # Binaries and Environment for rust projects
+export RUSTUP_HOME="$HOME/.local/share/rust/rustup"
 
 # If not running interactively, don't do anything
 case $- in
