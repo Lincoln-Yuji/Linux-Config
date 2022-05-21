@@ -20,6 +20,11 @@ vim.cmd [[ highlight! link DiffDelete GitGutterDelete ]]
 vim.cmd [[ hi FloatermBorder guibg=black guifg=black ]]
 
 -- Barbar setup
+vim.cmd [[ highlight! link BufferCurrent Statement ]]
 vim.cmd [[ highlight! link BufferInactive Comment ]]
 vim.cmd [[ highlight! link BufferInactiveMod Comment ]]
 vim.cmd [[ highlight! link BufferInactiveSign Comment ]]
+vim.cmd [[ highlight! link BufferVisible Normal ]]
+vim.cmd [[ highlight! link BufferVisibleSign Normal ]]
+vim.cmd [[ highlight! link BufferTabpageFill Normal ]]
+
