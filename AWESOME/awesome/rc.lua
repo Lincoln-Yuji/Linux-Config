@@ -68,6 +68,7 @@ local battery_widget  = require("awesome-wm-widgets.battery-widget.battery")
 local volume_widget   = require("awesome-wm-widgets.volume-widget.volume")
 local logout_menu     = require("awesome-wm-widgets.logout-menu-widget.logout-menu")
 local calendar_widget = require("awesome-wm-widgets.calendar-widget.calendar")
+local brightness_widget = require("awesome-wm-widgets.brightness-widget.brightness")
 
 local spliter = wibox.widget.textbox()
 spliter:set_text(" | ")
@@ -82,6 +83,9 @@ local calendar_widget_config = {
     -- theme = 'nord',
     placement = 'top_right',
     start_sunday = true
+}
+local brightness_widgets_config = {
+    program = "xbacklight"
 }
 
 -- Pop Menu
@@ -187,6 +191,8 @@ awful.screen.connect_for_each_screen( function(s)
             spliter,
             volume_widget(volume_widget_config),
             spliter,
+            brightness_widget(brightness_widgets_config),
+            spliter,
             date_widget,
             spliter,
             wibox.widget.systray(),
@@ -212,9 +218,11 @@ clientkeys = key_settings.set_client_keys()
 globalkeys = gears.table.join(
     key_settings.set_global_keys(),
     awful.key({ modkey }, "s",  hotkeys_popup.show_help),
-    awful.key({ modkey }, "]",  function() volume_widget:inc(5)   end),
-    awful.key({ modkey }, "[",  function() volume_widget:dec(5)   end),
-    awful.key({ modkey }, "\\", function() volume_widget:toggle() end)
+    awful.key({ modkey }, "F6", function() volume_widget:inc(5)   end),
+    awful.key({ modkey }, "F5", function() volume_widget:dec(5)   end),
+    awful.key({ modkey }, "F3", function() volume_widget:toggle() end),
+    awful.key({ modkey }, "F9", function() brightness_widget:inc() end),
+    awful.key({ modkey }, "F8", function() brightness_widget:dec() end)
 )
 -- Set keys
 root.keys(globalkeys)
