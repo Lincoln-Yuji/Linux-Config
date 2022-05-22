@@ -68,7 +68,6 @@ local battery_widget  = require("awesome-wm-widgets.battery-widget.battery")
 local volume_widget   = require("awesome-wm-widgets.volume-widget.volume")
 local logout_menu     = require("awesome-wm-widgets.logout-menu-widget.logout-menu")
 local calendar_widget = require("awesome-wm-widgets.calendar-widget.calendar")
-local net_internet    = require("awesome-wm-widgets.net-widget.internet")
 
 local spliter = wibox.widget.textbox()
 spliter:set_text(" | ")
@@ -83,9 +82,6 @@ local calendar_widget_config = {
     -- theme = 'nord',
     placement = 'top_right',
     start_sunday = true
-}
-local net_internet_config = {
-    showconnected = true
 }
 
 -- Pop Menu
@@ -194,8 +190,6 @@ awful.screen.connect_for_each_screen( function(s)
             date_widget,
             spliter,
             wibox.widget.systray(),
-            spliter,
-            net_internet(net_internet_config),
             spliter,
             battery_widget(battery_widget_config),
             logout_menu(),
