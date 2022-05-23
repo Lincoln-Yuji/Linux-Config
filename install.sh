@@ -28,7 +28,7 @@
 
 # Start
 sudo pacman -Ssyu  # Update
-sudo pacman -S base-devel 
+sudo pacman -S git base-devel 
 
 # Video
 sudo pacman -S xorg xorg-xinit xf86-video-<depende> awesome
@@ -37,7 +37,7 @@ sudo pacman -S xorg xorg-xinit xf86-video-<depende> awesome
 sudo pacman -S alsa-utils pulseaudio pulseaudio-alsa
 
 # Tools
-sudo pacman -S alacritty firefox acpi ripgrep font-manager vim stow unzip git bash-completion\
+sudo pacman -S alacritty firefox acpi ripgrep font-manager vim stow unzip bash-completion\
                gtk3 gtk4
 
 # Git user config
@@ -58,8 +58,16 @@ echo "[[ $(fgconsole 2>/dev/null) == 1 ]] && exec startx -- vt1" >> ~/.bash_prof
 # ========================= #
 
 # Apps
-sudo pacman -S rofi neovim # Remember to install the packer plugin from github
+sudo pacman -S rofi neovim sxiv # Remember to install the packer plugin from github
 
 # If you need to fix your localtime for some reason, see the actual correct time HH:MM:SS
 # And then update the system time with systemd: $ timedatectl set-time 'HH:MM:SS'
 
+# Installing an AUR helper: https://github.com/fosskers/aura
+# git clone https://aur.archlinux.org/aura-bin.git
+# cd aura-bin
+# makepkg
+# sudo pacman -U <the-package-file-that-makepkg-produces>
+
+# Packages from the AUR:
+# sudo aura -A gscreenshot

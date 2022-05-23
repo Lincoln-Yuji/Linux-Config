@@ -15,8 +15,8 @@ export TERM="xterm-256color"             # Pretty colors to terminal
 export XDG_DATA_HOME="$HOME/.local/share"    # Clean Home
 export XDG_CONFIG_HOME="$HOME/.config"       # Clean Home
 
-export CARGO_HOME="$HOME/.local/rust/cargo" # Binaries and Environment for rust projects
-export RUSTUP_HOME="$HOME/.local/rust/rustup"
+export CARGO_HOME="$HOME/.local/rust/cargo"    # Binaries and Environment for rust projects
+export RUSTUP_HOME="$HOME/.local/rust/rustup"  # Rust up location
 
 # If not running interactively, don't do anything
 case $- in
@@ -99,13 +99,12 @@ if [ -d "$SCRIPT" ]; then
     alias ccc="$SCRIPT/clang-compile-commands.sh"
 fi
 
+# If local binary directory exists, add it to the PATH
+[ -d "$HOME/.local/bin" ] && PATH="$HOME/.local/bin:${PATH}"
+
 # Source cargo environment and add rust binaries to PATH
-if [ -d "${CARGO_HOME}/env" ]; then
-    source "${CARGO_HOME}/env"
-fi
-if [ -d "${CARGO_HOME}/bin" ]; then
-    PATH="${CARGO_HOME}/bin:${PATH}"
-fi
+[ -d "${CARGO_HOME}/env" ] && source "${CARGO_HOME}/env"
+[ -d "${CARGO_HOME}/bin" ] && PATH="${CARGO_HOME}/bin:${PATH}"
 
 # Generic decompressor
 function extract() {
