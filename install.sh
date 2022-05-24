@@ -58,7 +58,7 @@ echo "[[ $(fgconsole 2>/dev/null) == 1 ]] && exec startx -- vt1" >> ~/.bash_prof
 # ========================= #
 
 # Apps
-sudo pacman -S rofi neovim sxiv # Remember to install the packer plugin from github
+sudo pacman -S rofi neovim sxiv mpv # Remember to install the packer plugin from github
 
 # If you need to fix your localtime for some reason, see the actual correct time HH:MM:SS
 # And then update the system time with systemd: $ timedatectl set-time 'HH:MM:SS'
