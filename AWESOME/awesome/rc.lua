@@ -222,7 +222,8 @@ globalkeys = gears.table.join(
     awful.key({ modkey }, "F5", function() volume_widget:dec(5)   end),
     awful.key({ modkey }, "F3", function() volume_widget:toggle() end),
     awful.key({ modkey }, "F9", function() brightness_widget:inc() end),
-    awful.key({ modkey }, "F8", function() brightness_widget:dec() end)
+    awful.key({ modkey }, "F8", function() brightness_widget:dec() end),
+    awful.key({ }, "Print", function() awful.util.spawn("gscreenshot") end)
 )
 -- Set keys
 root.keys(globalkeys)
