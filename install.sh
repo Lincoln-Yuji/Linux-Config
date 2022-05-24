@@ -40,9 +40,16 @@ sudo pacman -S alsa-utils pulseaudio pulseaudio-alsa
 sudo pacman -S alacritty firefox acpi ripgrep font-manager vim stow unzip bash-completion\
                gtk3 gtk4
 
-# Git user config
-git config --global user.email "lincolnyuji@hotmail.com"
-git config --global user.name "Lincoln Yuji de Oliveira"
+# Installing the aura AUR helper
+# cd $(mktemp -d)
+# git clone https://aur.archlinux.org/aura-bin.git
+# cd aura-bin
+# makepkg
+# sudo pacman -U <the-package-file-that-makepkg-produces>
+
+# Installing and setting the Ly login manager
+# sudo aura -A ly
+# sudo systemctl enable ly.service && sudo systemctl start ly.service
 
 cp /etc/X11/xinit/xinitrc $HOME/.xinitrc
 
@@ -59,15 +66,14 @@ echo "[[ $(fgconsole 2>/dev/null) == 1 ]] && exec startx -- vt1" >> ~/.bash_prof
 
 # Apps
 sudo pacman -S rofi neovim sxiv celluloid evince # Remember to install the packer plugin from github
+sudo aura -A gscreenshot
 
 # If you need to fix your localtime for some reason, see the actual correct time HH:MM:SS
 # And then update the system time with systemd: $ timedatectl set-time 'HH:MM:SS'
 
-# Installing an AUR helper: https://github.com/fosskers/aura
-# git clone https://aur.archlinux.org/aura-bin.git
-# cd aura-bin
-# makepkg
-# sudo pacman -U <the-package-file-that-makepkg-produces>
-
 # Packages from the AUR:
-# sudo aura -A gscreenshot
+# sudo aura -A gscreenshot ly
+
+# Git user config
+git config --global user.email "lincolnyuji@hotmail.com"
+git config --global user.name "Lincoln Yuji de Oliveira"
