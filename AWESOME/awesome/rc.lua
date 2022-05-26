@@ -62,6 +62,8 @@ awful.layout.layouts = {
 
 local kernel_widget = require("awesome-wm-widgets.kernel-version")
 local date_widget   = require("awesome-wm-widgets.date-clock")
+local cpu_widget    = require("awesome-wm-widgets.cpu-widget")
+local ram_widget    = require("awesome-wm-widgets.ram-widget")
 
 -- Widgets
 local battery_widget  = require("awesome-wm-widgets.battery-widget.battery")
@@ -178,16 +180,17 @@ awful.screen.connect_for_each_screen( function(s)
             mylauncher,
             spliter,
             s.mytaglist,
-            spliter,
         },
         wibox.widget.base.empty_widget(), -- "Spliter"
         { -- Right
             layout = wibox.layout.fixed.horizontal,
             kernel_widget,
             spliter,
-            awful.widget.watch('bash -c "$HOME/Scripts/cpu.sh"', 8),
+            -- awful.widget.watch('bash -c "$HOME/Scripts/cpu.sh"', 8),
+            cpu_widget,
             spliter,
-            awful.widget.watch('bash -c "$HOME/Scripts/ram.sh"', 8),
+            -- awful.widget.watch('bash -c "$HOME/Scripts/ram.sh"', 8),
+            ram_widget,
             spliter,
             volume_widget(volume_widget_config),
             spliter,

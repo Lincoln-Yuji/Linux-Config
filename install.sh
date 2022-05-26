@@ -34,7 +34,7 @@ sudo pacman -S git base-devel
 sudo pacman -S xorg xorg-xinit xf86-video-<depende> awesome
 
 # Audio
-sudo pacman -S alsa-utils pulseaudio pulseaudio-alsa
+sudo pacman -S alsa-utils pulseaudio pulseaudio-alsa pavucontrol
 
 # Tools
 sudo pacman -S alacritty firefox acpi ripgrep font-manager vim stow unzip bash-completion\

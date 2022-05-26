@@ -51,18 +51,12 @@ fi
 # This function gives us the current git branch in the current repository
 parse_git_branch() {
     current_branch="$(git branch --show-current 2>/dev/null)"
-    if [ -z ${current_branch} ]
-    then
-        echo "None"
-    else
-        echo "${current_branch}"
-    fi
+    [ -z ${current_branch} ] && echo "None" || echo "${current_branch}"
 }
 
 # Customizing the shell prompt
 if [ "$color_prompt" = yes ]; then
-    PS1='[\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]]\[\e[91m\]' # Prompt
-    PS1="$PS1 ($(parse_git_branch))\[\033[00m\]\n> " # Git branch, if there is a git repo
+    PS1='[\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]]\[\e[91m\] ($(parse_git_branch)) \[\033[00m\]\n> '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
