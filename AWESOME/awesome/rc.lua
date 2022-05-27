@@ -60,13 +60,13 @@ awful.layout.layouts = {
     awful.layout.suit.tile.top,
 }
 
-local kernel_widget = require("awesome-wm-widgets.kernel-version")
-local date_widget   = require("awesome-wm-widgets.date-clock")
-local cpu_widget    = require("awesome-wm-widgets.cpu-widget")
-local ram_widget    = require("awesome-wm-widgets.ram-widget")
+local kernel_widget  = require("awesome-wm-widgets.kernel-version")
+local date_widget    = require("awesome-wm-widgets.date-clock")
+local cpu_widget     = require("awesome-wm-widgets.cpu-widget")
+local ram_widget     = require("awesome-wm-widgets.ram-widget")
+local battery_widget = require("awesome-wm-widgets.battery-percentage")
 
 -- Widgets
-local battery_widget  = require("awesome-wm-widgets.battery-widget.battery")
 local volume_widget   = require("awesome-wm-widgets.volume-widget.volume")
 local logout_menu     = require("awesome-wm-widgets.logout-menu-widget.logout-menu")
 local calendar_widget = require("awesome-wm-widgets.calendar-widget.calendar")
@@ -200,7 +200,8 @@ awful.screen.connect_for_each_screen( function(s)
             spliter,
             wibox.widget.systray(),
             spliter,
-            battery_widget(battery_widget_config),
+            battery_widget,
+            spliter,
             logout_menu(),
             mykeyboardlayout,
             s.mylayoutbox,

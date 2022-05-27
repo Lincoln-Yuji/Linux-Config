@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/env bash
 
 # sudo apt update && apt full-upgrade
 
@@ -20,18 +20,18 @@
 
 # ===================================================================================================== #
 
-# Arch Linux session
+# Arch Linux session (Still not automated)
 
 # =============== #
 # NSTALLING STUFF #
 # =============== #
 
-# Start
+# Start (Assuming the host already has git installed)
 sudo pacman -Ssyu  # Update
-sudo pacman -S git base-devel 
+sudo pacman -S base-devel 
 
 # Video
-sudo pacman -S xorg xorg-xinit xf86-video-<depende> awesome
+sudo pacman -S xorg xorg-xinit xf86-video-[driver-name] awesome
 
 # Audio
 sudo pacman -S alsa-utils pulseaudio pulseaudio-alsa pavucontrol
@@ -41,17 +41,17 @@ sudo pacman -S alacritty firefox acpi ripgrep font-manager vim stow unzip bash-c
                gtk3 gtk4
 
 # Installing the aura AUR helper
-# cd $(mktemp -d)
-# git clone https://aur.archlinux.org/aura-bin.git
-# cd aura-bin
-# makepkg
-# sudo pacman -U <the-package-file-that-makepkg-produces>
+cd $(mktemp -d)
+git clone https://aur.archlinux.org/aura-bin.git
+cd aura-bin
+makepkg
+sudo pacman -U [the-package-file-that-makepkg-produces]
 
 # Installing and setting the Ly login manager
-# sudo aura -A ly
-# sudo systemctl enable ly.service && sudo systemctl start ly.service
+sudo aura -A ly
+sudo systemctl enable ly.service && sudo systemctl start ly.service
 
-cp /etc/X11/xinit/xinitrc $HOME/.xinitrc
+# cp /etc/X11/xinit/xinitrc $HOME/.xinitrc
 
 # === Awesome Autostart === #
 
@@ -59,8 +59,8 @@ cp /etc/X11/xinit/xinitrc $HOME/.xinitrc
 # exec awesome
 
 # Configuração no final do .bash_profile
-echo "# Using startx on login"
-echo "[[ $(fgconsole 2>/dev/null) == 1 ]] && exec startx -- vt1" >> ~/.bash_profile
+# echo "# Using startx on login"
+# echo "[[ $(fgconsole 2>/dev/null) == 1 ]] && exec startx -- vt1" >> ~/.bash_profile
 
 # ========================= #
 
