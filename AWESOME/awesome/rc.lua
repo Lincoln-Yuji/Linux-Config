@@ -270,6 +270,7 @@ awful.rules.rules = {
         },
         class = {
             "Arandr",
+            "GTK-Application",
             "Blueman-manager",
             "Gpick",
             "Wpa_gui",

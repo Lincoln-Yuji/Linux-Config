@@ -30,6 +30,8 @@ shopt -s checkwinsize
 HISTSIZE=1000
 HISTFILESIZE=1500
 
+shopt -s autocd # Allows to cd into a directory by just typing the path
+
 # Make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 

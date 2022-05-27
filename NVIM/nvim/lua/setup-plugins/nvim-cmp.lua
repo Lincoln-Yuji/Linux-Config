@@ -47,10 +47,10 @@ cmp.setup({
   },
 
   sources = {
-    { name = 'nvim_lsp', max_item_count = 10 },
+    { name = 'nvim_lsp', max_item_count = 15 },
 	{ name = 'buffer', max_item_count = 10 },
 	{ name = 'path', max_item_count = 20 },
-    { name = 'vsnip', max_item_count = 5 },
+    { name = 'vsnip', max_item_count = 10 },
   }, 
 
 	window = {

@@ -34,6 +34,7 @@ require('packer').startup( function()
     use 'hrsh7th/cmp-cmdline'      -- Completion for commands
     use 'hrsh7th/cmp-vsnip'        -- Completion snippets
     use 'hrsh7th/vim-vsnip'        -- Completion for vim
+    use 'rafamadriz/friendly-snippets'
 
     use 'voldikss/vim-floaterm'    -- Floating terminal window
 
