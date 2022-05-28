@@ -65,7 +65,7 @@ sudo systemctl enable ly.service && sudo systemctl start ly.service
 # ========================= #
 
 # Apps
-sudo pacman -S rofi neovim sxiv celluloid evince # Remember to install the packer plugin from github
+sudo pacman -S rofi neovim sxiv celluloid evince neofetch htop # Remember to install the packer plugin from github
 sudo aura -A gscreenshot
 
 # If you need to fix your localtime for some reason, see the actual correct time HH:MM:SS
