@@ -27,11 +27,11 @@
 # =============== #
 
 # Start (Assuming the host already has git installed)
-sudo pacman -Ssyu  # Update
+sudo pacman -Syyu  # Update
 sudo pacman -S base-devel 
 
 # Video
-sudo pacman -S xorg xorg-xinit xf86-video-[driver-name] awesome
+sudo pacman -S xorg xorg-xinit xf86-video-[driver-name] awesome arandr
 
 # Audio
 sudo pacman -S alsa-utils pulseaudio pulseaudio-alsa pavucontrol
@@ -65,8 +65,8 @@ sudo systemctl enable ly.service && sudo systemctl start ly.service
 # ========================= #
 
 # Apps
-sudo pacman -S rofi neovim sxiv celluloid evince neofetch htop # Remember to install the packer plugin from github
-sudo aura -A gscreenshot
+sudo pacman -S rofi neovim sxiv celluloid evince nemo neofetch htop # Remember to install the packer plugin from github
+sudo aura -A gscreenshot nvim-packer-git
 
 # If you need to fix your localtime for some reason, see the actual correct time HH:MM:SS
 # And then update the system time with systemd: $ timedatectl set-time 'HH:MM:SS'

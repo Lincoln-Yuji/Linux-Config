@@ -11,7 +11,7 @@ local icon = wibox.widget {
 
 local label = awful.widget.watch(command, 15, function(widget, output)
     if output == "" then
-        widget:set_text('100%%') -- We are probably in desktop..
+        widget:set_text('100%') -- We are probably in desktop..
         icon:set_text(' ')      -- There is no battery
         return
     end
