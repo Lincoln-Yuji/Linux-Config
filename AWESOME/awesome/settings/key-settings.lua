@@ -52,7 +52,10 @@ set_global_keys = function ()
         map({modkey}, "p", {"Rofi", "Launch on drun mode"},
             function() awful.util.spawn("rofi -show drun") end),
         map({modkey}, "b",      {"Application:", "Open Firefox"},
-            function() awful.spawn(os.getenv("HOME") .. "/.local/bin/browser-bookmark.sh") end)
+            function() awful.spawn(os.getenv("HOME") .. "/.local/bin/browser-bookmark.sh") end),
+
+        map({modkey}, "u", {"Screens", "Switch mouse between screens"},
+            function() awful.screen.focus_relative(1) end )
     )
 
     for i = 1, 9 do
