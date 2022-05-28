@@ -68,6 +68,25 @@ sudo systemctl enable ly.service && sudo systemctl start ly.service
 sudo pacman -S rofi neovim sxiv celluloid evince nemo neofetch htop # Remember to install the packer plugin from github
 sudo aura -A gscreenshot nvim-packer-git
 
+# Link to config files
+stow AWESOME/ ALACRITTY/ GTK/ NVM/ ROFI/
+
+# Link to files/folders on my home directory
+rm $HOME/.bashrc
+stow --dotfiles -t $HOME HOME/
+
+# Create the .local folders
+mkdir -p $HOME/.local/share/fonts
+mkdir -p $HOME/.local/bin
+
+# Install the fonts onto the system
+cd $HOME/.local/share/fonts
+unzip $HOME/.config/zz-config-setup/HackFont.zip
+
+# Link the shell scripts to the local bin directory
+cd $HOME/.config/zz-config-setup
+stow -t $HOME/.local/bin SHELL-SCRIPTS/
+
 # If you need to fix your localtime for some reason, see the actual correct time HH:MM:SS
 # And then update the system time with systemd: $ timedatectl set-time 'HH:MM:SS'
 
