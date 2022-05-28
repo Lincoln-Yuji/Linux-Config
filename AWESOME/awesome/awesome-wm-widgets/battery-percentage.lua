@@ -1,7 +1,7 @@
 local awful = require("awful")
 local wibox = require("wibox")
 
-local command = 'bash -c "$HOME/Scripts/battery-percentage.sh"'
+local command = 'bash -c "$HOME/.local/bin/script-battery"'
 
 local icon = wibox.widget {
     widget = wibox.widget.textbox,

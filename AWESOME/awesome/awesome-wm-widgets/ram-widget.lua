@@ -10,7 +10,7 @@ local icon = wibox.widget {
     text = ' '
 }
 
-local label = awful.widget.watch('bash -c "$HOME/Scripts/ram.sh"', 5)
+local label = awful.widget.watch('bash -c "$HOME/.local/bin/script-ram"', 5)
 
 local ram_widget = wibox.widget { icon, label, layout = wibox.layout.fixed.horizontal }
 ram_widget:connect_signal("button::press",

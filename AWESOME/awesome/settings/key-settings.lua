@@ -52,7 +52,7 @@ set_global_keys = function ()
         map({modkey}, "p", {"Rofi", "Launch on drun mode"},
             function() awful.util.spawn("rofi -show drun") end),
         map({modkey}, "b",      {"Application:", "Open Firefox"},
-            function() awful.spawn(os.getenv("HOME") .. "/Scripts/browser-bookmark.sh") end)
+            function() awful.spawn(os.getenv("HOME") .. "/.local/bin/browser-bookmark.sh") end)
     )
 
     for i = 1, 9 do
@@ -77,7 +77,7 @@ set_global_keys = function ()
                 end
             end
         end,
-        {description = "MMove focused client to tag #"..i, group = "Tags"})
+        {description = "Move focused client to tag #"..i, group = "Tags"})
         )
     end
 

@@ -10,7 +10,7 @@ local icon = wibox.widget {
     text = ' '
 }
 
-local label = awful.widget.watch('bash -c "$HOME/Scripts/cpu.sh"', 5)
+local label = awful.widget.watch('bash -c "$HOME/.local/bin/script-cpu"', 5)
 
 local cpu_widget = wibox.widget { icon, label, layout = wibox.layout.fixed.horizontal }
 cpu_widget:connect_signal("button::press",

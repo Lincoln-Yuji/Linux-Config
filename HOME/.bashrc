@@ -74,6 +74,7 @@ if ! shopt -oq posix; then
 fi
 
 # My aliases
+alias xx='clear'
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto --group-directories-first'
@@ -99,7 +100,7 @@ fi
 [ -d "$HOME/.local/bin" ] && PATH="$HOME/.local/bin:${PATH}"
 
 # Source cargo environment and add rust binaries to PATH
-[ -d "${CARGO_HOME}/env" ] && source "${CARGO_HOME}/env"
+[ -f "${CARGO_HOME}/env" ] && source "${CARGO_HOME}/env"
 [ -d "${CARGO_HOME}/bin" ] && PATH="${CARGO_HOME}/bin:${PATH}"
 
 # Generic decompressor

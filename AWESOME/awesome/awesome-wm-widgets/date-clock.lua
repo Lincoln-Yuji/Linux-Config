@@ -9,6 +9,6 @@ local icon = wibox.widget {
     text = ' '
 }
 
-local label = awful.widget.watch('bash -c "$HOME/Scripts/clock.sh"', 15)
+local label = awful.widget.watch('bash -c "$HOME/.local/bin/script-clock"', 15)
 
 return wibox.widget { icon, label, layout = wibox.layout.fixed.horizontal }
