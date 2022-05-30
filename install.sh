@@ -22,6 +22,8 @@
 
 # Arch Linux session (Still not automated)
 
+
+
 # =============== #
 # NSTALLING STUFF #
 # =============== #
@@ -37,8 +39,8 @@ sudo pacman -S xorg xorg-xinit xf86-video-[driver-name] awesome arandr
 sudo pacman -S alsa-utils pulseaudio pulseaudio-alsa pavucontrol
 
 # Tools
-sudo pacman -S alacritty firefox acpi ripgrep font-manager vim stow unzip bash-completion\
-               gtk3 gtk4
+sudo pacman -S alacritty firefox acpi ripgrep font-manager vim stow unzip bash-completion \
+    gtk3 gtk4
 
 # Installing the aura AUR helper
 cd $(mktemp -d)
@@ -73,7 +75,9 @@ stow AWESOME/ ALACRITTY/ GTK/ NVM/ ROFI/
 
 # Link to files/folders on my home directory
 rm $HOME/.bashrc
-stow --dotfiles -t $HOME HOME/
+rm $HOME/.bash_profile
+ln -s $XDG_CONFIG_HOME/zz-config-setup/HOME/.bash_profile $HOME/.bash_profile
+ln -s $XDG_CONFIG_HOME/zz-config-setup/HOME/.bashrc $HOME/.bashrc
 
 # Create the .local folders
 mkdir -p $HOME/.local/share/fonts

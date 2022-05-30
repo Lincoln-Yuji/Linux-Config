@@ -41,7 +41,7 @@ do
     end)
 end
 
-terminal = "alacritty"
+terminal = os.getenv("TERMINAL")
 editor   = os.getenv("EDITOR")
 browser  = os.getenv("BROWSER")
 editor_cmd = terminal .. " -e " .. editor
@@ -60,13 +60,13 @@ awful.layout.layouts = {
     awful.layout.suit.tile.top,
 }
 
+-- Widgets
 local kernel_widget  = require("awesome-wm-widgets.kernel-version")
 local date_widget    = require("awesome-wm-widgets.date-clock")
 local cpu_widget     = require("awesome-wm-widgets.cpu-widget")
 local ram_widget     = require("awesome-wm-widgets.ram-widget")
 local battery_widget = require("awesome-wm-widgets.battery-percentage")
 
--- Widgets
 local volume_widget   = require("awesome-wm-widgets.volume-widget.volume")
 local logout_menu     = require("awesome-wm-widgets.logout-menu-widget.logout-menu")
 local calendar_widget = require("awesome-wm-widgets.calendar-widget.calendar")
@@ -75,9 +75,6 @@ local brightness_widget = require("awesome-wm-widgets.brightness-widget.brightne
 local spliter = wibox.widget.textbox()
 spliter:set_text(" | ")
 
-local battery_widget_config = {
-    show_current_level = true
-}
 local volume_widget_config  = {
     widget_type = 'arc'
 }

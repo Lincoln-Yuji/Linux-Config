@@ -5,19 +5,6 @@
 #   |_|  |_|\__, | |_.__/ \__,_|___/_| |_|_|  \___|
 #           |___/
 
-# Personal exports definitions
-export HISTCONTROL=ignoreboth            # Ignore duplicate lines or lines starting with space in the history
-export BROWSER="firefox"                 # Firefox is my default browser
-export EDITOR="nvim"                     # Neovim as default text editor
-export VISUAL="nvim"
-export TERM="xterm-256color"             # Pretty colors to terminal
-
-export XDG_DATA_HOME="$HOME/.local/share"    # Clean Home
-export XDG_CONFIG_HOME="$HOME/.config"       # Clean Home
-
-export CARGO_HOME="$HOME/.local/rust/cargo"    # Binaries and Environment for rust projects
-export RUSTUP_HOME="$HOME/.local/rust/rustup"  # Rust up location
-
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -67,14 +54,22 @@ unset color_prompt force_color_prompt
 # Enable bash completion
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
+    source /usr/share/bash-completion/bash_completion
   elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
+    source /etc/bash_completion
   fi
 fi
 
+# If local binary directory exists, add it to the PATH
+[ -d "$HOME/.local/bin" ] && PATH="$HOME/.local/bin:${PATH}"
+
+# Source cargo environment and add rust binaries to PATH
+[ -f "${CARGO_HOME}/env" ] && source "${CARGO_HOME}/env"
+[ -d "${CARGO_HOME}/bin" ] && PATH="${CARGO_HOME}/bin:${PATH}"
+
 # My aliases
 alias xx='clear'
+alias nv='nvim'
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto --group-directories-first'
@@ -89,19 +84,6 @@ alias ll='ls -alhF'
 alias la='ls -A'
 alias br='br -spd'
 alias wttr='curl wttr.in'
-
-SCRIPT="$HOME/Scripts"
-if [ -d "$SCRIPT" ]; then
-    alias poweroff="$SCRIPT/shutdown.sh"
-    alias ccc="$SCRIPT/clang-compile-commands.sh"
-fi
-
-# If local binary directory exists, add it to the PATH
-[ -d "$HOME/.local/bin" ] && PATH="$HOME/.local/bin:${PATH}"
-
-# Source cargo environment and add rust binaries to PATH
-[ -f "${CARGO_HOME}/env" ] && source "${CARGO_HOME}/env"
-[ -d "${CARGO_HOME}/bin" ] && PATH="${CARGO_HOME}/bin:${PATH}"
 
 # Generic decompressor
 function extract() {
