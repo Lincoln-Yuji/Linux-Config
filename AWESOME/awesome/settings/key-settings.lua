@@ -50,7 +50,7 @@ set_global_keys = function ()
         map({modkey, "Shift"  }, "q", {"Awesome:", "Quit"}, awesome.quit),
 
         map({modkey}, "p", {"Rofi", "Launch on drun mode"},
-            function() awful.util.spawn("rofi -show drun") end),
+            function() awful.util.spawn("rofi -show-icons -show drun") end),
         map({modkey}, "b",      {"Application:", "Open Firefox"},
             function() awful.spawn(os.getenv("HOME") .. "/.local/bin/browser-bookmark.sh") end),
 

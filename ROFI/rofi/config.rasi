@@ -108,16 +108,16 @@ element normal.active {
     text-color:       				@green;
 }
 element selected.normal {
-    background-color: 				@fg;
-    text-color:       				@bg;
+    background-color: 				@ac;
+    text-color:       				@fg;
 }
 element selected.urgent {
-    background-color: 				@bg;
+    background-color: 				@ac;
     text-color:       				@red;
 }
 element selected.active {
-    background-color: 				@fg;
-    text-color:       				@bg;
+    background-color: 				@ac;
+    text-color:       				@green;
 }
 element alternate.normal {
     background-color: 				@bg;
@@ -129,7 +129,7 @@ element alternate.urgent {
 }
 element alternate.active {
     background-color: 				@bg;
-    text-color:       				@fg;
+    text-color:       				@green;
 }
 
 sidebar {
