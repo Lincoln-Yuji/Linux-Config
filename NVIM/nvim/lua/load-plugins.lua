@@ -40,4 +40,6 @@ require('packer').startup( function()
     use 'rafamadriz/friendly-snippets' -- Snippet collection
 
     use 'voldikss/vim-floaterm'    -- Floating terminal window
+
+    use 'windwp/nvim-autopairs'  -- Auto pairs
 end )
