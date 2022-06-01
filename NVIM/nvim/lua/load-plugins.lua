@@ -27,15 +27,17 @@ require('packer').startup( function()
     use 'startup-nvim/startup.nvim'        -- Start Screen (requires telescope)
     use 'nvim-telescope/telescope-file-browser.nvim' -- Telescope extension
 
-    use 'hrsh7th/nvim-cmp'         -- Completion plugin
+    -- Snippets
     use 'hrsh7th/cmp-nvim-lsp'     -- Integration with LSP
     use 'hrsh7th/cmp-buffer'       -- Completion for words on file
     use 'hrsh7th/cmp-path'         -- Completion for system paths
     use 'hrsh7th/cmp-cmdline'      -- Completion for commands
-    use 'hrsh7th/cmp-vsnip'        -- Completion snippets
-    use 'hrsh7th/vim-vsnip'        -- Completion for vim
-    use 'rafamadriz/friendly-snippets'
+    use 'hrsh7th/nvim-cmp'         -- Completion plugin
+
+    use 'hrsh7th/cmp-vsnip' -- Snippet Engine
+    use 'hrsh7th/vim-vsnip' -- Enable vim snippets
+
+    use 'rafamadriz/friendly-snippets' -- Snippet collection
 
     use 'voldikss/vim-floaterm'    -- Floating terminal window
-
 end )
