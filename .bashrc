@@ -70,6 +70,7 @@ fi
 # My aliases
 alias xx='clear'
 alias nv='nvim'
+alias zz='~/.config/zz-config-setup'
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto --group-directories-first'
