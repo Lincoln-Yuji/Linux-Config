@@ -1,3 +1,8 @@
+local ok, lspconfig = pcall(require, 'lspconfig')
+if not ok then
+    return
+end
+
 -- Mappings.
 local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
@@ -27,8 +32,6 @@ require("nvim-lsp-installer").setup {
     -- Limit for the maximum amount of servers to be installed at the same time
     max_concurrent_installers = 6
 }
-
-local lspconfig = require('lspconfig')
 
 -- lspconfig.sumneko_lua.setup {
 --     on_attach = map_attach,
