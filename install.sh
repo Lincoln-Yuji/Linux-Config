@@ -30,7 +30,7 @@
 
 # Start (Assuming the host already has git installed)
 sudo pacman -Syyu  # Update
-sudo pacman -S base-devel 
+sudo pacman -S base-devel pacman-contrib
 
 # Video
 sudo pacman -S xorg xorg-xinit xf86-video-[driver-name] awesome arandr
