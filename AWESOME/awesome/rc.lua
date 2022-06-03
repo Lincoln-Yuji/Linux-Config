@@ -206,16 +206,8 @@ root.buttons(gears.table.join(
 -- Key Binding Settings
 local key_settings = require("settings.key-settings")
 clientkeys = key_settings.set_client_keys()
-globalkeys = gears.table.join(
-    key_settings.set_global_keys(),
-    awful.key({ modkey }, "s",  hotkeys_popup.show_help),
-    awful.key({ modkey }, "F6", function() volume_widget:inc(5)   end),
-    awful.key({ modkey }, "F5", function() volume_widget:dec(5)   end),
-    awful.key({ modkey }, "F3", function() volume_widget:toggle() end),
-    awful.key({ modkey }, "F9", function() brightness_widget:inc() end),
-    awful.key({ modkey }, "F8", function() brightness_widget:dec() end),
-    awful.key({ }, "Print", function() awful.util.spawn("gscreenshot") end)
-)
+globalkeys = key_settings.set_global_keys(volume_widget, brightness_widget)
+
 -- Set keys
 root.keys(globalkeys)
 

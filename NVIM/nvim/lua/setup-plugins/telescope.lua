@@ -7,7 +7,8 @@ local telescope_actions = require("telescope.actions")
 
 telescope.setup({
     defaults = {
-        prompt_prefix = '   ',
+        -- prompt_prefix = '   ',
+        prompt_prefix = ' 🚀 ',
         layout_strategy = 'vertical',
         layout_config = {  width = 0.80, height = 0.95 },
     },

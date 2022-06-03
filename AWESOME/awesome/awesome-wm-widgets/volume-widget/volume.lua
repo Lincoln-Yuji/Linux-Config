@@ -29,34 +29,34 @@ local label = wibox.widget {
     widget = wibox.widget.textbox
 }
 
-local volume = {}
-
-volume.widget = wibox.widget {
-    icon, label, layout = wibox.layout.fixed.horizontal,
-    set_volume_level = function(self, new_value)
-        label:set_text(new_value .. "%")
-        local volume_icon_name
-        if self.is_muted then
-            volume_icon_name = 'audio-volume-muted-symbolic'
-        else
-            local new_value_num = tonumber(new_value)
-            if (new_value_num >= 0 and new_value_num < 33) then
-                volume_icon_name="audio-volume-low-symbolic"
-            elseif (new_value_num < 66) then
-                volume_icon_name="audio-volume-medium-symbolic"
+local volume = {
+    widget = wibox.widget {
+        icon, label, layout = wibox.layout.fixed.horizontal,
+        set_volume_level = function(self, new_value)
+            label:set_text(new_value .. "%")
+            local volume_icon_name
+            if self.is_muted then
+                volume_icon_name = 'audio-volume-muted-symbolic'
             else
-                volume_icon_name="audio-volume-high-symbolic"
+                local new_value_num = tonumber(new_value)
+                if (new_value_num >= 0 and new_value_num < 33) then
+                    volume_icon_name="audio-volume-low-symbolic"
+                elseif (new_value_num < 66) then
+                    volume_icon_name="audio-volume-medium-symbolic"
+                else
+                    volume_icon_name="audio-volume-high-symbolic"
+                end
             end
+            icon:set_image(icon_dir .. volume_icon_name .. '.svg')
+        end,
+        mute = function(self)
+            self.is_muted = true
+            icon:set_image(icon_dir .. 'audio-volume-muted-symbolic.svg')
+        end,
+        unmute = function(self)
+            self.is_muted = false
         end
-        icon:set_image(icon_dir .. volume_icon_name .. '.svg')
-    end,
-    mute = function(self)
-        self.is_muted = true
-        icon:set_image(icon_dir .. 'audio-volume-muted-symbolic.svg')
-    end,
-    unmute = function(self)
-        self.is_muted = false
-    end
+    }
 }
 
 local function worker(user_args)

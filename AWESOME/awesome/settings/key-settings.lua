@@ -1,5 +1,6 @@
 local gears = require("gears")
 local awful = require("awful")
+local hotkeys_popup = require("awful.hotkeys_popup")
 
 local map = function(cmd, key, info, f)
     return awful.key(cmd, key, f, { group = info[1], description = info[2]})
@@ -22,8 +23,9 @@ set_client_keys = function ()
 )
 end,
 -- Global Keys
-set_global_keys = function ()
+set_global_keys = function (volume_widget, brightness_widget)
     globalkeys = gears.table.join(
+        awful.key({ modkey }, "s",  hotkeys_popup.show_help),
 
         map({modkey, "Control"}, "h", {"Layout:", "Master Width --"},
            function () awful.tag.incmwfact(-0.05) end),
@@ -54,8 +56,17 @@ set_global_keys = function ()
         map({modkey}, "b",      {"Application:", "Open Firefox"},
             function() awful.spawn(os.getenv("HOME") .. "/.local/bin/browser-bookmark.sh") end),
 
-        map({modkey}, "u", {"Screens", "Switch mouse between screens"},
-            function() awful.screen.focus_relative(1) end )
+        map({modkey}, "u", {"Screens:", "Switch mouse between screens"},
+            function() awful.screen.focus_relative(1) end ),
+
+        map({modkey}, "F6", {"Audio:", "Increase Volume"}, function() volume_widget:inc(5) end),
+        map({modkey}, "F5", {"Audio:", "Decrease Volume"}, function() volume_widget:dec(5) end),
+        map({modkey}, "F3", {"Audio:", "Toggle Volume"}, function() volume_widget:toggle() end),
+
+        map({modkey}, "F9", {"Screens:", "More light"}, function() brightness_widget:inc() end),
+        map({modkey}, "F8", {"Screens:", "Less light"}, function() brightness_widget:dec() end),
+
+        awful.key({ }, "Print", function() awful.util.spawn("gscreenshot") end)
     )
 
     for i = 1, 9 do
