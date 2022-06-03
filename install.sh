@@ -87,6 +87,8 @@ mkdir -p $HOME/.local/bin
 cd $HOME/.local/share/fonts
 unzip $HOME/.config/zz-config-setup/HackFont.zip
 
+sudo pacman -S noto-fonts-emoji # Enable amojis
+
 # Link the shell scripts to the local bin directory
 cd $HOME/.config/zz-config-setup
 stow -t $HOME/.local/bin SHELL-SCRIPTS/
