@@ -25,8 +25,8 @@ local icon = wibox.widget {
     widget = wibox.widget.imagebox
 }
 local label = wibox.widget {
-    font = beautiful.font,
-    widget = wibox.widget.textbox
+    widget = wibox.widget.textbox,
+    font = beautiful.font
 }
 
 local volume = {
