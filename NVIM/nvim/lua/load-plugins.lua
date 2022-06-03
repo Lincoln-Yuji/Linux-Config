@@ -1,16 +1,23 @@
 -- Loading plugins using the Packer package manager
-require('packer').startup( function()
+require('packer').startup(function()
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
 
-    use 'kyazdani42/nvim-web-devicons'    -- Icon Package
+    -- use 'kyazdani42/nvim-web-devicons'    -- Icon Package
 
     use 'vim-airline/vim-airline'         -- Bottom status bar
     use 'tpope/vim-commentary'            -- Quickly commenting lines
+    use 'windwp/nvim-autopairs'           -- Auto pairs
     use 'rafi/awesome-vim-colorschemes'   -- Set of color schemes
 
-    use 'romgrk/barbar.nvim'          -- Friendly Tabs
-    use 'kyazdani42/nvim-tree.lua'    -- File Tree
+    use {
+        'kyazdani42/nvim-tree.lua',       -- File Tree
+        requires = { 'kyazdani42/nvim-web-devicons' }
+    }
+    use {
+        'romgrk/barbar.nvim',             -- Tabs
+        requires = { 'kyazdani42/nvim-web-devicons' }
+    }
 
     use 'neovim/nvim-lspconfig'            -- Language Server Config
     use 'williamboman/nvim-lsp-installer'  -- Installer extension for LSP
@@ -27,7 +34,6 @@ require('packer').startup( function()
     use 'startup-nvim/startup.nvim'        -- Start Screen (requires telescope)
     use 'nvim-telescope/telescope-file-browser.nvim' -- Telescope extension
 
-    -- Snippets
     use 'hrsh7th/cmp-nvim-lsp'     -- Integration with LSP
     use 'hrsh7th/cmp-buffer'       -- Completion for words on file
     use 'hrsh7th/cmp-path'         -- Completion for system paths
@@ -40,6 +46,4 @@ require('packer').startup( function()
     use 'rafamadriz/friendly-snippets' -- Snippet collection
 
     use 'voldikss/vim-floaterm'    -- Floating terminal window
-
-    use 'windwp/nvim-autopairs'  -- Auto pairs
 end )
