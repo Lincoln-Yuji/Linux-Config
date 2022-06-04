@@ -17,13 +17,9 @@ local ICON_DIR = HOME .. '/.config/awesome/awesome-wm-widgets/logout-menu-widget
 
 local logout_menu_widget = wibox.widget {
     {
-        {
-            image = ICON_DIR .. 'power_w.svg',
-            resize = true,
-            widget = wibox.widget.imagebox,
-        },
-        margins = 4,
-        layout = wibox.container.margin
+        widget = wibox.widget.textbox,
+        font = "Hack Nerd Font 10",
+        text = "⏻ "
     },
     shape = function(cr, width, height)
     gears.shape.rounded_rect(cr, width, height, 4)
@@ -37,7 +33,7 @@ local popup = awful.popup {
     shape = function(cr, width, height)
         gears.shape.rounded_rect(cr, width, height, 4)
     end,
-    border_width = 1,
+    border_width = 2,
     border_color = beautiful.bg_focus,
     maximum_width = 400,
     offset = { y = 5 },
@@ -51,18 +47,18 @@ local function worker(user_args)
 
     local font = args.font or beautiful.font
 
-    local onlogout = args.onlogout or function () awesome.quit() end
-    local onlock = args.onlock or function() awful.spawn.with_shell("i3lock") end
-    local onreboot = args.onreboot or function() awful.spawn.with_shell("reboot") end
-    local onsuspend = args.onsuspend or function() awful.spawn.with_shell("systemctl suspend") end
-    local onpoweroff = args.onpoweroff or function() awful.spawn.with_shell("shutdown now") end
+    local onlogout =   function() awesome.quit() end
+    local onlock =     function() awful.spawn.with_shell("i3lock") end
+    local onreboot =   function() awful.spawn.with_shell("reboot") end
+    local onsuspend =  function() awful.spawn.with_shell("systemctl suspend") end
+    local onpoweroff = function() awful.spawn.with_shell("shutdown now") end
 
     local menu_items = {
-        { name = 'Log out', icon_name = 'log-out.svg', command = onlogout },
-        { name = 'Lock', icon_name = 'lock.svg', command = onlock },
-        { name = 'Reboot', icon_name = 'refresh-cw.svg', command = onreboot },
-        { name = 'Suspend', icon_name = 'moon.svg', command = onsuspend },
-        { name = 'Power off', icon_name = 'power.svg', command = onpoweroff },
+        { name = 'Log out ',   icon_name = 'log-out.svg',    command = onlogout },
+        { name = 'Lock ',      icon_name = 'lock.svg',       command = onlock },
+        { name = 'Reboot ',    icon_name = 'refresh-cw.svg', command = onreboot },
+        { name = 'Suspend ',   icon_name = 'moon.svg',       command = onsuspend },
+        { name = 'Power off ', icon_name = 'power.svg',      command = onpoweroff },
     }
 
     for _, item in ipairs(menu_items) do
