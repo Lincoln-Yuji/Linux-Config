@@ -1,7 +1,7 @@
 local gears = require("gears")
-
 local theme = require("beautiful")
-local theme_dir = os.getenv("HOME") .. "/.config/awesome/themes"
+
+local wallpapers = os.getenv("HOME") .. "/Pictures/wallpapers"
 
 -- Set standard theme
 theme.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
@@ -11,9 +11,8 @@ theme.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 -----------------
 theme.font = "Hack Nerd Font Bold 10"
 
-theme.wallpaper    = theme_dir .. "/wallpapers/mountains.jpg"
--- theme.wallpaper    = theme_dir .. "/wallpapers/pop.png"
--- theme.wallpaper    = theme_dir .. "/wallpapers/linux.png"
+-- theme.wallpaper = wallpapers .. "/1920x1080/landscapes/norway-mountains.jpg"
+theme.wallpaper = wallpapers .. "/1920x1080/landscapes/snow-mountains.jpg"
 
 theme.useless_gap = 2
 

@@ -11,7 +11,7 @@ require("awful.autofocus")
 local wibox = require("wibox")
 
 -- Set my own theme
-local beautiful = require("themes.theme")
+local beautiful = require("mytheme")
 
 -- Notification library
 local naughty = require("naughty")
@@ -75,9 +75,6 @@ local brightness_widget = require("awesome-wm-widgets.brightness-widget.brightne
 local spliter = wibox.widget.textbox()
 spliter:set_text(" | ")
 
-local volume_widget_config  = {
-    widget_type = 'arc'
-}
 local calendar_widget_config = {
     -- theme = 'nord',
     placement = 'top_right',
@@ -174,7 +171,7 @@ awful.screen.connect_for_each_screen( function(s)
         layout = wibox.layout.align.horizontal,
         { -- Left
             layout = wibox.layout.fixed.horizontal,
-            mylauncher,
+            -- mylauncher,
             spliter,
             s.mytaglist,
         },
