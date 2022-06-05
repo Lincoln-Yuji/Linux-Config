@@ -22,8 +22,6 @@
 
 # Arch Linux session (Still not automated)
 
-
-
 # =============== #
 # NSTALLING STUFF #
 # =============== #
@@ -102,3 +100,6 @@ stow -t $HOME/.local/bin SHELL-SCRIPTS/
 # Git user config
 git config --global user.email "lincolnyuji@hotmail.com"
 git config --global user.name "Lincoln Yuji de Oliveira"
+
+# Installing Latex
+sudo pacman -S texlive-core texlive-latexextra texlive-bibtexextra texlive-formatsextra 
