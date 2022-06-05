@@ -36,7 +36,7 @@ sudo pacman -S base-devel pacman-contrib
 sudo pacman -S xorg xorg-xinit xf86-video-[driver-name] awesome arandr
 
 # Audio
-sudo pacman -S alsa-utils pulseaudio pulseaudio-alsa pavucontrol
+sudo pacman -S alsa-utils pulseaudio pulseaudio-alsa pavucontrol pulsemixer
 
 # Tools
 sudo pacman -S alacritty firefox acpi ripgrep font-manager vim stow unzip bash-completion \
