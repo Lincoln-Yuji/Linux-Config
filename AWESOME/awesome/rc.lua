@@ -61,25 +61,19 @@ awful.layout.layouts = {
 }
 
 -- Widgets
-local kernel_widget  = require("awesome-wm-widgets.kernel-version")
-local date_widget    = require("awesome-wm-widgets.date-clock")
-local cpu_widget     = require("awesome-wm-widgets.cpu-widget")
-local ram_widget     = require("awesome-wm-widgets.ram-widget")
-local battery_widget = require("awesome-wm-widgets.battery-percentage")
+local kernel_widget  = require("widgets.kernel-version")
+local date_widget    = require("widgets.date-clock")
+local cpu_widget     = require("widgets.cpu-widget")
+local ram_widget     = require("widgets.ram-widget")
+local battery_widget = require("widgets.battery-percentage")
 
-local volume_widget   = require("awesome-wm-widgets.volume-widget.volume")
-local logout_menu     = require("awesome-wm-widgets.logout-menu-widget.logout-menu")
-local calendar_widget = require("awesome-wm-widgets.calendar-widget.calendar")
-local brightness_widget = require("awesome-wm-widgets.brightness-widget.brightness")
+local volume_widget   = require("widgets.volume-widget.volume")
+local logout_menu     = require("widgets.logout-menu-widget.logout-menu")
+local brightness_widget = require("widgets.brightness-widget.brightness")
 
 local spliter = wibox.widget.textbox()
 spliter:set_text(" | ")
 
-local calendar_widget_config = {
-    -- theme = 'nord',
-    placement = 'top_right',
-    start_sunday = true
-}
 local brightness_widgets_config = {
     program = "xbacklight"
 }
@@ -103,12 +97,8 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 
 -- Keyboard map indicator and switcher
 mykeyboardlayout = awful.widget.keyboardlayout()
-
--- Create a textclock widget
-local cw = calendar_widget(calendar_widget_config)
-date_widget:connect_signal("button::press",
-    function(_, _, _, button) if button == 1 then cw.toggle() end end
-)
+mykeyboardlayout:connect_signal("button::press",
+    function(_,_,_,button) if button == 1 then awful.spawn.with_shell("notify-send hello") end end)
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(

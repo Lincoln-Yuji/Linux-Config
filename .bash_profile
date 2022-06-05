@@ -10,7 +10,7 @@ export BROWSER="firefox"       # Default browser
 export EDITOR="nvim"           # Default editor
 export VISUAL="nvim"
 export TERM="xterm-256color"   # Pretty colors to terminal
-export TERMINAL="alacritty"    # Defaul terminal emulator
+export TERMINAL="alacritty"    # Default terminal emulator
 
 export XDG_DATA_HOME="$HOME/.local/share" # Clean Home
 export XDG_CONFIG_HOME="$HOME/.config"    # Clean Home

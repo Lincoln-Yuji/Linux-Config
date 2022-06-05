@@ -18,7 +18,7 @@ local function INC_VOLUME_CMD(device) return 'amixer -D ' .. device .. ' sset Ma
 local function DEC_VOLUME_CMD(device) return 'amixer -D ' .. device .. ' sset Master 5%-' end
 local function TOG_VOLUME_CMD(device) return 'amixer -D ' .. device .. ' sset Master toggle' end
 
-local icon_dir = os.getenv("HOME") .. '/.config/awesome/awesome-wm-widgets/volume-widget/icons/'
+local icon_dir = os.getenv("HOME") .. '/.config/awesome/widgets/volume-widget/icons/'
 
 local icon = wibox.widget {
     resize = false,

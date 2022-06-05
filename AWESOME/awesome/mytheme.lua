@@ -12,7 +12,8 @@ theme.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 theme.font = "Hack Nerd Font Bold 10"
 
 -- theme.wallpaper = wallpapers .. "/1920x1080/landscapes/norway-mountains.jpg"
-theme.wallpaper = wallpapers .. "/1920x1080/landscapes/snow-mountains.jpg"
+-- theme.wallpaper = wallpapers .. "/1920x1080/landscapes/snow-mountains.jpg"
+theme.wallpaper = wallpapers .. "/1920x1080/random/battleship.jpg"
 
 theme.useless_gap = 2
 
