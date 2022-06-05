@@ -1,0 +1,17 @@
+#!/bin/env bash
+
+# Script to manipulate the volume using pulsemixer (pulseaudio wrapper)
+
+function get_pulse_volume() {
+    curvol=$(pulsemixer --get-volume) && printf "${curvol%% *}"
+}
+
+case $1 in
+    "GET") get_pulse_volume ;;
+    "INC") pulsemixer --change-volume +5 && get_pulse_volume ;;
+    "DEC") pulsemixer --change-volume -5 && get_pulse_volume ;;
+    "TOG") pulsemixer --toggle-mute && pulsemixer --get-mute ;;
+    *)     exit 1 ;;
+esac
+
+

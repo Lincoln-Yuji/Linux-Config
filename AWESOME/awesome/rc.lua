@@ -98,7 +98,11 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- Keyboard map indicator and switcher
 mykeyboardlayout = awful.widget.keyboardlayout()
 mykeyboardlayout:connect_signal("button::press",
-    function(_,_,_,button) if button == 1 then awful.spawn.with_shell("notify-send hello") end end)
+    function(_,_,_,button)
+        if button == 1 then 
+            awful.spawn.with_shell('notify-send -t 1500 "Clipboard:" "$(xclip -selection clipboard -o)"')
+        end 
+    end)
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
