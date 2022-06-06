@@ -158,7 +158,7 @@ awful.screen.connect_for_each_screen( function(s)
     }
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s, height = 18 })
+    s.mywibox = awful.wibar({ position = "top", screen = s, height = 20 })
 
     -- Add widgets to the wibox
     s.mywibox:setup {
@@ -166,7 +166,6 @@ awful.screen.connect_for_each_screen( function(s)
         { -- Left
             layout = wibox.layout.fixed.horizontal,
             -- mylauncher,
-            spliter,
             s.mytaglist,
         },
         wibox.widget.base.empty_widget(), -- "Spliter"
