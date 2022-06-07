@@ -46,4 +46,10 @@ require('packer').startup(function()
     use 'rafamadriz/friendly-snippets' -- Snippet collection
 
     use 'voldikss/vim-floaterm'    -- Floating terminal window
+
+    -- Install markdown preiew without yarn or npm
+    use({
+        "iamcco/markdown-preview.nvim",
+        run = function() vim.fn["mkdp#util#install"]() end,
+    })
 end )

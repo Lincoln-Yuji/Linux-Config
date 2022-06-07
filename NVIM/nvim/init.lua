@@ -39,6 +39,7 @@ require('setup-plugins.floaterm')
 require('setup-plugins.telescope')
 require('setup-plugins.startup-screen')
 require("setup-plugins.autopairs")
+require("setup-plugins.md-preview")
 
 -- Setup color scheme
 require('color-settings')

@@ -109,6 +109,11 @@ _G.packer_plugins = {
     path = "/home/lincoln/.local/share/nvim/site/pack/packer/start/friendly-snippets",
     url = "https://github.com/rafamadriz/friendly-snippets"
   },
+  ["markdown-preview.nvim"] = {
+    loaded = true,
+    path = "/home/lincoln/.local/share/nvim/site/pack/packer/start/markdown-preview.nvim",
+    url = "https://github.com/iamcco/markdown-preview.nvim"
+  },
   ["nvim-autopairs"] = {
     loaded = true,
     path = "/home/lincoln/.local/share/nvim/site/pack/packer/start/nvim-autopairs",
