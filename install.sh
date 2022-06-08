@@ -47,9 +47,15 @@ cd aura-bin
 makepkg
 sudo pacman -U [the-package-file-that-makepkg-produces]
 
+# Synchronize
+sudo aura -Ayy
+
 # Installing and setting the Ly login manager
 sudo aura -A ly
 sudo systemctl enable ly.service && sudo systemctl start ly.service
+
+# Fonts
+sudo aura -A nerd-fonts-hack
 
 # cp /etc/X11/xinit/xinitrc $HOME/.xinitrc
 
