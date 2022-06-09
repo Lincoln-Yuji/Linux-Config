@@ -38,7 +38,7 @@ sudo pacman -S alsa-utils pulseaudio pulseaudio-alsa pavucontrol pulsemixer
 
 # Tools
 sudo pacman -S alacritty firefox acpi ripgrep font-manager vim stow unzip bash-completion \
-    gtk3 gtk4 imagemagick youtube-dl gimp
+    imagemagick youtube-dl gimp neofetch htop
 
 # Installing the aura AUR helper
 cd $(mktemp -d)
@@ -54,28 +54,19 @@ sudo aura -Ayy
 sudo aura -A ly
 sudo systemctl enable ly.service && sudo systemctl start ly.service
 
-# Fonts
+# Fonts and Emojis
+sudo pacman -S noto-fonts-emoji
 sudo aura -A nerd-fonts-hack
 
-# cp /etc/X11/xinit/xinitrc $HOME/.xinitrc
+# Neovim
+sudo pacman -S neovim && sudo aura -A nvim-packer-git
 
-# === Awesome Autostart === #
-
-# Configuração no final do xinitrc
-# exec awesome
-
-# Configuração no final do .bash_profile
-# echo "# Using startx on login"
-# echo "[[ $(fgconsole 2>/dev/null) == 1 ]] && exec startx -- vt1" >> ~/.bash_profile
-
-# ========================= #
-
-# Apps
-sudo pacman -S rofi neovim sxiv celluloid evince nemo neofetch htop # Remember to install the packer plugin from github
-sudo aura -A gscreenshot nvim-packer-git
+# GTK utilities
+sudo pacman -S gtk3 gtk4 \
+    celluloid evince eog nemo gscreenshot font-manager
 
 # Link to config files
-stow AWESOME/ ALACRITTY/ GTK/ NVM/ ROFI/
+stow CFG/
 
 # Link to files/folders on my home directory
 rm $HOME/.bashrc
@@ -86,12 +77,6 @@ ln -s $XDG_CONFIG_HOME/zz-config-setup/HOME/.bashrc $HOME/.bashrc
 # Create the .local folders
 mkdir -p $HOME/.local/share/fonts
 mkdir -p $HOME/.local/bin
-
-# Install the fonts onto the system
-cd $HOME/.local/share/fonts
-unzip $HOME/.config/zz-config-setup/HackFont.zip
-
-sudo pacman -S noto-fonts-emoji # Enable amojis
 
 # Link the shell scripts to the local bin directory
 cd $HOME/.config/zz-config-setup
