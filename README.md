@@ -83,3 +83,27 @@ the 'dot-' suffix to a proper dot.
 ```
 stow --dotfiles -t $HOME HOME/
 ```
+
+# Solving some possible issues
+
+## - Official GPG keys
+
+If you try to install or update packages from Arch official repositories and get an error
+about either missing, corrupted or invalid GPG keys (usually happens when your arch version
+gets old) you can update all the keys running the following command:
+
+```
+sudo pacman -Sy archlinux-keyring
+```
+
+## - Arch User Repository GPG keys
+
+When installing packages from the AUR you also may face problems involving invalid GPG keys.
+Usually this error is caught when you are building the files using makepkg. If the authentication
+fails, the building process is terminated. It's always possible to see makepkg's log and see
+what happened. If it says something like "unkown public key \<code\>" that means this key is
+missing and you have to manually add it by doing:
+
+```
+gpg --recv-keys <code>
+```
