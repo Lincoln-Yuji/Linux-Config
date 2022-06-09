@@ -1,0 +1,18 @@
+#!/bin/env bash
+
+declare -a MENU_OPTIONS=(
+"Log Out"
+"Reboot"
+"Power Off"
+)
+
+CHOICE=$(printf '%s\n' "${MENU_OPTIONS[@]}" |
+    rofi -dmenu -theme-str \
+    'window {width: 15%; height: 20%; location: north east; y-offset: 20;}')
+
+case $CHOICE in
+    "Log Out")   pkexec pkill -KILL -u $USER ;;
+    "Reboot")    pkexec reboot ;;
+    "Power Off") pkexec shutdown -h now ;;
+    *) echo "Abort" ;;
+esac

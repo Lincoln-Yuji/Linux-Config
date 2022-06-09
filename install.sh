@@ -90,3 +90,6 @@ git config --global user.name "Lincoln Yuji de Oliveira"
 
 # Installing Latex
 sudo pacman -S texlive-core texlive-latexextra texlive-bibtexextra texlive-formatsextra 
+
+# Polkit so we can run simple stuff without having to open a root prompt
+sudo pacman -S polkit lxsession-gtk3
