@@ -6,10 +6,7 @@
 #           |___/
 
 # If not running interactively, don't do anything
-case $- in
-    *i*) ;;
-      *) return;;
-esac
+[[ $- == *i* ]] || return
 
 # Append to the history file, don't overwrite it
 shopt -s histappend
@@ -48,7 +45,10 @@ parse_git_branch() {
 
 # Customizing the shell prompt
 if [ "$color_prompt" = yes ]; then
-    PS1='\[\033[01;34m\] : \[\033[00m\][\[\033[01;34m\]\w\[\033[00m\]]\[\e[91m\] ($(parse_git_branch)) \[\033[00m\]\n❱❱❱ '
+    PBLUE="\[\033[01;34m\]"
+    PNORM="\[\033[00m\]"
+    PWARN="\[\e[91m\]"
+    PS1="${PBLUE} : ${PNORM}[${PBLUE}\w${PNORM}]${PWARN} (\$(parse_git_branch)) ${PNORM}\n❱❱❱ "
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
