@@ -84,7 +84,7 @@ fi
 alias free='free --mega'
 alias du='du -sh'
 alias df='df -h'
-alias ll='ls -AlhFGX'
+alias ll='ls -AlhFGv'
 alias la='ls -A'
 alias br='br -spd'
 alias wttr='curl wttr.in'
