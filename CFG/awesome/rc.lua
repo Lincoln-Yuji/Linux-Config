@@ -68,7 +68,8 @@ local ram_widget     = require("widgets.ram-widget")
 local battery_widget = require("widgets.battery-percentage")
 
 local volume_widget   = require("widgets.volume-widget.volume")
-local logout_menu     = require("widgets.logout-menu-widget.logout-menu")
+-- local logout_menu     = require("widgets.logout-menu-widget.logout-menu")
+local logout_menu     = require("widgets.logout")
 local brightness_widget = require("widgets.brightness-widget.brightness")
 
 local spliter = wibox.widget.textbox()
@@ -179,7 +180,7 @@ awful.screen.connect_for_each_screen( function(s)
             date_widget,                                  spliter,
             battery_widget,                               spliter,
             wibox.widget.systray(),                       spliter,
-            logout_menu(),
+            logout_menu,
             mykeyboardlayout,
             s.mylayoutbox,
         },
@@ -276,5 +277,6 @@ end)
 client.connect_signal("focus",   function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 
--- Startup Commands
+-- Startup Daemons 
 awful.spawn.with_shell("nm-applet")
+awful.spawn.with_shell("lxpolkit")
