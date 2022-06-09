@@ -22,10 +22,6 @@
 
 # Arch Linux session (Still not automated)
 
-# =============== #
-# NSTALLING STUFF #
-# =============== #
-
 # Start (Assuming the host already has git installed)
 sudo pacman -Syyu  # Update
 sudo pacman -S base-devel pacman-contrib
