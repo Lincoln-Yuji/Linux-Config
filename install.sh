@@ -57,9 +57,12 @@ sudo aura -A nerd-fonts-hack
 # Neovim
 sudo pacman -S neovim && sudo aura -A nvim-packer-git
 
-# GTK utilities
+# Utilities
 sudo pacman -S gtk3 gtk4 \
-    celluloid evince eog nemo gscreenshot font-manager qalculate-gtk
+    celluloid nemo gscreenshot font-manager qalculate-gtk
+
+sudo pacman -S zathura zathura-pdf-poppler
+sudo pacman -S pqiv
 
 # Link to config files
 stow CFG/

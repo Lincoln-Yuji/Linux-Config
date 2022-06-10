@@ -9,7 +9,7 @@ window:
 
 font:
   normal:
-    family: Hack Nerd Font
+    family: monospace
     # family: mononoki Nerd Font
     style: Bold
 
