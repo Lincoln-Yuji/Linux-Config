@@ -59,7 +59,7 @@ sudo pacman -S neovim && sudo aura -A nvim-packer-git
 
 # GTK utilities
 sudo pacman -S gtk3 gtk4 \
-    celluloid evince eog nemo gscreenshot font-manager
+    celluloid evince eog nemo gscreenshot font-manager qalculate-gtk
 
 # Link to config files
 stow CFG/
