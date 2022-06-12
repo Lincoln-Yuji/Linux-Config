@@ -57,12 +57,18 @@ sudo aura -A nerd-fonts-hack
 # Neovim
 sudo pacman -S neovim && sudo aura -A nvim-packer-git
 
+# Installing graphical themes
+sudo pacman -S breeze breeze-gtk # For both GTK and Qt
+sudo pacman -S qt5ct             # Qt5 engine
+
 # Utilities
 sudo pacman -S gtk3 gtk4 \
     celluloid nemo gscreenshot font-manager qalculate-gtk
 
 sudo pacman -S zathura zathura-pdf-poppler
 sudo pacman -S pqiv
+
+sudo pacman -S virtualbox virtualbox-host-modules-arch
 
 # Link to config files
 stow CFG/
