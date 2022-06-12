@@ -49,12 +49,6 @@ The following command should be enough.
 ```
 stow CFG/
 ```
-+ SHARE directory: contains specific files that go into .local/share such as themes, icons, etc.
-
-In this case we have to specify the target directory:
-```
-stow -t $HOME/.local/share SHARE/
-```
 
 + SHELL-SCRIPT directory: contains some shell scripts for task automation.
 
