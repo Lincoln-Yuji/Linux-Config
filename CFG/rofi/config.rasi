@@ -8,12 +8,12 @@
  */
 
 configuration {
-    font: 							"monospace Bold 13";
+    font: 							"monospace 12";
     fixed-num-lines: 				true;
     show-icons: 					false;
     sidebar-mode: 					true;
     scroll-method: 					0;
-    window-format: 					"{w} ··· {c} ···   {t}";
+    /* window-format: 					"{w} ··· {c} ···   {t}"; */
     click-to-exit: 					true;
     combi-hide-mode-prefix: 		false;
     display-window: 				" ";
@@ -64,7 +64,7 @@ case-indicator {
 inputbar {
     spacing:    					0px;
     text-color: 					@fg;
-    padding:    					1px;
+    padding:    					2px;
     children: 						[ prompt,textbox-prompt-colon,entry,case-indicator ];
 }
 
@@ -78,24 +78,35 @@ listview {
     lines:							15;
     columns:						1;
     fixed-height: 					0;
-    border: 						0px;
+    border: 						2px;
     border-color: 					@ac;
     spacing: 						4px;
     scrollbar: 						false;
-    padding: 						5px 0px 5px 5px;
+    padding: 						5px 5px 5px 5px;
 }
 
-element-text, element-icon {
+element-text {
     background-color: #00000000;
     text-color:       inherit;
-    size: 2.70ch;
+    size: 1.00ch;
+    vertical-align: 0.5;
+}
+
+element-icon {
+    background-color: #00000000;
+    text-color:       inherit;
+    size: 3.00ch;
 }
 
 element {
     border: 						0px;
     border-radius: 					0px;
-    padding: 						5px;
+    /* border-color: @ac; */
+    padding: 						2 5;
+    orientation: horizontal;
+    children: [element-text, element-icon];
 }
+
 element normal.normal {
     background-color: 				@bg;
     text-color:       				@fg;
