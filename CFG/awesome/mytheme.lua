@@ -28,6 +28,6 @@ theme.border_normal = "#646464"
 
 -- systra config
 theme.bg_systray = theme.bg_normal
-theme.systray_icon_spacing = 3
+theme.systray_icon_spacing = 4
 
 return theme

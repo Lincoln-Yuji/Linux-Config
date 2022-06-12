@@ -13,38 +13,34 @@ local function TOG_VOLUME_CMD() return 'bash -c "$HOME/.local/bin/script-volume 
 
 local icon_dir = os.getenv("HOME") .. '/.config/awesome/widgets/volume-widget/icons/'
 
-local icon = wibox.widget {
-    resize = false,
-    widget = wibox.widget.imagebox
-}
 local label = wibox.widget {
     widget = wibox.widget.textbox,
     font = beautiful.font
 }
+local char_icon = wibox.widget {
+    widget = wibox.widget.textbox,
+    font = "monospace Bold 16",
+    text = "婢"
+}
 
 local volume = {
     widget = wibox.widget {
-        icon, label, layout = wibox.layout.fixed.horizontal,
+        char_icon, label, layout = wibox.layout.fixed.horizontal, is_muted = false,
         set_volume_level = function(self, new_value)
             label:set_text(" " .. tonumber(new_value) .. "%")
-            local volume_icon_name
             if self.is_muted then
-                volume_icon_name = 'audio-volume-muted-symbolic'
+                char_icon:set_text("婢")
             else
-                local new_value_num = tonumber(new_value)
-                if (new_value_num >= 0 and new_value_num < 33) then
-                    volume_icon_name="audio-volume-low-symbolic"
-                elseif (new_value_num < 66) then
-                    volume_icon_name="audio-volume-medium-symbolic"
-                else
-                    volume_icon_name="audio-volume-high-symbolic"
+                local volume_value = tonumber(new_value)
+                if     volume_value < 35 then char_icon:set_text("")
+                elseif volume_value < 65 then char_icon:set_text("墳")
+                else   char_icon:set_text("")
                 end
             end
-            icon:set_image(icon_dir .. volume_icon_name .. '.svg')
         end,
         mute = function(self)
             self.is_muted = true
-            icon:set_image(icon_dir .. 'audio-volume-muted-symbolic.svg')
+            char_icon:set_text("婢")
         end,
         unmute = function(self)
             self.is_muted = false
@@ -59,7 +55,8 @@ local function worker(user_args)
         widget:set_volume_level(volume_level)
     end
     local function update_graphic_state(widget, stdout)
-        if stdout == '0' then
+        -- spawn.with_shell('notify-send -t 1500 "Value:" ' .. stdout)
+        if tonumber(stdout) == 1 then
             widget:mute()
         else
             widget:unmute()
