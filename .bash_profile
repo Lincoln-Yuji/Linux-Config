@@ -20,6 +20,8 @@ export RUSTUP_HOME="$HOME/.local/rust/rustup"  # Rust up location
 
 export QT_QPA_PLATFORMTHEME="qt5ct" # Using qt5ct setting for all Qt5 apps
 
+export PATH="$HOME/.local/bin:${PATH}" # Add user binaries to PATH
+
 # Sourcing bashrc
 [[ -f ~/.bashrc ]] && source ~/.bashrc
 

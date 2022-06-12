@@ -54,7 +54,7 @@ set_global_keys = function (volume_widget, brightness_widget)
         map({modkey}, "p", {"Rofi", "Launch on drun mode"},
             function() awful.util.spawn("rofi -show-icons -show drun") end),
         map({modkey}, "b",      {"Application:", "Open Firefox"},
-            function() awful.spawn(os.getenv("HOME") .. "/.local/bin/browser-bookmark.sh") end),
+            function() awful.spawn("browser-bookmark.sh") end),
 
         map({modkey}, "u", {"Screens:", "Switch mouse between screens"},
             function() awful.screen.focus_relative(1) end ),
@@ -68,7 +68,7 @@ set_global_keys = function (volume_widget, brightness_widget)
 
         awful.key({ }, "Print", function() awful.util.spawn("gscreenshot") end),
         map({modkey, "Control"}, "q", {"Awesome:", "Open logout menu"},
-            function() awful.spawn('bash -c "$HOME/.local/bin/poweroff"') end)
+            function() awful.spawn('bash -c "poweroff"') end)
     )
 
     for i = 1, 9 do

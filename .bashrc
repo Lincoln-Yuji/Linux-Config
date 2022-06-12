@@ -63,9 +63,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# If local binary directory exists, add it to the PATH
-[ -d "$HOME/.local/bin" ] && PATH="$HOME/.local/bin:${PATH}"
-
 # Source cargo environment and add rust binaries to PATH
 [ -f "${CARGO_HOME}/env" ] && source "${CARGO_HOME}/env"
 [ -d "${CARGO_HOME}/bin" ] && PATH="${CARGO_HOME}/bin:${PATH}"
