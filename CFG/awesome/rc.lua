@@ -239,7 +239,7 @@ awful.rules.rules = {
             "pinentry",
         },
         class = {
-            "Arandr", "Pavucontrol", "GTK-Application",
+            "Arandr", "Pavucontrol", "Get-start",
             "Blueman-manager", "Gpick", "Wpa_gui", "veromix",
             "xtightvncviewer",
             "Gscreenshot",
@@ -277,5 +277,6 @@ client.connect_signal("focus",   function(c) c.border_color = beautiful.border_f
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 
 -- Startup Daemons 
-awful.spawn.with_shell("nm-applet")
-awful.spawn.with_shell("lxpolkit")
+awful.spawn.with_shell("nm-applet")           -- Network Daemon
+awful.spawn.with_shell("lxpolkit")            -- Authenticator server
+awful.spawn.with_shell("pulseaudio --start")  -- Make sure pulseaudio is running
