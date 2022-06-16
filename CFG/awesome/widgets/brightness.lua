@@ -37,8 +37,12 @@ brightness.widget:connect_signal("button::press",
 
 local function worker()
     function update_label(widget, stdout)
-        local brightness_level = tonumber(stdout)
-        widget:set_brightness_level(brightness_level)
+        if stdout == "" then
+            widget:set_brightness_level(100)
+        else
+            local brightness_level = tonumber(stdout)
+            widget:set_brightness_level(brightness_level)
+        end
     end
 
     function brightness:inc()
