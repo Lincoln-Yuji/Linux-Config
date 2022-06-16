@@ -25,6 +25,8 @@ theme.menu_height = 24
 theme.border_width  = 2
 theme.border_focus  = "#ebebeb"
 theme.border_normal = "#646464"
+theme.maximized_hide_border = false
+theme.fullscreen_hide_border = false
 
 -- systra config
 theme.bg_systray = theme.bg_normal

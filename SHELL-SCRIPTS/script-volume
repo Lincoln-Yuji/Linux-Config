@@ -3,7 +3,7 @@
 # Script to manipulate the volume using pulsemixer (pulseaudio wrapper)
 
 function get_pulse_volume() {
-    curvol=$(pulsemixer --get-volume) && printf "${curvol%% *}"
+    pulsemixer --get-volume | cut -d " " -f1
 }
 
 case $1 in

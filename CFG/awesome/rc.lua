@@ -55,9 +55,10 @@ local HOME = os.getenv("HOME")
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
     awful.layout.suit.tile,
-    awful.layout.suit.tile.left,
-    awful.layout.suit.tile.bottom,
-    awful.layout.suit.tile.top,
+    -- awful.layout.suit.tile.left,
+    -- awful.layout.suit.tile.bottom,
+    -- awful.layout.suit.tile.top,
+    awful.layout.suit.floating,
 }
 
 -- Widgets
@@ -239,7 +240,7 @@ awful.rules.rules = {
             "pinentry",
         },
         class = {
-            "Arandr", "Pavucontrol", "Get-start",
+            "Arandr", "Pavucontrol", " ",
             "Blueman-manager", "Gpick", "Wpa_gui", "veromix",
             "xtightvncviewer",
             "Gscreenshot",
@@ -279,4 +280,4 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- Startup Daemons 
 awful.spawn.with_shell("nm-applet")           -- Network Daemon
 awful.spawn.with_shell("lxpolkit")            -- Authenticator server
-awful.spawn.with_shell("pulseaudio --start")  -- Make sure pulseaudio is running
+-- awful.spawn.with_shell("pulseaudio --start")  -- Make sure pulseaudio is running

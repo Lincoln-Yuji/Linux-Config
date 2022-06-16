@@ -68,7 +68,9 @@ set_global_keys = function (volume_widget, brightness_widget)
 
         awful.key({ }, "Print", function() awful.util.spawn("gscreenshot") end),
         map({modkey, "Control"}, "q", {"Awesome:", "Open logout menu"},
-            function() awful.spawn('bash -c "poweroff"') end)
+            function() awful.spawn('bash -c "poweroff"') end),
+
+        map({modkey}, ";", {"Layout:", "Change Layout"}, function() awful.layout.inc(1) end)
     )
 
     for i = 1, 9 do
