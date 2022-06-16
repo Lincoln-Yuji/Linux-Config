@@ -1,0 +1,10 @@
+#!/bin/env bash
+
+case $1 in
+    "SET") xbacklight -set $2 && xbacklight -get ;;
+    "INC") xbacklight -inc 5 && xbacklight -get  ;;
+    "DEC") xbacklight -dec 5 && xbacklight -get  ;;
+    "GET") xbacklight -get                       ;;
+    *) exit 1                                    ;;
+esac
+

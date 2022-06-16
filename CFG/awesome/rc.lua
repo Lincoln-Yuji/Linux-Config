@@ -68,16 +68,11 @@ local cpu_widget     = require("widgets.cpu-widget")
 local ram_widget     = require("widgets.ram-widget")
 local battery_widget = require("widgets.battery-percentage")
 local volume_widget  = require("widgets.volume")
--- local logout_menu     = require("widgets.logout-menu-widget.logout-menu")
 local logout_menu     = require("widgets.logout")
-local brightness_widget = require("widgets.brightness-widget.brightness")
+local brightness_widget = require("widgets.brightness")
 
 local spliter = wibox.widget.textbox()
 spliter:set_text(" | ")
-
-local brightness_widgets_config = {
-    program = "xbacklight"
-}
 
 -- Pop Menu
 myawesomemenu = {
@@ -176,7 +171,7 @@ awful.screen.connect_for_each_screen( function(s)
             cpu_widget,                                   spliter,
             ram_widget,                                   spliter,
             volume_widget(),                              spliter,
-            brightness_widget(brightness_widgets_config), spliter,
+            brightness_widget(), spliter,
             date_widget,                                  spliter,
             battery_widget,                               spliter,
             wibox.widget.systray(),                       spliter,
