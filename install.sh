@@ -53,6 +53,9 @@ sudo systemctl enable ly.service && sudo systemctl start ly.service
 # Fonts and Emojis
 sudo pacman -S noto-fonts-emoji
 sudo aura -A nerd-fonts-hack
+# Japanese and Chinese glyphs
+sudo pacman -S adobe-source-han-sans-jp-fonts adobe-source-han-sans-cn-fonts
+sudo pacman -S adobe-source-han-serif-jp-fonts adobe-source-han-serif-cn-fonts
 
 # Neovim
 sudo pacman -S neovim && sudo aura -A nvim-packer-git

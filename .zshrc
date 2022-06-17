@@ -14,7 +14,7 @@ function parse_git_branch() {
 }
 setopt PROMPT_SUBST
 NEWLINE=$'\n'
-PS1="%F{blue} %n%f@%F{blue}%m: %f[%F{blue}%~%f] %F{red}(\$(parse_git_branch))${NEWLINE}%f❱❱❱ "
+PS1="%F{blue} : %f[%F{cyan}%n@%m %f%F{blue}%~%f] %F{red}(\$(parse_git_branch))${NEWLINE}%f❱❱❱ "
 
 # History settings
 HISTFILE=~/.cache/history_file
@@ -30,6 +30,7 @@ _comp_options+=(globdots)
 
 # Enable vi mode
 bindkey -v
+bindkey "^?" backward-delete-char
 export KEYTIMEOUT=1
 
 # Changing the prompt cursor for different vi modes (Taken from Luke Smith video)

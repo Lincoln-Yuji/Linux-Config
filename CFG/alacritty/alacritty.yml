@@ -35,6 +35,12 @@ colors:
      background: '#28282C'
      # background: '#373737'
      foreground: '#D8DEE9'
+   # cursor:
+   #   text: CellBackground
+   #   cursor: '#c4c4c4'
+   # selection:
+   #   text: CellForeground
+   #   background: '#c4c4c4'
 
    # Normal colors
    normal:
