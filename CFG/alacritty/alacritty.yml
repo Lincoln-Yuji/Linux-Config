@@ -9,13 +9,12 @@ window:
 
 font:
   normal:
-    family: monospace
-    # family: mononoki Nerd Font
+    family: Hack Nerd Font
+    # family: monospace
     style: Bold
 
   bold:
     family: Hack Nerd Font
-    # family: mononoki Nerd Font
     style: Bold
 
   size: 7.0
@@ -23,6 +22,10 @@ font:
 # Transparancy
 # background_opacity: 0.95
 window.opacity: 1
+
+# Zsh is our default interactive shell
+shell:
+  program: /bin/zsh
 
 # Nord Color Scheme
 colors:

@@ -23,7 +23,11 @@ export QT_QPA_PLATFORMTHEME="qt5ct" # Using qt5ct setting for all Qt5 apps
 export PATH="$HOME/.local/bin:${PATH}" # Add user binaries to PATH
 
 # Sourcing bashrc
-[[ -f ~/.bashrc ]] && source ~/.bashrc
+# [[ -f ~/.bashrc ]] && source ~/.bashrc
+
+# Source cargo environment and add rust binaries to PATH
+[ -f "${CARGO_HOME}/env" ] && source "${CARGO_HOME}/env"
+[ -d "${CARGO_HOME}/bin" ] && export PATH="${CARGO_HOME}/bin:${PATH}"
 
 ## Autostart commands
 setxkbmap -layout br

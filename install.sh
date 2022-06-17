@@ -102,3 +102,6 @@ sudo pacman -S texlive-core texlive-latexextra texlive-bibtexextra texlive-forma
 
 # Polkit so we can run simple stuff without having to open a root prompt
 sudo pacman -S polkit lxsession-gtk3
+
+# Installing ZSH
+sudo pacman -S zsh zsh-syntax-highlighting zsh-completions zsh-autosuggestions
