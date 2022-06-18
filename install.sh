@@ -34,7 +34,7 @@ sudo pacman -S alsa-utils pulseaudio pulseaudio-alsa pavucontrol pulsemixer
 
 # Tools
 sudo pacman -S alacritty firefox acpi ripgrep font-manager vim stow unzip bash-completion \
-    imagemagick youtube-dl gimp neofetch htop
+    imagemagick youtube-dl gimp neofetch htop wmctrl
 
 # Installing the aura AUR helper
 cd $(mktemp -d)

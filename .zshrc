@@ -3,6 +3,8 @@
 
 # Start settings
 setopt autocd extendedglob nomatch notify # ZSH options
+setopt hist_ignore_dups
+setopt hist_ignore_space
 unsetopt beep                             # Turn off beeping sounds
 autoload -U colors && colors              # Enable color
 
@@ -17,7 +19,7 @@ NEWLINE=$'\n'
 PS1="%F{blue} : %f[%F{cyan}%n@%m %f%F{blue}%~%f] %F{red}(\$(parse_git_branch))${NEWLINE}%f❱❱❱ "
 
 # History settings
-HISTFILE=~/.cache/history_file
+HISTFILE=~/.cache/zsh/history
 HISTSIZE=1500
 SAVEHIST=1500
 

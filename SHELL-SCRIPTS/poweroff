@@ -1,14 +1,14 @@
 #!/bin/env bash
 
-declare -a MENU_OPTIONS=(
-"Log Out"
-"Reboot"
-"Power Off"
-)
+function print_options() {
+    echo "Log Out"
+    echo "Reboot"
+    echo "Power Off"
+    echo "Cancel"
+}
 
-CHOICE=$(printf '%s\n' "${MENU_OPTIONS[@]}" |
-    rofi -dmenu -theme-str \
-    'window {width: 15%; height: 20%; location: north east; y-offset: 20;}')
+CHOICE=$(print_options | rofi -dmenu -theme-str \
+    'window {width: 15%; height: 25%; location: north east; y-offset: 20;}')
 
 case $CHOICE in
     "Log Out")   pkexec killall $(wmctrl -m | grep "Name" | cut -d " " -f2) ;;
