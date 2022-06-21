@@ -74,6 +74,7 @@ sudo pacman -S neovim && sudo aura -A nvim-packer-git
 # Installing graphical themes
 sudo pacman -S breeze breeze-gtk # For both GTK and Qt
 sudo pacman -S qt5ct             # Qt5 engine
+# To set GTK2 system wide themes edit /etc/gtk-2.0/gtkrc
 
 # Utilities
 sudo pacman -S gtk3 gtk4 \
@@ -101,7 +102,6 @@ mkdir -p $HOME/.local/bin
 # Link the shell scripts to the local bin directory
 cd $HOME/.config/zz-config-setup
 stow -t $HOME/.local/bin SHELL-SCRIPTS/
-
 
 # Git user config
 git config --global user.email "lincolnyuji@hotmail.com"

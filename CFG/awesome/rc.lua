@@ -133,6 +133,10 @@ end
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
 
+-- Systray
+local systray = wibox.widget.systray()
+-- systray:set_base_size(18)
+
 awful.screen.connect_for_each_screen( function(s)
     -- Wallpaper
     set_wallpaper(s)
@@ -167,14 +171,14 @@ awful.screen.connect_for_each_screen( function(s)
         wibox.widget.base.empty_widget(), -- "Spliter"
         { -- Right
             layout = wibox.layout.fixed.horizontal,
-            kernel_widget,                                spliter,
-            cpu_widget,                                   spliter,
-            ram_widget,                                   spliter,
-            volume_widget(),                              spliter,
-            brightness_widget(), spliter,
-            date_widget,                                  spliter,
-            battery_widget,                               spliter,
-            wibox.widget.systray(),                       spliter,
+            kernel_widget,         spliter,
+            cpu_widget,            spliter,
+            ram_widget,            spliter,
+            volume_widget(),       spliter,
+            brightness_widget(),   spliter,
+            date_widget,           spliter,
+            battery_widget,        spliter,
+            wibox.layout.margin(systray, 0, 0, 3, 3),               spliter,
             logout_menu,
             mykeyboardlayout,
             s.mylayoutbox,
