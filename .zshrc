@@ -15,8 +15,8 @@ function parse_git_branch() {
     [ -z ${current_branch} ] && echo "None" || echo "${current_branch}"
 }
 setopt PROMPT_SUBST
-NEWLINE=$'\n'
-PS1="%F{blue} : %f[%F{cyan}%n@%m %f%F{blue}%~%f] %F{red}(\$(parse_git_branch))${NEWLINE}%f❱❱❱ "
+CR=$'\n'
+PS1="%F{blue} : %f[%F{cyan}%n@%m %f%F{blue}%~%f] %F{red}(\$(parse_git_branch))${CR}%f❱❱❱ "
 
 # History settings
 HISTFILE=~/.cache/zsh/history
@@ -37,12 +37,9 @@ export KEYTIMEOUT=1
 
 # Changing the prompt cursor for different vi modes (Taken from Luke Smith video)
 function zle-keymap-select {
-  if [[ ${KEYMAP} == vicmd ]] ||
-     [[ $1 = 'block' ]]; then
+  if [[ ${KEYMAP} == vicmd ]] || [[ $1 = 'block' ]]; then
     echo -ne '\e[1 q'
-  elif [[ ${KEYMAP} == main ]] ||
-       [[ ${KEYMAP} == viins ]] ||
-       [[ ${KEYMAP} = '' ]] ||
+  elif [[ ${KEYMAP} == main ]] || [[ ${KEYMAP} == viins ]] || [[ ${KEYMAP} = '' ]] ||
        [[ $1 = 'beam' ]]; then
     echo -ne '\e[5 q'
   fi
@@ -60,6 +57,7 @@ preexec() { echo -ne '\e[5 q' ;}
 alias xx='clear'
 alias nv='nvim'
 alias zz='~/.config/zz-config-setup'
+alias rsbook='rustup docs --book'
 
 alias ls='ls --color=auto --group-directories-first'
 alias grep='grep --color=auto'
