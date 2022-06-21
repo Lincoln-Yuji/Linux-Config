@@ -1,0 +1,14 @@
+#!/bin/env bash
+
+if [ -f $1 ]; then
+    case $1 in
+        *.tar.gz) tar -xzvf $1 ;; # Compressed with:  tar FILE -zcf file1 file2 ...
+        *.tar.xz) tar -xf $1   ;;
+        *.zip)    unzip $1     ;;
+        *) echo "Extension for $1 is unkown..."; exit 1 ;;
+    esac
+else
+    echo "File $1 not found!"; exit 1
+fi
+
+exit 0

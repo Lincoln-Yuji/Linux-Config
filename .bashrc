@@ -86,18 +86,3 @@ alias la='ls -A'
 alias br='br -spd'
 alias wttr='curl wttr.in'
 
-# Generic decompressor
-function extract() {
-    if [ -f $1 ]
-    then
-        case $1 in
-            *.tar.gz) tar -xzvf $1 ;;
-            *.tar.xz) tar -xf $1   ;;
-            *.zip)    unzip $1     ;;
-            # *.rar     unrar x $1   ;;
-            *) echo "'$1' can't be extracted via this command...";;
-        esac
-    else
-        echo "This file does not exist"
-    fi
-}
