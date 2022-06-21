@@ -72,6 +72,10 @@ alias la='ls -A'
 alias br='br -spd'
 alias wttr='curl wttr.in'
 
+alias ytf='youtube-dl -F' # Check the formats available
+alias ytd='youtube-dl -f' # Download ONLY the specified format (i.e 22)
+alias ytp='youtube-dl -i -f mp4 --yes-playlist' # Download an entire playlist
+
 # Enabling zsh plugins
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2> /dev/null
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2> /dev/null
