@@ -50,6 +50,13 @@ sudo aura -Ayy
 sudo aura -A ly
 sudo systemctl enable ly.service && sudo systemctl start ly.service
 
+# Installing betterlockscreen
+sudo aura -A betterlockscreen
+betterlockscreen -u $HOME/.config/awesome/assets/wallpaper.jpg
+sudo systemctl enable betterlockscreen@$USER.service --now
+# (If you want to change the way systemd calls the service,
+#  edit /usr/lib/systemd/systemd/betterlockscreen@.service)
+
 # Fonts and Emojis
 sudo pacman -S noto-fonts-emoji
 sudo aura -A nerd-fonts-hack
@@ -81,6 +88,7 @@ rm $HOME/.bashrc
 rm $HOME/.bash_profile
 ln -s $XDG_CONFIG_HOME/zz-config-setup/HOME/.bash_profile $HOME/.bash_profile
 ln -s $XDG_CONFIG_HOME/zz-config-setup/HOME/.bashrc $HOME/.bashrc
+ln -s $XDG_CONFIG_HOME/zz-config-setup/HOME/.zshrc $HOME/.zshrc
 
 # Create the .local folders
 mkdir -p $HOME/.local/share/fonts
@@ -92,9 +100,6 @@ stow -t $HOME/.local/bin SHELL-SCRIPTS/
 
 # If you need to fix your localtime for some reason, see the actual correct time HH:MM:SS
 # And then update the system time with systemd: $ timedatectl set-time 'HH:MM:SS'
-
-# Packages from the AUR:
-# sudo aura -A gscreenshot ly
 
 # Git user config
 git config --global user.email "lincolnyuji@hotmail.com"
