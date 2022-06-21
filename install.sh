@@ -22,6 +22,11 @@
 
 # Arch Linux session (Still not automated)
 
+# Note (1): All systemd services are located in /usr/lib/systemd/systemd
+
+# Note (2): If you need to fix your localtime for some reason, see the actual correct time HH:MM:SS
+# And then update the system time with systemd: $ timedatectl set-time 'HH:MM:SS'
+
 # Start (Assuming the host already has git installed)
 sudo pacman -Syyu  # Update
 sudo pacman -S base-devel pacman-contrib
@@ -52,10 +57,9 @@ sudo systemctl enable ly.service && sudo systemctl start ly.service
 
 # Installing betterlockscreen
 sudo aura -A betterlockscreen
-betterlockscreen -u $HOME/.config/awesome/assets/wallpaper.jpg
+
+cd $HOME/.config/betterlockscreen && ./config.lua # Script to set new wallpaper to lockscreen
 sudo systemctl enable betterlockscreen@$USER.service --now
-# (If you want to change the way systemd calls the service,
-#  edit /usr/lib/systemd/systemd/betterlockscreen@.service)
 
 # Fonts and Emojis
 sudo pacman -S noto-fonts-emoji
@@ -98,8 +102,6 @@ mkdir -p $HOME/.local/bin
 cd $HOME/.config/zz-config-setup
 stow -t $HOME/.local/bin SHELL-SCRIPTS/
 
-# If you need to fix your localtime for some reason, see the actual correct time HH:MM:SS
-# And then update the system time with systemd: $ timedatectl set-time 'HH:MM:SS'
 
 # Git user config
 git config --global user.email "lincolnyuji@hotmail.com"
