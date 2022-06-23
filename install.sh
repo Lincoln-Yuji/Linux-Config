@@ -52,8 +52,12 @@ sudo pacman -U [the-package-file-that-makepkg-produces]
 sudo aura -Ayy
 
 # Installing and setting the Ly login manager
-sudo aura -A ly
-sudo systemctl enable ly.service && sudo systemctl start ly.service
+# sudo aura -A ly
+# sudo systemctl enable ly.service && sudo systemctl start ly.service
+
+# Installing the LightDM login display
+sudo pacman -S lightdm lightdm-gtk-greeter
+# Set the correct theme editing /etc/lightdm/lightdm-gtk-greeter.conf
 
 # Installing betterlockscreen
 sudo aura -A betterlockscreen
