@@ -8,7 +8,7 @@
  */
 
 configuration {
-    font: 							"monospace 12";
+    font: 							"Hack Nerd Font 12";
     fixed-num-lines: 				true;
     show-icons: 					false;
     sidebar-mode: 					true;
@@ -16,12 +16,12 @@ configuration {
     /* window-format: 					"{w} ··· {c} ···   {t}"; */
     click-to-exit: 					true;
     combi-hide-mode-prefix: 		false;
-    display-window: 				" ";
-    display-windowcd: 				" ";
-    display-run: 					" ";
-    display-ssh: 					" ";
-    display-drun: 					" ";
-    display-combi: 					" ";
+    display-window: 				"  window";
+    display-windowcd: 				"  ";
+    display-run: 					"  run";
+    display-ssh: 					"  ssh";
+    display-drun: 					"   drun";
+    display-combi: 					"  ";
 }
 
 @import "colors.rasi"
@@ -31,11 +31,11 @@ configuration {
 }
 
 window {
-    border: 					    5px;
+    border: 					    3px;
     border-color: 					@ac;
     border-radius: 					0px;
     padding: 						0;
-    width: 							35%;
+    width: 							30%;
 }
 
 prompt {
@@ -78,7 +78,7 @@ listview {
     lines:							15;
     columns:						1;
     fixed-height: 					0;
-    border: 						2px;
+    border: 						4px;
     border-color: 					@ac;
     spacing: 						4px;
     scrollbar: 						false;
@@ -104,7 +104,7 @@ element {
     /* border-color: @ac; */
     padding: 						2 5;
     orientation: horizontal;
-    children: [element-text, element-icon];
+    children: [element-icon, element-text];
 }
 
 element normal.normal {

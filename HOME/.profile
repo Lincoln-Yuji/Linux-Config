@@ -11,6 +11,7 @@ export EDITOR="nvim"           # Default editor
 export VISUAL="nvim"
 export TERM="xterm-256color"   # Pretty colors to terminal
 export TERMINAL="alacritty"    # Default terminal emulator
+export ZDOTDIR="$HOME/.config/zsh" # ZSH dot directory
 
 export XDG_DATA_HOME="$HOME/.local/share" # Clean Home
 export XDG_CONFIG_HOME="$HOME/.config"    # Clean Home
@@ -33,3 +34,4 @@ export PATH="$HOME/.local/bin:${PATH}" # Add user binaries to PATH
 setxkbmap -layout br
 setxkbmap -option 'caps:swapescape'
 xset r rate 300 50
+

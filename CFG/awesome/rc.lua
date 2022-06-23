@@ -276,7 +276,14 @@ end)
 client.connect_signal("focus",   function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 
--- Startup Daemons 
-awful.spawn.with_shell("nm-applet")           -- Network Daemon
-awful.spawn.with_shell("lxpolkit")            -- Authenticator server
--- awful.spawn.with_shell("pulseaudio --start")  -- Make sure pulseaudio is running
+----------------------
+-- Startup Commands --
+----------------------
+awful.spawn.with_shell("nm-applet")  -- Network Daemon
+awful.spawn.with_shell("lxpolkit")   -- Authenticator server
+
+-- LightDM has the .xsession-erros log hardcoded into the home directory (WTF?)
+-- This is not a good practice at all, but I don't want a growing log file in my home
+-- directory and it seems this is the only solution since they don't let /etc/X11/Xsession
+-- to actually handle this task...
+awful.spawn.with_shell("rm " .. HOME .. "/.xsession-errors")
