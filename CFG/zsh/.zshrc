@@ -81,6 +81,3 @@ alias ytp='youtube-dl -i -f mp4 --yes-playlist' # Download an entire playlist
 # Enabling zsh plugins
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2> /dev/null
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2> /dev/null
-
-## Delete the f*cking X logs that LightDM drpos in our home directory
-[[ -f "$HOME/.xsessions-errors" ]] && rm "$HOME/.xsessions-errors"
