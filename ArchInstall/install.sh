@@ -37,6 +37,12 @@ sudo pacman -S xorg xorg-xinit xf86-video-[driver-name] awesome arandr
 # Audio
 sudo pacman -S alsa-utils pulseaudio pulseaudio-alsa pavucontrol pulsemixer
 
+# Installing graphical themes
+sudo pacman gtk3 gtk4            # Gtk libraries
+sudo pacman -S breeze breeze-gtk # For both GTK and Qt
+sudo pacman -S qt5ct             # Qt5 engine
+# To set GTK2 system wide themes edit /etc/gtk-2.0/gtkrc
+
 # Tools
 sudo pacman -S alacritty firefox acpi ripgrep font-manager vim stow unzip bash-completion \
     imagemagick youtube-dl gimp neofetch htop wmctrl
@@ -49,14 +55,11 @@ makepkg
 sudo pacman -U [the-package-file-that-makepkg-produces]
 
 # Synchronize
-sudo aura -Ayy
-
-# Installing and setting the Ly login manager
-# sudo aura -A ly
-# sudo systemctl enable ly.service && sudo systemctl start ly.service
+sudo aura -Ayu
 
 # Installing the LightDM login display
 sudo pacman -S lightdm lightdm-gtk-greeter
+systemctl enable lightdm.service
 # Set the correct theme editing /etc/lightdm/lightdm-gtk-greeter.conf
 
 # Installing betterlockscreen
@@ -75,19 +78,17 @@ sudo pacman -S adobe-source-han-serif-jp-fonts adobe-source-han-serif-cn-fonts
 # Neovim
 sudo pacman -S neovim && sudo aura -A nvim-packer-git
 
-# Installing graphical themes
-sudo pacman -S breeze breeze-gtk # For both GTK and Qt
-sudo pacman -S qt5ct             # Qt5 engine
-# To set GTK2 system wide themes edit /etc/gtk-2.0/gtkrc
-
 # Utilities
-sudo pacman -S gtk3 gtk4 \
-    celluloid nemo gscreenshot font-manager qalculate-gtk
+sudo pacman -S vlc nemo gscreenshot qalculate-gtk
+
+# Polkit so we can run simple stuff without having to open a root prompt
+sudo pacman -S polkit lxsession-gtk3
 
 sudo pacman -S zathura zathura-pdf-poppler
 sudo pacman -S pqiv
 
 sudo pacman -S virtualbox virtualbox-host-modules-arch
+sudo pacman -S transmission-gtk # Torrent Client
 
 # Link to config files
 stow CFG/
@@ -95,9 +96,8 @@ stow CFG/
 # Link to files/folders on my home directory
 rm $HOME/.bashrc
 rm $HOME/.bash_profile
-ln -s $XDG_CONFIG_HOME/zz-config-setup/HOME/.bash_profile $HOME/.bash_profile
+ln -s $XDG_CONFIG_HOME/zz-config-setup/HOME/.profile $HOME/.profile
 ln -s $XDG_CONFIG_HOME/zz-config-setup/HOME/.bashrc $HOME/.bashrc
-ln -s $XDG_CONFIG_HOME/zz-config-setup/HOME/.zshrc $HOME/.zshrc
 
 # Create the .local folders
 mkdir -p $HOME/.local/share/fonts
@@ -113,9 +113,6 @@ git config --global user.name "Lincoln Yuji de Oliveira"
 
 # Installing Latex
 sudo pacman -S texlive-core texlive-latexextra texlive-bibtexextra texlive-formatsextra 
-
-# Polkit so we can run simple stuff without having to open a root prompt
-sudo pacman -S polkit lxsession-gtk3
 
 # Installing ZSH
 sudo pacman -S zsh zsh-syntax-highlighting zsh-completions zsh-autosuggestions
