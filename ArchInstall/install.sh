@@ -28,11 +28,29 @@
 # And then update the system time with systemd: $ timedatectl set-time 'HH:MM:SS'
 
 # Start (Assuming the host already has git installed)
+echo "Driver Option:"
+echo "  1) Intel"
+echo "  2) NVDIA"
+echo "  3) AMD"
+echo "  4) Arch Virtual Box"
+read -p "Select a VALID driver! " VIDEO_OPTION
+
+case VIDEO_OPTION in
+    "1") sudo pacman -S xf86-video-intel ;;
+    "2") sudo pacman -S nvidia nvidia-settings ;;
+    "3") sudo pacman -S xf86-video-amdgpu ;;
+    "4") sudo pacman -S virtualbox-guest-utils ;;
+    *) echo "[ ABORT! ] Invalid driver option..."; exit 1
+esac
+
+echo "[ COMPLETE! ] Installation finished!"
+exit 0
+
 sudo pacman -Syyu  # Update
-sudo pacman -S base-devel pacman-contrib
+sudo pacman -S base-devel pacman-contrib --needed
 
 # Video
-sudo pacman -S xorg xorg-xinit xf86-video-[driver-name] awesome arandr
+sudo pacman -S xorg xorg-xinit awesome arandr
 
 # Audio
 sudo pacman -S alsa-utils pulseaudio pulseaudio-alsa pavucontrol pulsemixer
@@ -94,25 +112,26 @@ sudo pacman -S transmission-gtk # Torrent Client
 stow CFG/
 
 # Link to files/folders on my home directory
+CONFIG_DIR=$HOME/.config/zoomer-config
 rm $HOME/.bashrc
 rm $HOME/.bash_profile
-ln -s $XDG_CONFIG_HOME/zz-config-setup/HOME/.profile $HOME/.profile
-ln -s $XDG_CONFIG_HOME/zz-config-setup/HOME/.bashrc $HOME/.bashrc
+ln -s ${CONFIG_DIR}/HOME/.profile $HOME/.profile
+ln -s ${CONFIG_DIR}/HOME/.bashrc $HOME/.bashrc
 
 # Create the .local folders
 mkdir -p $HOME/.local/share/fonts
 mkdir -p $HOME/.local/bin
 
 # Link the shell scripts to the local bin directory
-cd $HOME/.config/zz-config-setup
+cd $CONFIG_DIR
 stow -t $HOME/.local/bin SHELL-SCRIPTS/
 
 # Git user config
-git config --global user.email "lincolnyuji@hotmail.com"
-git config --global user.name "Lincoln Yuji de Oliveira"
+# git config --global user.email "lincolnyuji@hotmail.com"
+# git config --global user.name "Lincoln Yuji de Oliveira"
 
 # Installing Latex
-sudo pacman -S texlive-core texlive-latexextra texlive-bibtexextra texlive-formatsextra 
+# sudo pacman -S texlive-core texlive-latexextra texlive-bibtexextra texlive-formatsextra 
 
 # Installing ZSH
 sudo pacman -S zsh zsh-syntax-highlighting zsh-completions zsh-autosuggestions
