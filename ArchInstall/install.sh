@@ -51,7 +51,7 @@ case VIDEO_OPTION in
     "2") sudo pacman -S nvidia nvidia-settings ;;
     "3") sudo pacman -S xf86-video-amdgpu ;;
     "4") sudo pacman -S virtualbox-guest-utils ;;
-    *) echo "[ ABORT! ] Invalid driver option..."; exit 1
+    *) echo "[ ABORT! ] Invalid driver option..." && exit 1 ;;
 esac
 
 echo "[ COMPLETE! ] Installation finished!"
