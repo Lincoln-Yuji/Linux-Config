@@ -56,14 +56,14 @@ sudo pacman -S xorg xorg-xinit awesome arandr
 sudo pacman -S alsa-utils pulseaudio pulseaudio-alsa pavucontrol pulsemixer
 
 # Installing graphical themes
-sudo pacman gtk3 gtk4            # Gtk libraries
+sudo pacman -S gtk3 gtk4            # Gtk libraries
 sudo pacman -S breeze breeze-gtk # For both GTK and Qt
 sudo pacman -S qt5ct             # Qt5 engine
 # To set GTK2 system wide themes edit /etc/gtk-2.0/gtkrc
 
 # Tools
 sudo pacman -S alacritty firefox acpi ripgrep font-manager vim stow unzip bash-completion \
-    imagemagick youtube-dl gimp neofetch htop wmctrl
+    imagemagick youtube-dl gimp neofetch htop wmctrl rofi
 
 # Installing the aura AUR helper
 cd $(mktemp -d)
@@ -97,7 +97,8 @@ sudo pacman -S adobe-source-han-serif-jp-fonts adobe-source-han-serif-cn-fonts
 sudo pacman -S neovim && sudo aura -A nvim-packer-git
 
 # Utilities
-sudo pacman -S vlc nemo gscreenshot qalculate-gtk
+sudo pacman -S vlc nemo qalculate-gtk
+sudo aura -A gscreenshot
 
 # Polkit so we can run simple stuff without having to open a root prompt
 sudo pacman -S polkit lxsession-gtk3
