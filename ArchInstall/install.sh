@@ -54,38 +54,51 @@ case VIDEO_OPTION in
     *) echo "[ ABORT! ] Invalid driver option..." && exit 1 ;;
 esac
 
-echo "[ COMPLETE! ] Installation finished!"
-exit 0
-
 sudo pacman -S base-devel pacman-contrib --needed
 
 # Breeze Interface
 sudo pacman -S gtk3 gtk4 breeze breeze-gtk qt5ct
 # To set GTK2 system wide themes edit /etc/gtk-2.0/gtkrc
 
-# Video
-sudo pacman -S xorg xorg-xinit awesome arandr
+# Video and Audio
+sudo pacman -S xorg xorg-xinit awesome arandr \
+    alsa-utils pulseaudio pulseaudio-alsa pavucontrol pulsemixer --needed
 
-# Audio
-sudo pacman -S alsa-utils pulseaudio pulseaudio-alsa pavucontrol pulsemixer
+# Tools and Apps
+sudo pacman -S \
+    alacritty \
+    firefox \
+    gimp \
+    font-manager \
+    rofi \
+    ripgrep \
+    stow \
+    unzip \
+    bash-completion \
+    imagemagick \
+    neofetch \
+    htop \
+    youtube-dl \
+    acpi \
+    wmctrl \
+    neovim \
+    pqiv \
+    zathura zathura-pdf-poppler \
+    transmission-gtk \
+    vlc nemo qalculate-gtk
 
-# Tools
-sudo pacman -S alacritty firefox acpi ripgrep font-manager vim stow unzip bash-completion \
-    imagemagick youtube-dl gimp neofetch htop wmctrl rofi
+sudo aura -A \
+    betterlockscreen \
+    gscreenshot \
+    nvim-packer-git
 
-# Synchronize
-# sudo aura -Ayu
+# cd $HOME/.config/betterlockscreen && ./config.lua # Script to set new wallpaper to lockscreen
+sudo systemctl enable betterlockscreen@${USER}.service
 
 # Installing the LightDM login display
 sudo pacman -S lightdm lightdm-gtk-greeter
 sudo systemctl enable lightdm.service
 # Set the correct theme editing /etc/lightdm/lightdm-gtk-greeter.conf
-
-# Installing betterlockscreen
-sudo aura -A betterlockscreen
-
-# cd $HOME/.config/betterlockscreen && ./config.lua # Script to set new wallpaper to lockscreen
-sudo systemctl enable betterlockscreen@${USER}.service
 
 # Fonts and Emojis
 sudo pacman -S noto-fonts-emoji
@@ -95,22 +108,8 @@ sudo aura -A nerd-fonts-hack
 # sudo pacman -S adobe-source-han-sans-jp-fonts adobe-source-han-sans-cn-fonts
 # sudo pacman -S adobe-source-han-serif-jp-fonts adobe-source-han-serif-cn-fonts
 
-# Neovim
-sudo pacman -S neovim && sudo aura -A nvim-packer-git
-
-# Utilities
-sudo pacman -S vlc nemo qalculate-gtk
-sudo aura -A gscreenshot
-
 # Polkit so we can run simple stuff without having to open a root prompt
 sudo pacman -S polkit lxsession-gtk3
-
-sudo pacman -S zathura zathura-pdf-poppler
-sudo pacman -S pqiv
-
-# sudo pacman -S virtualbox virtualbox-host-modules-arch
-sudo pacman -S transmission-gtk # Torrent Client
-
 
 CONFIG_DIR=$HOME/.config/zoomer-config
 cd ${CONFIG_DIR}
@@ -136,3 +135,7 @@ ln -s ${CONFIG_DIR}/HOME/.bashrc $HOME/.bashrc
 
 # Installing ZSH
 sudo pacman -S zsh zsh-syntax-highlighting zsh-completions zsh-autosuggestions
+
+echo "====================================="
+echo "[ COMPLETE! ] Installation finished!"
+echo "====================================="
