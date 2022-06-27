@@ -1,3 +1,3 @@
 #!/bin/env bash
 
-echo "$(checkupdates | wc -l) updates"
+echo "Updates: $(checkupdates | wc -l)"
