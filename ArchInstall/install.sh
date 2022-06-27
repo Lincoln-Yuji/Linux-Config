@@ -28,6 +28,17 @@
 # And then update the system time with systemd: $ timedatectl set-time 'HH:MM:SS'
 
 # Start (Assuming the host already has git installed)
+
+
+# ====== Installing the aura AUR helper ========
+# cd $(mktemp -d)
+# git clone https://aur.archlinux.org/aura-bin.git
+# cd aura-bin
+# makepkg
+# sudo pacman -U aura-bin-3.2.9-x86_64.pkg.tar.zst
+
+sudo pacman -Syu  # Update
+
 echo "Driver Option:"
 echo "  1) Intel"
 echo "  2) NVDIA"
@@ -46,8 +57,11 @@ esac
 echo "[ COMPLETE! ] Installation finished!"
 exit 0
 
-sudo pacman -Syyu  # Update
 sudo pacman -S base-devel pacman-contrib --needed
+
+# Breeze Interface
+sudo pacman -S gtk3 gtk4 breeze breeze-gtk qt5ct
+# To set GTK2 system wide themes edit /etc/gtk-2.0/gtkrc
 
 # Video
 sudo pacman -S xorg xorg-xinit awesome arandr
@@ -55,43 +69,31 @@ sudo pacman -S xorg xorg-xinit awesome arandr
 # Audio
 sudo pacman -S alsa-utils pulseaudio pulseaudio-alsa pavucontrol pulsemixer
 
-# Installing graphical themes
-sudo pacman -S gtk3 gtk4            # Gtk libraries
-sudo pacman -S breeze breeze-gtk # For both GTK and Qt
-sudo pacman -S qt5ct             # Qt5 engine
-# To set GTK2 system wide themes edit /etc/gtk-2.0/gtkrc
-
 # Tools
 sudo pacman -S alacritty firefox acpi ripgrep font-manager vim stow unzip bash-completion \
     imagemagick youtube-dl gimp neofetch htop wmctrl rofi
 
-# Installing the aura AUR helper
-cd $(mktemp -d)
-git clone https://aur.archlinux.org/aura-bin.git
-cd aura-bin
-makepkg
-sudo pacman -U [the-package-file-that-makepkg-produces]
-
 # Synchronize
-sudo aura -Ayu
+# sudo aura -Ayu
 
 # Installing the LightDM login display
 sudo pacman -S lightdm lightdm-gtk-greeter
-systemctl enable lightdm.service
+sudo systemctl enable lightdm.service
 # Set the correct theme editing /etc/lightdm/lightdm-gtk-greeter.conf
 
 # Installing betterlockscreen
 sudo aura -A betterlockscreen
 
-cd $HOME/.config/betterlockscreen && ./config.lua # Script to set new wallpaper to lockscreen
-sudo systemctl enable betterlockscreen@$USER.service --now
+# cd $HOME/.config/betterlockscreen && ./config.lua # Script to set new wallpaper to lockscreen
+sudo systemctl enable betterlockscreen@${USER}.service
 
 # Fonts and Emojis
 sudo pacman -S noto-fonts-emoji
 sudo aura -A nerd-fonts-hack
+
 # Japanese and Chinese glyphs
-sudo pacman -S adobe-source-han-sans-jp-fonts adobe-source-han-sans-cn-fonts
-sudo pacman -S adobe-source-han-serif-jp-fonts adobe-source-han-serif-cn-fonts
+# sudo pacman -S adobe-source-han-sans-jp-fonts adobe-source-han-sans-cn-fonts
+# sudo pacman -S adobe-source-han-serif-jp-fonts adobe-source-han-serif-cn-fonts
 
 # Neovim
 sudo pacman -S neovim && sudo aura -A nvim-packer-git
@@ -106,30 +108,28 @@ sudo pacman -S polkit lxsession-gtk3
 sudo pacman -S zathura zathura-pdf-poppler
 sudo pacman -S pqiv
 
-sudo pacman -S virtualbox virtualbox-host-modules-arch
+# sudo pacman -S virtualbox virtualbox-host-modules-arch
 sudo pacman -S transmission-gtk # Torrent Client
+
+
+CONFIG_DIR=$HOME/.config/zoomer-config
+cd ${CONFIG_DIR}
 
 # Link to config files
 stow CFG/
 
+# Link local binaries and scripts
+mkdir -p $HOME/.local/bin
+stow -t $HOME/.local/bin SHELL-SCRIPTS/
+
+# Create the .local folders
+# mkdir -p $HOME/.local/share/fonts
+
 # Link to files/folders on my home directory
-CONFIG_DIR=$HOME/.config/zoomer-config
 rm $HOME/.bashrc
 rm $HOME/.bash_profile
 ln -s ${CONFIG_DIR}/HOME/.profile $HOME/.profile
 ln -s ${CONFIG_DIR}/HOME/.bashrc $HOME/.bashrc
-
-# Create the .local folders
-mkdir -p $HOME/.local/share/fonts
-mkdir -p $HOME/.local/bin
-
-# Link the shell scripts to the local bin directory
-cd $CONFIG_DIR
-stow -t $HOME/.local/bin SHELL-SCRIPTS/
-
-# Git user config
-# git config --global user.email "lincolnyuji@hotmail.com"
-# git config --global user.name "Lincoln Yuji de Oliveira"
 
 # Installing Latex
 # sudo pacman -S texlive-core texlive-latexextra texlive-bibtexextra texlive-formatsextra 
