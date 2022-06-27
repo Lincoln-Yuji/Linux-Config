@@ -13,13 +13,18 @@ local function TOG_VOLUME_CMD() return 'bash -c "$HOME/.local/bin/script-volume 
 
 local icon_dir = os.getenv("HOME") .. '/.config/awesome/widgets/volume-widget/icons/'
 
+local icon1 = "婢 "
+local icon2 = " "
+local icon3 = "墳 "
+local icon4 = " "
+
 local label = wibox.widget {
     widget = wibox.widget.textbox,
     font = beautiful.font
 }
 local char_icon = wibox.widget {
     widget = wibox.widget.textbox,
-    font = "monospace Bold 16",
+    font = "Hack Nerd Font Bold 14",
     text = "婢"
 }
 
@@ -27,20 +32,20 @@ local volume = {
     widget = wibox.widget {
         char_icon, label, layout = wibox.layout.fixed.horizontal, is_muted = false,
         set_volume_level = function(self, new_value)
-            label:set_text(" " .. tonumber(new_value) .. "%")
+            label:set_text(tonumber(new_value) .. "%")
             if self.is_muted then
-                char_icon:set_text("婢")
+                char_icon:set_text(icon1)
             else
                 local volume_value = tonumber(new_value)
-                if     volume_value < 35 then char_icon:set_text("")
-                elseif volume_value < 65 then char_icon:set_text("墳")
-                else   char_icon:set_text("")
+                if     volume_value < 35 then char_icon:set_text(icon2)
+                elseif volume_value < 65 then char_icon:set_text(icon3)
+                else   char_icon:set_text(icon4)
                 end
             end
         end,
         mute = function(self)
             self.is_muted = true
-            char_icon:set_text("婢")
+            char_icon:set_text(icon1)
         end,
         unmute = function(self)
             self.is_muted = false

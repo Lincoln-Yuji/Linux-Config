@@ -4,7 +4,7 @@ local wibox = require("wibox")
 
 local icon = wibox.widget {
     widget = wibox.widget.textbox,
-    font = "monospace Bold 14",
+    font = "Hack Nerd Font Bold 12",
     text = ' '
 }
 
