@@ -10,47 +10,28 @@ require("awful.autofocus")
 -- Widget and layout library
 local wibox = require("wibox")
 
+HOME     = os.getenv("HOME")
+TERMINAL = os.getenv("TERMINAL")
+EDITOR   = os.getenv("EDITOR")
+BROWSER  = os.getenv("BROWSER")
+
+editor_cmd = TERMINAL .. " -e " .. EDITOR
+
 -- Set my own theme
-local beautiful = require("mytheme")
+beautiful = require("mytheme")
 
 -- Notification library
 local naughty = require("naughty")
 local menubar = require("menubar")
-local hotkeys_popup = require("awful.hotkeys_popup")
 
--- Check if awesome encountered an error during startup and fell back to
--- another config (This code will only ever execute for the fallback config)
-if awesome.startup_errors then
-    naughty.notify(
-    { preset = naughty.config.presets.critical,
-      title = "Oops, there were errors during startup!",
-      text = awesome.startup_errors })
-end
+-- Start modules
+require('modules.notifications')
 
--- Handle runtime errors after startup
-do
-    local in_error = false
-    awesome.connect_signal("debug::error", function (err)
-        if in_error then return end
-        in_error = true
-        naughty.notify(
-            { preset = naughty.config.presets.critical,
-              title = "Oops, an error happened!",
-              text = tostring(err) })
-        in_error = false
-    end)
-end
-
-terminal = os.getenv("TERMINAL")
-editor   = os.getenv("EDITOR")
-browser  = os.getenv("BROWSER")
-editor_cmd = terminal .. " -e " .. editor
+-- Settings
+require('settings.clients')
 
 -- Default modkey (Super Key).
 modkey = "Mod4"
-
--- $HOME path
-local HOME = os.getenv("HOME")
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
@@ -62,15 +43,15 @@ awful.layout.layouts = {
 }
 
 -- Widgets
-local kernel_widget  = require("widgets.kernel-version")
-local date_widget    = require("widgets.date-clock")
-local cpu_widget     = require("widgets.cpu-widget")
-local ram_widget     = require("widgets.ram-widget")
-local battery_widget = require("widgets.battery-percentage")
-local volume_widget  = require("widgets.volume")
-local logout_menu    = require("widgets.logout")
-local pac_update     = require("widgets.pac-update")
-local brightness_widget = require("widgets.brightness")
+kernel_widget  = require("widgets.kernel-version")
+date_widget    = require("widgets.date-clock")
+cpu_widget     = require("widgets.cpu-widget")
+ram_widget     = require("widgets.ram-widget")
+battery_widget = require("widgets.battery-percentage")
+volume_widget  = require("widgets.volume")
+logout_menu    = require("widgets.logout")
+pac_update     = require("widgets.pac-update")
+brightness_widget = require("widgets.brightness")
 
 local spliter = wibox.widget.textbox()
 spliter:set_text(" | ")
@@ -78,19 +59,19 @@ spliter:set_text(" | ")
 -- Pop Menu
 myawesomemenu = {
    { "- Hotkeys", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
-   { "- Manual", terminal .. " -e man awesome" },
+   { "- Manual", TERMINAL .. " -e man awesome" },
    { "- Edit Config", editor_cmd .. " " .. awesome.conffile },
    { "- Restart", awesome.restart },
    { "- Quit", function() awesome.quit() end },
 }
 local menu_awesome  = { "Awesome", myawesomemenu, beautiful.awesome_icon }
-local menu_terminal = { "Open Terminal", terminal }
+local menu_terminal = { "Open Terminal", TERMINAL }
 
 mymainmenu = awful.menu({
     items = {menu_awesome, menu_terminal}
 })
 mylauncher = awful.widget.launcher({image = beautiful.awesome_icon, menu = mymainmenu})
-menubar.utils.terminal = terminal -- Set the terminal for applications that require it
+menubar.utils.terminal = TERMINAL -- Set the terminal for applications that require it
 
 -- Keyboard map indicator and switcher
 mykeyboardlayout = awful.widget.keyboardlayout()
@@ -168,105 +149,26 @@ awful.screen.connect_for_each_screen( function(s)
             layout = wibox.layout.fixed.horizontal,
             -- mylauncher,
             spliter,
-            kernel_widget, spliter,
+            _G.kernel_widget, spliter,
             s.mytaglist,
         },
         wibox.widget.base.empty_widget(), -- "Spliter"
         { -- Right
             layout = wibox.layout.fixed.horizontal,
-            pac_update,            spliter,
-            cpu_widget,            spliter,
-            ram_widget,            spliter,
-            volume_widget(),       spliter,
-            brightness_widget(),   spliter,
-            date_widget,           spliter,
-            battery_widget,        spliter,
+            _G.pac_update,            spliter,
+            _G.cpu_widget,            spliter,
+            _G.ram_widget,            spliter,
+            _G.volume_widget(),       spliter,
+            _G.brightness_widget(),   spliter,
+            _G.date_widget,           spliter,
+            _G.battery_widget,        spliter,
             wibox.layout.margin(systray, 0, 0, 3, 3),               spliter,
-            logout_menu,
-            mykeyboardlayout,
+            _G.logout_menu,
+            _G.mykeyboardlayout,
             s.mylayoutbox,
         },
     }
 end)
-
--- Mouse Bindings
-root.buttons(gears.table.join(
-    awful.button({ }, 3, function () mymainmenu:toggle() end),
-    awful.button({ }, 4, awful.tag.viewnext),
-    awful.button({ }, 5, awful.tag.viewprev)
-))
-
--- Key Binding Settings
-local key_settings = require("settings.key-settings")
-clientkeys = key_settings.set_client_keys()
-globalkeys = key_settings.set_global_keys(volume_widget, brightness_widget)
-
--- Set keys
-root.keys(globalkeys)
-
-clientbuttons = gears.table.join(
-    awful.button({        }, 1, function (c)
-        c:emit_signal("request::activate", "mouse_click", {raise = true})
-    end),
-    awful.button({ modkey }, 1, function (c)
-        c:emit_signal("request::activate", "mouse_click", {raise = true})
-        awful.mouse.client.move(c)
-    end),
-    awful.button({ modkey }, 3, function (c)
-        c:emit_signal("request::activate", "mouse_click", {raise = true})
-        awful.mouse.client.resize(c)
-    end)
-)
-
--- Rules to apply to new clients (through the "manage" signal).
-awful.rules.rules = {
-    -- All clients will match this rule.
-    { rule = { },
-      properties = {
-          border_width = beautiful.border_width,
-          border_color = beautiful.border_normal,
-          focus     = awful.client.focus.filter,
-          raise     = true,
-          keys      = clientkeys,
-          buttons   = clientbuttons,
-          screen    = awful.screen.preferred,
-          placement = awful.placement.no_overlap+awful.placement.no_offscreen
-       }
-    },
-
-    -- Floating clients.
-    { rule_any = {
-        instance = {
-            "DTA",  -- Firefox addon DownThemAll.
-            "copyq",  -- Includes session name in class.
-            "pinentry",
-        },
-        class = {
-            "Arandr", "Pavucontrol", "Gscreenshot", " ",
-            "Blueman-manager", "Gpick", "Wpa_gui", "veromix",
-            "xtightvncviewer",
-        },
-        -- Note that the name property shown in xprop might be set slightly after 
-        -- creation of the client and the name shown there might not match defined rules here.
-        name = {
-            "Event Tester",  -- xev.
-        },
-        role = {
-            "AlarmWindow",    -- Thunderbird's calendar.
-            "ConfigManager",  -- Thunderbird's about:config.
-            "pop-up",         -- e.g. Google Chrome's (detached) Developer Tools.
-        }
-    },
-        properties = { floating = true }
-    },
-
-    { rule = { class = "VirtualBox Machine" },
-        properties = { ontop = true } },
-
-    -- Set Firefox to always map on the tag named "2" on screen 1.
-    -- { rule = { class = "Firefox" },
-    --   properties = { screen = 1, tag = "2" } },
-}
 
 -- Signal function to execute when a new client appears.
 client.connect_signal("manage", function (c)
@@ -281,14 +183,3 @@ end)
 client.connect_signal("focus",   function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 
-----------------------
--- Startup Commands --
-----------------------
-awful.spawn.with_shell("nm-applet")  -- Network Daemon
-awful.spawn.with_shell("lxpolkit")   -- Authenticator server
-
--- LightDM has the .xsession-erros log hardcoded into the home directory (WTF?)
--- This is not a good practice at all, but I don't want a growing log file in my home
--- directory and it seems this is the only solution since they don't let /etc/X11/Xsession
--- to actually handle this task...
-awful.spawn.with_shell("rm " .. HOME .. "/.xsession-errors")

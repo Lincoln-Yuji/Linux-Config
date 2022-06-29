@@ -6,6 +6,9 @@ local map = function(cmd, key, info, f)
     return awful.key(cmd, key, f, { group = info[1], description = info[2]})
 end
 
+-- Super Key
+local modkey = "Mod4"
+
 return {
 -- Client Keys
 set_client_keys = function ()
@@ -23,7 +26,7 @@ set_client_keys = function ()
 )
 end,
 -- Global Keys
-set_global_keys = function (volume_widget, brightness_widget)
+set_global_keys = function ()
     globalkeys = gears.table.join(
         awful.key({ modkey }, "s",  hotkeys_popup.show_help),
 
@@ -44,7 +47,7 @@ set_global_keys = function (volume_widget, brightness_widget)
         map({modkey}, "h", {"Navigation:", "Left Tag"}, awful.tag.viewprev),
 
         map({modkey}, "Return", {"Application:", "Open Terminal"},
-           function() awful.spawn(terminal) end),
+           function() awful.spawn(_G.TERMINAL) end),
         -- map({modkey}, "b",      {"Application:", "Open Firefox"},
         --    function() awful.spawn(browser) end),
 
@@ -59,12 +62,12 @@ set_global_keys = function (volume_widget, brightness_widget)
         map({modkey}, "u", {"Screens:", "Switch mouse between screens"},
             function() awful.screen.focus_relative(1) end ),
 
-        map({modkey}, "F6", {"Audio:", "Increase Volume"}, function() volume_widget:inc(5) end),
-        map({modkey}, "F5", {"Audio:", "Decrease Volume"}, function() volume_widget:dec(5) end),
-        map({modkey}, "F3", {"Audio:", "Toggle Volume"}, function() volume_widget:toggle() end),
+        map({modkey}, "F6", {"Audio:", "Increase Volume"}, function() _G.volume_widget:inc(5) end),
+        map({modkey}, "F5", {"Audio:", "Decrease Volume"}, function() _G.volume_widget:dec(5) end),
+        map({modkey}, "F3", {"Audio:", "Toggle Volume"}, function() _G.volume_widget:toggle() end),
 
-        map({modkey}, "F9", {"Screens:", "More light"}, function() brightness_widget:inc() end),
-        map({modkey}, "F8", {"Screens:", "Less light"}, function() brightness_widget:dec() end),
+        map({modkey}, "F9", {"Screens:", "More light"}, function() _G.brightness_widget:inc() end),
+        map({modkey}, "F8", {"Screens:", "Less light"}, function() _G.brightness_widget:dec() end),
 
         awful.key({ }, "Print", function() awful.util.spawn("gscreenshot") end),
         map({modkey, "Control"}, "q", {"Awesome:", "Open logout menu"},
