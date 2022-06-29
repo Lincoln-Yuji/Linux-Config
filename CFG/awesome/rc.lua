@@ -15,13 +15,14 @@ TERMINAL = os.getenv("TERMINAL")
 EDITOR   = os.getenv("EDITOR")
 BROWSER  = os.getenv("BROWSER")
 
+MODKEY = "Mod4" -- Super Key
+
 editor_cmd = TERMINAL .. " -e " .. EDITOR
 
 -- Set my own theme
 beautiful = require("mytheme")
 
 -- Notification library
-local naughty = require("naughty")
 local menubar = require("menubar")
 
 -- Start modules
@@ -31,7 +32,7 @@ require('modules.notifications')
 require('settings.clients')
 
 -- Default modkey (Super Key).
-modkey = "Mod4"
+-- modkey = "Mod4"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
@@ -85,13 +86,13 @@ mykeyboardlayout:connect_signal("button::press",
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
     awful.button({        }, 1, function(t) t:view_only() end),
-    awful.button({ modkey }, 1, function(t)
+    awful.button({ MODKEY }, 1, function(t)
         if client.focus then
             client.focus:move_to_tag(t)
         end
     end),
     awful.button({        }, 3, awful.tag.viewtoggle),
-    awful.button({ modkey }, 3, function(t)
+    awful.button({ MODKEY }, 3, function(t)
         if client.focus then
             client.focus:toggle_tag(t)
         end
