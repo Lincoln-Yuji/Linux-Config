@@ -141,7 +141,7 @@ awful.screen.connect_for_each_screen( function(s)
     }
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s, height = 25, ontop = false })
+    s.mywibox = awful.wibar({ position = "top", screen = s, height = 28, ontop = false })
 
     -- Add widgets to the wibox
     s.mywibox:setup {
@@ -163,9 +163,9 @@ awful.screen.connect_for_each_screen( function(s)
             _G.brightness_widget(),   spliter,
             _G.date_widget,           spliter,
             _G.battery_widget,        spliter,
-            wibox.layout.margin(systray, 0, 0, 3, 3),               spliter,
             _G.logout_menu,
             _G.mykeyboardlayout,
+            wibox.layout.margin(systray, 0, 0, 3, 3), spliter,
             s.mylayoutbox,
         },
     }

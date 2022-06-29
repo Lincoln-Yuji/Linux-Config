@@ -10,7 +10,7 @@ theme.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 -----------------
 -- Tweak theme --
 -----------------
-theme.font = "monospace Bold 10"
+theme.font = "Hack Nerd Font Bold 11"
 
 -- theme.wallpaper = wallpapers .. "/1920x1080/battleship.jpg"
 theme.wallpaper = os.getenv("HOME") .. "/.config/awesome/assets/wallpaper.jpg" 
