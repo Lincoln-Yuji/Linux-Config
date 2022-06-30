@@ -141,6 +141,22 @@ ln -s ${CONFIG_DIR}/HOME/.bashrc $HOME/.bashrc
 # Installing ZSH
 sudo pacman -S zsh zsh-syntax-highlighting zsh-completions zsh-autosuggestions
 
+# Installing qemu with graphical interface
+
+sudo pacman -S qemu-base \
+    libvirt iptables-nft dnsmasq dmidecode \
+    virt-manager
+
+sudo usermod -G libvirt -a $USER
+sudo systemctl --user enable libvirtd.service
+
+# We don't want the VM's to be created at root:
+
+# Edit the /etc/libvirt/qemu.conf 
+# Add (or uncomment) these lines:
+# user = "<username>"
+# group = "libvirt"
+
 echo "====================================="
 echo "[ COMPLETE! ] Installation finished!"
 echo "====================================="
