@@ -297,7 +297,7 @@ the system and recover our internet connection.
 
 ```
 pacman -S dosfstools mtools networkmanager network-manager-applet \
-            wpa_supplicant wireless_tools dialog sudo git
+            wpa_supplicant wireless_tools dialog sudo git reflector
 ```
 
 We don't need to install all of them. For example you don't need WPA and wirless tools if
@@ -359,4 +359,33 @@ EDITOR=nano visudo
 %wheel ALL=(ALL:ALL) ALL
 ```
 
+## 15. Enable Network Manager
+Super user privileges are required to run the following command. Either do it as root or do it
+using sudo.
 
+```
+systemctl enable NetworkManager --now
+```
+
+## 16. Pacman configurations
+
+We can use reflector to generate a server list based on our country to speed up downloads.
+The following code will look up for servers hosted in 'country' and write them into 'file'.
+
+```
+reflector -c '<country>' --sort rate --save <file>
+```
+
+We can just copy the generated addresses and add it to /etc/pacman.d/mirrorlist. Make sure to put
+them above every other server so pacman will give them priotity.
+
+If you have a rather good internet connection you may want to speed up stuff even more by enabling
+parallel downloads with pacman. You can do that just uncommenting (or adding) the following:
+
+```
+sudo nano /etc/pacman.conf
+ParallelDownloads = 3
+```
+
+This example will allow pacman to perform the maximum of 3 parallel downloads. This file has
+lots of things we can change to configure the Arch Linux package manager.

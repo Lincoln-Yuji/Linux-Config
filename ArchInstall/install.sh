@@ -77,7 +77,7 @@ sudo pacman -S \
     bash-completion \
     imagemagick \
     neofetch \
-    htop \
+    htop bashtop \
     youtube-dl \
     acpi \
     wmctrl \
@@ -85,7 +85,8 @@ sudo pacman -S \
     pqiv \
     zathura zathura-pdf-poppler \
     transmission-gtk \
-    vlc nemo qalculate-gtk
+    vlc nemo qalculate-gtk \
+    variety feh
 
 sudo aura -A \
     betterlockscreen \

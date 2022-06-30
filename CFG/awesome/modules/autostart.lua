@@ -5,6 +5,7 @@ local awful = require('awful')
 ----------------------
 awful.spawn.with_shell("nm-applet")  -- Network Daemon
 awful.spawn.with_shell("lxpolkit")   -- Authenticator server
+awful.spawn.with_shell("variety")    -- Wallpaper changer daemom
 
 -- LightDM has the .xsession-erros log hardcoded into the home directory (WTF?)
 -- This is not a good practice at all, but I don't want a growing log file in my home

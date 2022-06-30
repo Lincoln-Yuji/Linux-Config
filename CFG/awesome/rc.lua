@@ -27,6 +27,7 @@ local menubar = require("menubar")
 
 -- Start modules
 require('modules.notifications')
+require('modules.autostart')
 
 -- Settings
 require('settings.clients')
