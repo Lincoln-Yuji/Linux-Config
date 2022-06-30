@@ -64,6 +64,12 @@ sudo pacman -S virt-manager
 We can now enable the libvirt daemon and use an authenticator (polkit, for instance) to control
 the machanisms used for client connections independently.
 
+Initialize the libvirt daemon:
+
+```
+sudo systemctl --user enable libvirtd --now
+```
+
 One easy way to ensure your user has access to libvirt daemon is to add it as a member of the
 libvirt user group:
 
