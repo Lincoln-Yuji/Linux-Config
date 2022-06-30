@@ -1,11 +1,15 @@
 local awful = require('awful')
 
-----------------------
--- Startup Commands --
-----------------------
-awful.spawn.with_shell("nm-applet")  -- Network Daemon
-awful.spawn.with_shell("lxpolkit")   -- Authenticator server
-awful.spawn.with_shell("variety")    -- Wallpaper changer daemom
+-- We don't want to re-run programs which are already running...
+local function start_up(program)
+    awful.spawn.with_shell(
+        string.format("pgrep -u $USER -x %s || %s", program, program)
+    )
+end
+
+start_up("lxpolkit")  -- Authticator Server
+start_up("nm-applet") -- Systray Network Daeon 
+start_up("variety")   -- Wallpaper manager daemon
 
 -- LightDM has the .xsession-erros log hardcoded into the home directory (WTF?)
 -- This is not a good practice at all, but I don't want a growing log file in my home
