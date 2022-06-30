@@ -61,8 +61,11 @@ sudo pacman -S gtk3 gtk4 breeze breeze-gtk qt5ct
 # To set GTK2 system wide themes edit /etc/gtk-2.0/gtkrc
 
 # Video and Audio
-sudo pacman -S xorg xorg-xinit awesome arandr \
-    alsa-utils pulseaudio pulseaudio-alsa pavucontrol pulsemixer --needed
+sudo pacman -S xorg xorg-xinit awesome \
+    pipewire wireplumber pipewire-pulse gst-plugin-pipewire
+    # alsa-utils pulseaudio pulseaudio-alsa pavucontrol pulsemixer --needed
+
+sudo systemctl --user enable pipewire.service pipewire-pulse.service
 
 # Tools and Apps
 sudo pacman -S \
@@ -86,7 +89,8 @@ sudo pacman -S \
     zathura zathura-pdf-poppler \
     transmission-gtk \
     vlc nemo qalculate-gtk \
-    variety feh
+    variety feh arandr \
+    pavucontrol pulsemixer --needed
 
 sudo aura -A \
     betterlockscreen \
@@ -102,7 +106,7 @@ sudo systemctl enable lightdm.service
 # Set the correct theme editing /etc/lightdm/lightdm-gtk-greeter.conf
 
 # Fonts and Emojis
-sudo pacman -S noto-fonts-emoji
+sudo pacman -S noto-fonts-emoji ttf-font-awesome
 sudo aura -A nerd-fonts-hack
 
 # Japanese and Chinese glyphs

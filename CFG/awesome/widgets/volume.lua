@@ -32,7 +32,13 @@ local volume = {
     widget = wibox.widget {
         char_icon, label, layout = wibox.layout.fixed.horizontal, is_muted = false,
         set_volume_level = function(self, new_value)
-            label:set_text(tonumber(new_value) .. "%")
+            if new_value == "" then
+                label:set_text("0%")
+                char_icon:set_text(icon1)
+                return
+            else
+                label:set_text(tonumber(new_value) .. "%")
+            end
             if self.is_muted then
                 char_icon:set_text(icon1)
             else

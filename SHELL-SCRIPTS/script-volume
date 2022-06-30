@@ -6,6 +6,10 @@ function get_pulse_volume() {
     pulsemixer --get-volume | cut -d " " -f1
 }
 
+# function get_default_sink_name() {
+#     pacmd stat | grep "Default sink name" | cut -d " " -f4
+# }
+
 case $1 in
     "GET") get_pulse_volume ;;
     "INC") pulsemixer --change-volume +5 && get_pulse_volume ;;
@@ -13,5 +17,4 @@ case $1 in
     "TOG") pulsemixer --toggle-mute && pulsemixer --get-mute ;;
     *)     exit 1 ;;
 esac
-
 
