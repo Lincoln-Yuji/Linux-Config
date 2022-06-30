@@ -62,8 +62,8 @@ set_global_keys = function ()
         map({modkey}, "u", {"Screens:", "Switch mouse between screens"},
             function() awful.screen.focus_relative(1) end ),
 
-        map({modkey}, "F6", {"Audio:", "Increase Volume"}, function() _G.volume_widget:inc(5) end),
-        map({modkey}, "F5", {"Audio:", "Decrease Volume"}, function() _G.volume_widget:dec(5) end),
+        map({modkey}, "F6", {"Audio:", "Increase Volume"}, function() _G.volume_widget:inc() end),
+        map({modkey}, "F5", {"Audio:", "Decrease Volume"}, function() _G.volume_widget:dec() end),
         map({modkey}, "F3", {"Audio:", "Toggle Volume"}, function() _G.volume_widget:toggle() end),
 
         map({modkey}, "F9", {"Screens:", "More light"}, function() _G.brightness_widget:inc() end),

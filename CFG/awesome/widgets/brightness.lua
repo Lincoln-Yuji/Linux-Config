@@ -55,6 +55,13 @@ local function worker()
     end
 
     awful.widget.watch(GET_BRIGHTNESS(), 1, update_label, brightness.widget)
+
+    brightness.widget:buttons(
+        awful.util.table.join(
+            awful.button({}, 4, function() brightness:inc() end),
+            awful.button({}, 5, function() brightness:dec() end)
+        )
+    )
     
     return brightness.widget
 end

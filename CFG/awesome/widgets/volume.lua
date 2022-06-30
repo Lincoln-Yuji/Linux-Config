@@ -68,11 +68,11 @@ local function worker(user_args)
         end
     end
 
-    function volume:inc(s)
+    function volume:inc()
         spawn.easy_async(INC_VOLUME_CMD(),
                     function(stdout) update_graphic(volume.widget, stdout) end)
     end
-    function volume:dec(s)
+    function volume:dec()
         spawn.easy_async(DEC_VOLUME_CMD(),
                     function(stdout) update_graphic(volume.widget, stdout) end)
     end
@@ -82,6 +82,14 @@ local function worker(user_args)
     end
 
     watch(GET_VOLUME_CMD(), 1, update_graphic, volume.widget)
+
+    volume.widget:buttons(
+        awful.util.table.join(
+            awful.button({}, 1, function() volume:toggle() end),
+            awful.button({}, 4, function() volume:inc() end),
+            awful.button({}, 5, function() volume:dec() end)
+        )
+    )
 
     return volume.widget
 end
