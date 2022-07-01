@@ -18,7 +18,7 @@ theme.wallpaper = os.getenv("HOME") .. "/.config/awesome/assets/wallpaper.jpg"
 theme.useless_gap = dpi(2)
 
 -- Menu standard width and height
-theme.bg_normal  = "#28282C"
+theme.bg_normal  = "#232325"
 theme.fg_normal  = "#CCCCCC"
 theme.menu_width  = 200
 theme.menu_height = 24
