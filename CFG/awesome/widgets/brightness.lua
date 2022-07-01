@@ -14,15 +14,15 @@ local label = wibox.widget {
 
 local icon = wibox.widget {
     widget = wibox.widget.textbox,
-    font = "monospace Bold 14",
-    text = ""
+    -- font = "monospace Bold 10",
+    text = "☀️ "
 }
 
 local brightness = {
     widget = wibox.widget {
         icon, label, layout = wibox.layout.fixed.horizontal,
         set_brightness_level = function(self, new_value)
-            label:set_text(" " .. new_value .. "%")
+            label:set_text(new_value .. "%")
         end
     }
 }

@@ -6,8 +6,9 @@ local wibox = require('wibox')
 
 local icon = wibox.widget {
     widget = wibox.widget.textbox,
-    font = "Hack Nerd Font Bold 12",
-    text = ' '
+    -- font = "Hack Nerd Font Bold 12",
+    -- text = ' '
+    text = '🖥️ '
 }
 
 local label = awful.widget.watch('bash -c "$HOME/.local/bin/script-cpu"', 5)

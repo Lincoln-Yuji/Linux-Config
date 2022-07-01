@@ -13,10 +13,11 @@ local function TOG_VOLUME_CMD() return 'bash -c "$HOME/.local/bin/script-volume 
 
 local icon_dir = os.getenv("HOME") .. '/.config/awesome/widgets/volume-widget/icons/'
 
-local icon1 = "婢 "
-local icon2 = " "
-local icon3 = "墳 "
-local icon4 = " "
+local icon1 = "🔇 "
+local icon2 = "🔉 "
+local icon3 = "🔊 "
+-- local icon4 = " "
+local icon4 = "🔊 "
 
 local label = wibox.widget {
     widget = wibox.widget.textbox,
@@ -24,8 +25,8 @@ local label = wibox.widget {
 }
 local char_icon = wibox.widget {
     widget = wibox.widget.textbox,
-    font = "Hack Nerd Font Bold 14",
-    text = "婢"
+    font = "monospace 11",
+    text = "🔇 "
 }
 
 local volume = {

@@ -1,1 +1,1 @@
-echo "RAM: $(echo $(free --mega | grep Mem) | cut -d ' ' -f3)M"
+echo "$(free --mega | grep Mem | tr -s ' ' | cut -d ' ' -f3)MB"

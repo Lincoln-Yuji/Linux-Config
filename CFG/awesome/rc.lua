@@ -57,6 +57,7 @@ brightness_widget = require("widgets.brightness")
 
 local spliter = wibox.widget.textbox()
 spliter:set_text(" | ")
+spliter:set_font("monospace Bold 12")
 
 -- Pop Menu
 myawesomemenu = {
@@ -142,7 +143,7 @@ awful.screen.connect_for_each_screen( function(s)
     }
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s, height = 28, ontop = false })
+    s.mywibox = awful.wibar({ position = "top", screen = s, height = 25, ontop = false })
 
     -- Add widgets to the wibox
     s.mywibox:setup {
@@ -156,7 +157,7 @@ awful.screen.connect_for_each_screen( function(s)
         },
         wibox.widget.base.empty_widget(), -- "Spliter"
         { -- Right
-            layout = wibox.layout.fixed.horizontal,
+            layout = wibox.layout.fixed.horizontal, spliter,
             _G.pac_update,            spliter,
             _G.cpu_widget,            spliter,
             _G.ram_widget,            spliter,

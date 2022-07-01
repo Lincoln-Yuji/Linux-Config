@@ -10,7 +10,7 @@ theme.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 -----------------
 -- Tweak theme --
 -----------------
-theme.font = "Hack Nerd Font Bold 11"
+theme.font = "Hack Nerd Font Bold 10"
 
 -- theme.wallpaper = wallpapers .. "/1920x1080/battleship.jpg"
 theme.wallpaper = os.getenv("HOME") .. "/.config/awesome/assets/wallpaper.jpg" 
@@ -19,6 +19,7 @@ theme.useless_gap = dpi(2)
 
 -- Menu standard width and height
 theme.bg_normal  = "#28282C"
+theme.fg_normal  = "#CCCCCC"
 theme.menu_width  = 200
 theme.menu_height = 24
 
