@@ -35,7 +35,7 @@ window {
     border-color: 					@ac;
     border-radius: 					0px;
     padding: 						0;
-    width: 							30%;
+    width: 							40%;
 }
 
 prompt {
@@ -64,25 +64,25 @@ case-indicator {
 inputbar {
     spacing:    					0px;
     text-color: 					@fg;
-    padding:    					2px;
+    padding:    					4px;
     children: 						[ prompt,textbox-prompt-colon,entry,case-indicator ];
 }
 
 mainbox {
     border: 						0px;
     border-color: 					@ac;
-    padding: 						16;
+    padding: 						24;
 }
 
 listview {
     lines:							15;
     columns:						1;
     fixed-height: 					0;
-    border: 						4px;
-    border-color: 					@ac;
+    border: 						8px;
+    border-color: 					@bg;
     spacing: 						4px;
     scrollbar: 						false;
-    padding: 						5px 5px 5px 5px;
+    padding: 						6px 6px 6px 6px;
 }
 
 element-text {
