@@ -35,7 +35,7 @@ window {
     border-color: 					@ac;
     border-radius: 					0px;
     padding: 						0;
-    width: 							40%;
+    width: 							35%;
 }
 
 prompt {
@@ -88,8 +88,10 @@ listview {
 element-text {
     background-color: #00000000;
     text-color:       inherit;
-    size: 1.00ch;
+    size: 1.80ch;
     vertical-align: 0.5;
+    /* horizontal-align: 0.2; */
+    padding: 0px 20px;
 }
 
 element-icon {
