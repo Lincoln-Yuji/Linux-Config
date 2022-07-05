@@ -57,7 +57,7 @@ This is a list of applications that I find useful:
 ```
 sudo pacman -S ark dolphin dolphin-plugins dragon elisa filelight gwenview kalgebra kate \
     kbackup kcalc kcron kalendar kdeconnect kdialog kget kgpg kmousetool kruler \
-    ksystemlog ktimer ktorrent krita okular sweeper spectacle
+    ksystemlog konsole ktimer ktorrent krita okular sweeper spectacle
 ```
 
 If need printing, install the following:
