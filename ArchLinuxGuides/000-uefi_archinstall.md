@@ -296,8 +296,8 @@ After installing and rebooting, we may want have some packages installed to keep
 the system and recover our internet connection.
 
 ```
-pacman -S dosfstools mtools networkmanager network-manager-applet \
-            wpa_supplicant wireless_tools dialog sudo git reflector pacman-contrib
+pacman -S dosfstools mtools networkmanager wpa_supplicant wireless_tools \
+            dialog git reflector pacman-contrib
 ```
 
 We don't need to install all of them. For example you don't need WPA and wirless tools if
