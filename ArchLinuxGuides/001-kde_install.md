@@ -122,7 +122,7 @@ To update your plugins, you can run:
 ### 6.3 System Fonts
 
 Some applications won't render fonts properly beacuse our system doesn't have the required fonts
-to render some specif glyphs or emojis (discord for instance will be a huge mess):
+to render some specifc glyphs or emojis (discord for instance will be a huge mess):
 
 ```
 sudo pacman -S noto-fonts-emoji ttf-font-awesome
