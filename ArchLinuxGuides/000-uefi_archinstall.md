@@ -164,7 +164,7 @@ dev tools. Also, we can install some useful tools like a text editor and a packa
 set a dynamic IP address out of the box:
 
 ```
-pacstrap /mnt base base-devel linux linux-firmware pacman-contrib nano dhcpcd
+pacstrap /mnt base base-devel linux linux-firmware nano dhcpcd
 ```
 
 ## 6. Generating the FSTAB
@@ -297,7 +297,7 @@ the system and recover our internet connection.
 
 ```
 pacman -S dosfstools mtools networkmanager network-manager-applet \
-            wpa_supplicant wireless_tools dialog sudo git reflector
+            wpa_supplicant wireless_tools dialog sudo git reflector pacman-contrib
 ```
 
 We don't need to install all of them. For example you don't need WPA and wirless tools if
