@@ -32,6 +32,6 @@ export PATH="$HOME/.local/bin:${PATH}" # Add user binaries to PATH
 
 ## Autostart commands
 setxkbmap -layout br
-setxkbmap -option 'caps:swapescape'
+# setxkbmap -option 'caps:swapescape'
 # xset r rate 300 50
 

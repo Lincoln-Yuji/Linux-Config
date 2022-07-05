@@ -144,3 +144,47 @@ non-interactive shell to users, but I do love ZSH features and extensions on com
 ```
 sudo pacman -S zsh zsh-syntax-highlighting zsh-completions zsh-autosuggestions
 ```
+
+### 6.5 Tiling windows behaviour in KDE
+
+I've spent some years messing with Tiling Window Managers before finally stick to a proper DE like
+Gnome, KDE etc, and somehow I got too spoiled by the tiling behaviour.
+
+There's a third party script made for Kwin (KDE window manager) which does the work called
+[bismuth](https://github.com/Bismuth-Forge/bismuth). We can easily download and install it from
+the AUR:
+
+```
+sudo aura -A kwin-bismuth
+```
+
+Follow the bismuth's github README and Wiki to set it up initially and troubleshooting.
+
+### 6.6 Import KDE configuration
+
+KDE offers some official ways to import and export your desktop configuration, but I don't find
+them too good and some times I couldn't make them work properly (several times the customization
+saver widget simply refused to download).
+
+I've found a program written in python called [konsave](https://github.com/Prayag2/konsave).
+First of all, ensure you have the pip python module installed:
+
+```
+sudo pacman -S python-pip
+```
+
+Now just install konsave:
+
+```
+python -m pip install konsave
+```
+
+If you need any help using the program take a look at the github page or run:
+
+```
+# Alternatively: konsave --help
+konsave -h
+```
+
+Download your .knsv configuration and import it. After reloggin into your account, you are ready
+to go.
