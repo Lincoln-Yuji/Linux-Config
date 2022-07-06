@@ -73,7 +73,7 @@ application sucks you can just install an alternative which you consider better.
 
 ```
 sudo pacman -S alacritty firefox font-manager gimp ripgrep stow unzip bash-completion \
-    neofetch htop bashtop youtube-dl acpi neovim pavucontrol --needed
+    neofetch htop bashtop youtube-dl neovim --needed
 ```
 
 ## 6. Configuration
@@ -100,26 +100,8 @@ sudo systemctl enable sddm.service
 
 The next time you try to login from tty1, you will have a graphical interface.
 
-### 6.2 Neovim
-We can install the Packer plugin manager for neovim from the AUR:
 
-```
-sudo aura -A nvim-packer-git
-```
-
-Now we can just open neovim and run the following command to download all the plugin from github.
-
-```
-:PackerInstall
-```
-
-To update your plugins, you can run:
-
-```
-:PackerSync
-```
-
-### 6.3 System Fonts
+### 6.2 System Fonts
 
 Some applications won't render fonts properly beacuse our system doesn't have the required fonts
 to render some specifc glyphs or emojis (discord for instance will be a huge mess):
@@ -136,7 +118,7 @@ sudo aura -A nerd-fonts-hack
 
 You can install all the available nerd fonts downloading the nerd-fonts package.
 
-### 6.4 Alternative interactive shell: ZSH
+### 6.3 Alternative interactive shell: ZSH
 
 We can install shells other than bash onto our system. I think it's fine to keep bash as default
 non-interactive shell to users, but I do love ZSH features and extensions on command line:
@@ -159,6 +141,32 @@ sudo aura -A kwin-bismuth
 ```
 
 Follow the bismuth's github README and Wiki to set it up initially and troubleshooting.
+
+There's a hacking we can do on multi-monitor systems. Everytime you switch to another virtual
+desktop it changes all your screens desktops. KDE doesn't have separated groups of desktops
+to each screen (comprhensible resource-wise).
+
+On the window's titlebar there's an option called "On all Desktops", which will make the window
+persist on all your current desktops. You can enable/disable this decoration in:
++ SystemSettings > WindowDecorations > ConfigureButtons.
+
+But setting this up to every window we put on other screens is too much of a hassle. I've found
+a script that automates that. Every window which is not on the primary display will inherit this
+behaviour. You can find it [here](https://github.com/wsdfhjxc/kwin-scripts) and install it:
+
+```
+cd $(mktemp -d)
+git clone https://github.com/wsdfhjxc/kwin-scripts
+cd kwin-scripts
+./helper.sh install virtual-desktops-only-on-primary
+```
+
+After that go to:
++ SystemSettings > WindowManagement > KWinScript
+
+Enable the Virtual Desktops Only on Primary script and you are ready to go.
+
+Note that this is another non-official script and it may break on updates. Keep it in mind!
 
 ### 6.6 Import KDE configuration
 
@@ -188,3 +196,22 @@ konsave -h
 
 Download your .knsv configuration and import it. After reloggin into your account, you are ready
 to go.
+
+### 6.7 Neovim
+We can install the Packer plugin manager for neovim from the AUR:
+
+```
+sudo aura -A nvim-packer-git
+```
+
+Now we can just open neovim and run the following command to download all your plugins from github.
+
+```
+:PackerInstall
+```
+
+To update your plugins, you can run:
+
+```
+:PackerSync
+```

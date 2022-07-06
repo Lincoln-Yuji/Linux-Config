@@ -44,15 +44,15 @@ parse_git_branch() {
 }
 
 # Customizing the shell prompt
-if [ "$color_prompt" = yes ]; then
-    PBLUE="\[\033[01;34m\]"
-    PNORM="\[\033[00m\]"
-    PWARN="\[\e[91m\]"
-    PS1="${PBLUE} : ${PNORM}[${PBLUE}\w${PNORM}]${PWARN} (\$(parse_git_branch)) ${PNORM}\n❱❱❱ "
-else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-fi
-unset color_prompt force_color_prompt
+# if [ "$color_prompt" = yes ]; then
+#     PBLUE="\[\033[01;34m\]"
+#     PNORM="\[\033[00m\]"
+#     PWARN="\[\e[91m\]"
+#     PS1="${PBLUE} : ${PNORM}[${PBLUE}\w${PNORM}]${PWARN} (\$(parse_git_branch)) ${PNORM}\n❱❱❱ "
+# else
+#     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+# fi
+# unset color_prompt force_color_prompt
 
 # Enable bash completion
 if ! shopt -oq posix; then
