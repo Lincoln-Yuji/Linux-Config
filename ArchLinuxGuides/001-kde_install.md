@@ -6,7 +6,7 @@ Basic installation guide for KDE plasma desktop environment.
 
 Before installing Plasma, make sure your have a working Xorg installation on your system:
 
-```
+```sh
 sudo pacman -Syu
 sudo pacman -S xorg xorg-xinit
 ```
@@ -18,24 +18,42 @@ pulseaudio. We can use pipewire and avoid major conficts installing pipewire-pul
 The desktop environment will comunicate with the audio server as if it was pulseaudio, but the
 actual engine running under the api is pipewire.
 
-```
+```sh
 sudo pacman -S pipewire wireplumber pipewire-pulse gst-plugin-pipewire
 ```
 Now ensure to have the service enabled:
 
-```
-sudo systemctl --user enable pipewire.service pipewire-pulse.service
+```sh
+# Don't use sudo
+systemctl --user enable pipewire.service pipewire-pulse.service
 ```
 
 ## 3. Plasma installation
 
 Now we are ready to go with Plasma installation:
 
-```
+```sh
 sudo pacman -S plasma gtk2 gtk3 gtk4 --needed
 ```
 
-If you want to use a wayland section or have nvdia hardware, refer to the
+Installing video drivers:
+
++ NVIDIA:
+```sh
+sudo pacman -S nvidia nvidia-settings
+```
+
++ AMD:
+```sh
+sudo pacman -S xf86-video-amdgpu
+```
+
++ INTEL:
+```sh
+sudo pacman -S xf86-video-intel
+```
+
+If you want to use a wayland section and have nvdia hardware, refer to the
 [Arch Wiki](https://wiki.archlinux.org/title/KDE) page.
 
 ## 4. KDE Applications
@@ -44,7 +62,7 @@ The plasma package doesn't bring the KDE applications such as file manager, term
 If you wish to install EVERY single KDE application available, you can install the kde-applications
 group package:
 
-```
+```sh
 sudo pacman -S kde-applications
 ```
 
@@ -54,15 +72,15 @@ all these applications [here](https://archlinux.org/groups/x86_64/kde-applicatio
 
 This is a list of applications that I find useful:
 
-```
+```sh
 sudo pacman -S ark dolphin dolphin-plugins dragon elisa filelight gwenview kalgebra kate \
-    kbackup kcalc kcron kalendar kdeconnect kdialog kget kgpg kmousetool kruler \
+    kbackup kcalc kcron kalendar kdeconnect kdialog kget kmousetool kruler \
     ksystemlog konsole ktimer ktorrent krita okular sweeper spectacle
 ```
 
 If need printing, install the following:
 
-```
+```sh
 sudo pacman -S print-manager cups system-config-printer
 ```
 
@@ -71,9 +89,8 @@ sudo pacman -S print-manager cups system-config-printer
 We are using KDE, but we are not limited to just KDE applications. If you think some KDE
 application sucks you can just install an alternative which you consider better.
 
-```
-sudo pacman -S alacritty firefox font-manager gimp ripgrep stow unzip bash-completion \
-    neofetch htop bashtop youtube-dl neovim --needed
+```sh
+sudo pacman -S firefox font-manager gimp unzip bash-completion --needed
 ```
 
 ## 6. Configuration
@@ -82,7 +99,7 @@ Here we will set some applications up. Some of them will require packages from t
 use any AUR helper or install every package manually. Here we will install the
 [aura](https://github.com/fosskers/aura) AUR helper:
 
-```
+```sh
 cd $(mktemp -d)
 git clone https://aur.archlinux.org/aura-bin.git
 cd aura-bin
@@ -94,7 +111,7 @@ sudo pacman -U *.pkg.tar.zst # The compressed bin
 We got SDDM when we installed the packages from the plasma group. We just need to enable the
 service through Systemd:
 
-```
+```sh
 sudo systemctl enable sddm.service
 ```
 
@@ -112,22 +129,13 @@ sudo pacman -S noto-fonts-emoji ttf-font-awesome
 
 We can also install nerd fonts from the AUR:
 
-```
+```sh
 sudo aura -A nerd-fonts-hack
 ```
 
 You can install all the available nerd fonts downloading the nerd-fonts package.
 
-### 6.3 Alternative interactive shell: ZSH
-
-We can install shells other than bash onto our system. I think it's fine to keep bash as default
-non-interactive shell to users, but I do love ZSH features and extensions on command line:
-
-```
-sudo pacman -S zsh zsh-syntax-highlighting zsh-completions zsh-autosuggestions
-```
-
-### 6.5 Tiling windows behaviour in KDE
+### 6.3 Tiling windows behaviour in KDE
 
 I've spent some years messing with Tiling Window Managers before finally stick to a proper DE like
 Gnome, KDE etc, and somehow I got too spoiled by the tiling behaviour.
@@ -136,7 +144,7 @@ There's a third party script made for Kwin (KDE window manager) which does the w
 [bismuth](https://github.com/Bismuth-Forge/bismuth). We can easily download and install it from
 the AUR:
 
-```
+```sh
 sudo aura -A kwin-bismuth
 ```
 
@@ -154,7 +162,7 @@ But setting this up to every window we put on other screens is too much of a has
 a script that automates that. Every window which is not on the primary display will inherit this
 behaviour. You can find it [here](https://github.com/wsdfhjxc/kwin-scripts) and install it:
 
-```
+```sh
 cd $(mktemp -d)
 git clone https://github.com/wsdfhjxc/kwin-scripts
 cd kwin-scripts
@@ -168,28 +176,31 @@ Enable the Virtual Desktops Only on Primary script and you are ready to go.
 
 Note that this is another non-official script and it may break on updates. Keep it in mind!
 
-### 6.6 Import KDE configuration
+### 6.4 Import KDE configuration
 
 KDE offers some official ways to import and export your desktop configuration, but I don't find
 them too good and some times I couldn't make them work properly (several times the customization
 saver widget simply refused to download).
 
-I've found a program written in python called [konsave](https://github.com/Prayag2/konsave).
+I've found a program written in python called [konsave](https://github.com/Prayag2/konsave). However,
+since it's not an official script, it may not work properly sometimes and possibly break your Desktop
+settings. Use it while assuming these risks!
+
 First of all, ensure you have the pip python module installed:
 
-```
+```sh
 sudo pacman -S python-pip
 ```
 
 Now just install konsave:
 
-```
+```sh
 python -m pip install konsave
 ```
 
 If you need any help using the program take a look at the github page or run:
 
-```
+```sh
 # Alternatively: konsave --help
 konsave -h
 ```
@@ -197,21 +208,12 @@ konsave -h
 Download your .knsv configuration and import it. After reloggin into your account, you are ready
 to go.
 
-### 6.7 Neovim
-We can install the Packer plugin manager for neovim from the AUR:
+If you aren't willing to use this program or any other third party configuration saver, I recommend
+saving settings that you really care about and will work exactly the same way regardless of your
+machine or installation. Shortcuts, for instance, are a huge hassle to configure every time and you
+will probably use the same hotkeys on every KDE installation you do.
 
-```
-sudo aura -A nvim-packer-git
-```
+Although KDE is very customizable regarding themes, panels, widgets, etc I try to keep my customization
+as near to the default one as possible. Honestly, KDE looks good enough with Breeze theme and the
+default appearence. Your programs configurations are usually more important.
 
-Now we can just open neovim and run the following command to download all your plugins from github.
-
-```
-:PackerInstall
-```
-
-To update your plugins, you can run:
-
-```
-:PackerSync
-```
