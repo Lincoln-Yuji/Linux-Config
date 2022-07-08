@@ -11,6 +11,23 @@ sudo pacman -Syu
 sudo pacman -S xorg xorg-xinit
 ```
 
+Install the video drivers based on your hardware. You may also install OpenGL support:
+
+|  Brand |       Driver      |    OpenGL    |
+|:------:|:-----------------:|:------------:|
+|   AMD  | xf86-video-amdgpu |     mesa     |
+|  Intel |  xf86-video-intel |     mesa     |
+| NVIDIA |       nvidia      | nvidia-utils |
+
+Nvidia drivers might turn out a huge pain to handle on Linux. You can install some additional tools
+to help you:
+
+```sh
+sudo pacman -S nvidia-settings
+```
+
+More information about Xorg [here](https://wiki.archlinux.org/title/Xorg).
+
 ## 2. Pipewire audio server
 
 KDE uses pulseaudio as default audio server. If we attempt to install KDE we are going to get
@@ -36,25 +53,23 @@ Now we are ready to go with Plasma installation:
 sudo pacman -S plasma gtk2 gtk3 gtk4 --needed
 ```
 
-Installing video drivers:
+If you want to run Plasma under the Wayland protocol, install the following package. Plasma's default display
+manager (SDDM) will be able to find it and then you can simply choose the session through the GUI (X11 or
+Wayland).
 
-+ NVIDIA:
 ```sh
-sudo pacman -S nvidia nvidia-settings
+sudo pacman -S plasma-wayland-session
 ```
 
-+ AMD:
-```sh
-sudo pacman -S xf86-video-amdgpu
+NVIDIA users need to install the EGL module to be able to start a session using Wayland:
+
+```
+sudo pacman -S egl-wayland
 ```
 
-+ INTEL:
-```sh
-sudo pacman -S xf86-video-intel
-```
-
-If you want to use a wayland section and have nvdia hardware, refer to the
-[Arch Wiki](https://wiki.archlinux.org/title/KDE) page.
+If having major issues regarding your Wayland sessions on Plasma, either refer to the
+[Arch Wiki](https://wiki.archlinux.org/title/KDE#Plasma) page or the
+[KDE page](https://community.kde.org/Plasma/Wayland/Nvidia).
 
 ## 4. KDE Applications
 
@@ -134,6 +149,10 @@ sudo aura -A nerd-fonts-hack
 ```
 
 You can install all the available nerd fonts downloading the nerd-fonts package.
+
+At this point you can just reboot your computer and you will get the SDDM screen to perform
+your login and get into the KDE Plasma desktop. You can choose the Wayland session if yo installed
+the plasma-wayland-session package.
 
 ### 6.3 Tiling windows behaviour in KDE
 
