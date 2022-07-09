@@ -55,5 +55,5 @@ and update them:
 We can also install other terminal tools to help us on the command line:
 
 ```sh
-sudo pacman -S ripgrep stow neofetch htop bashtop youtube-dl openssh
+sudo pacman -S unzip ripgrep stow neofetch htop bashtop youtube-dl openssh
 ```

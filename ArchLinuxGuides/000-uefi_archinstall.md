@@ -297,7 +297,7 @@ the system and recover our internet connection.
 
 ```
 pacman -S dosfstools mtools networkmanager wpa_supplicant wireless_tools \
-            dialog git reflector pacman-contrib
+            dialog git reflector pacman-contrib bash-completion
 ```
 
 We don't need to install all of them. For example you don't need WPA and wirless tools if
@@ -321,11 +321,21 @@ with windows!
 To do a simple BIOS-Legacy installation, you just need the grub package.
 
 We now have the grub packages and extensions installed, but the boot loader itself is not
-installed yet. To install grub on UEFI mode and 64 bits architecture, run:
+installed yet.
+
++ To install grub on UEFI mode and 64 bits architecture, run:
 
 ```
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB --recheck
 ```
+
++ Just for convenience, if you are attempting to install Arch in BIOS Legacy system, then:
+
+```
+grub-install --target=i386-pc --recheck /dev/<device>
+```
+
+Note that \<device\> is the device which you are installing your system into (sda, vda, ...).
 
 Before generating grub's config file, we need to modify the /etc/default/grub file to force
 the boot loader to use the os-prober extension to search and detect other operating systems

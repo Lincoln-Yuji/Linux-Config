@@ -105,7 +105,7 @@ We are using KDE, but we are not limited to just KDE applications. If you think 
 application sucks you can just install an alternative which you consider better.
 
 ```sh
-sudo pacman -S firefox font-manager gimp unzip godot bash-completion --needed
+sudo pacman -S firefox font-manager gimp godot xournalpp --needed
 ```
 
 ## 6. Configuration
