@@ -5,7 +5,7 @@ provided by the Linux Wacom Project (which notably has several developers who wo
 
 That means we can use Wacom Tablets on most Linux distros out there, including Arch.
 
-The Arch Linux kernels include the input-wacom driver, thta is, the kernel should recognize
+The Arch Linux kernels include the input-wacom driver, that is, the kernel should recognize
 your tablet right after connecting it via USB or Bluetooth.
 
 You can check that out running:
