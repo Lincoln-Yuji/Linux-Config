@@ -297,7 +297,7 @@ the system and recover our internet connection.
 
 ```
 pacman -S dosfstools mtools networkmanager wpa_supplicant wireless_tools \
-            dialog git reflector pacman-contrib bash-completion
+            dialog git unzip reflector pacman-contrib bash-completion
 ```
 
 We don't need to install all of them. For example you don't need WPA and wirless tools if
@@ -376,6 +376,13 @@ using sudo.
 ```
 systemctl enable NetworkManager --now
 ```
+Test your internet connection using the ping command and see if you get an echo from the
+server (google.com, for example). However, the NetworkManager doesn't automatically reconnect
+to your wifi. That happens because we firstly connected using the
+<strong><em>iNet Wireless Daemon</strong></em> (iwd).
+
+Since NetworkManager is enabled and activated, you can use the nmtui command to open a Text
+User Interface and reconnect to your wifi network, reinserting the right credentials.
 
 ## 16. Pacman configurations
 
