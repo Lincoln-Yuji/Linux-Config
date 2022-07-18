@@ -27,8 +27,8 @@ export PATH="$HOME/.local/bin:${PATH}" # Add user binaries to PATH
 # [[ -f ~/.bashrc ]] && source ~/.bashrc
 
 # Source cargo environment and add rust binaries to PATH
+# (It seems that just sourcing the env already includes the cargo binaries into $PATH)
 [ -f "${CARGO_HOME}/env" ] && source "${CARGO_HOME}/env"
-[ -d "${CARGO_HOME}/bin" ] && export PATH="${CARGO_HOME}/bin:${PATH}"
 
 ## Autostart commands
 setxkbmap -layout br
