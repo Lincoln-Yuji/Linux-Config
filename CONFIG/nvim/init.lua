@@ -12,7 +12,7 @@ set.tabstop = 4
 set.shiftwidth = 4     -- Tab len = 4 spaces
 set.smarttab = true    -- Breakline tab
 set.softtabstop = 4
-set.expandtab = true   -- Tab = 4 spaces
+-- set.expandtab = true   -- Tab = 4 spaces
 
 set.mouse = 'a' -- We can now use mouse inside vim
 
