@@ -115,6 +115,10 @@ mkfs.ext4 /dev/<device-name>
 mkswap /dev/<device-name>
 ```
 
+Usually it's more convenient using a SWAPFILE rather than a SWAP partition. If you want to create
+a SWAPFILE, just ignore the steps related to the SWAP partition. We can easily create a new
+SWAPFILE after the basic installation.
+
 Note that we are not restrained to use EXT4 to our root directory. There are alternatives
 such as BTRFS and ZFS. A basic Arch Linux installation should support all of these file
 systems out of the box.
@@ -406,3 +410,51 @@ ParallelDownloads = 3
 
 This example will allow pacman to perform the maximum of 3 parallel downloads. This file has
 lots of things we can change to configure the Arch Linux package manager.
+
+## 16. Creating a Swapfile
+
+If you already have a `swapfile` but want to create a new one to make it larger or smaller,
+make sure to `swapoff` it and then delete it:
+
+```
+swapoff <swapfile-path>
+rm <swapfile-path>
+```
+
+After that we can create a new `swapfile` running the following command:
+
+```
+dd if=/dev/zero of=/swapfile bs=1M count=4096 status=progress
+```
+
+The `dd` command  stands for `disk-destroyer`. Be careful when using this command since it has the
+potential to damage your files and partitions otherwise. You will need super-user privileges when
+running it as a regular user.
+
+That command line is basically creating a file `/swapfile` filled with zeros. Each block has a size of
+1M (1 megabyte) and there will a total of 4096 blocks. In other words, this file will have a size of 4GB.
+You can change these values to create larger or smaller swapfiles.
+
+Also we want to make sure that this file can't be changed or deleted by a random user:
+
+```
+chmod 600 /swapfile
+```
+
+Now that the file is created we have to actually make it a `swapfile`. Use `mkswap` and then `swapon`
+to enable swapping onto this file:
+
+```
+mkswap /swapfile
+swapon /swapfile
+```
+
+We are almost done. We still need to edit the `/etc/fstab` file. Add the following onto your fstab:
+
+```
+[ ... ]
+# Swapfile
+/swapfile none swap sw 0 0
+```
+
+Reboot your machine and you are good to go.
