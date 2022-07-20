@@ -89,8 +89,8 @@ This is a list of applications that I find useful:
 
 ```sh
 sudo pacman -S ark dolphin dolphin-plugins dragon elisa filelight gwenview kalgebra kate \
-    kbackup kcalc kcron kalendar kdeconnect kdialog kget kmousetool kruler \
-    ksystemlog konsole ktimer ktorrent krita okular sweeper spectacle
+    kbackup kcalc kcron kalendar kdeconnect kdialog kget kmousetool ksystemlog konsole \
+	ktimer krita okular sweeper spectacle
 ```
 
 If need printing, install the following:
@@ -105,7 +105,7 @@ We are using KDE, but we are not limited to just KDE applications. If you think 
 application sucks you can just install an alternative which you consider better.
 
 ```sh
-sudo pacman -S firefox font-manager gimp godot xournalpp --needed
+sudo pacman -S firefox font-manager gimp godot xournalpp transmission-gtk --needed
 ```
 
 ## 6. Configuration

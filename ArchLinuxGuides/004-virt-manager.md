@@ -7,12 +7,25 @@ directly integrated into the kernel, the VM's performance boosts up a lot.
 This is a little personal guide on how to setup and get KVM running some virtual machines
 on Arch Linux.
 
+## Step 0: Enable the KVM module
+
+This step is usually not required, but just for the sake of ensuring everything is fine run the following command:
+
+```
+lsmod | grep kvm
+```
+
+This will show us if the `kvm` module is enabled. If not then run `sudo modprobe kvm`. Also, for intel processors run
+`sudo modprobe kvm_intel`. If you are an AMD user then run `sudo modprobe kvm_amd`.
+
+After making sure these modules are enabled we are good to go.
+
 ## Step 1: Virtualization
 First of all, we need to make sure we have virtualization enaled, otherwise we can't use the
 KVM Linux module. In order to check that, run the following command:
 
 ```
-LC_ALL=C lscpu | grep Virtualization
+LC_ALL=C lscpu | grep -i virtualization
 ```
 
 This will prompt a line informing your CPU's virtualizer. If nothing shows up then either you have
