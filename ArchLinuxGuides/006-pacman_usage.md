@@ -218,3 +218,13 @@ $ sudo pacman -Sc
 We can also delete everything in cache using `pacman -Scc`, but using this command is
 extremely discouraged unless the user desperately needs to free more storage.
 
+## 6. Failed Upgrade with corrupted PGP keys
+
+If a system upgrade fails because of corrupted or outdated keys, you have to update your `archlinux-keyring`
+package first:
+
+```
+$ sudo pacman -Sy archlinux-keyring
+```
+
+After updating your keys, you can upgrade your system with `pacman -Syu`.
