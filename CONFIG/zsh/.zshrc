@@ -21,7 +21,7 @@ CR=$'\n'
 PS1="%F{blue} : %f[%F{cyan}%n@%m %f%F{blue}%~%f] %F{red}(\$(parse_git_branch))${CR}%f❱❱❱ "
 
 # History settings
-HISTFILE=~/.cache/zsh/history
+HISTFILE="${HOME}/.cache/zsh/history"
 HISTSIZE=1500
 SAVEHIST=1500
 
