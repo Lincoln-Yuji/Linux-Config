@@ -1,7 +1,7 @@
 # If not running interactively, don't do anything
 [[ $- == *i* ]] || return
 
-export ZSH_COMPDUMP="$HOME/.cache/zsh"
+export ZSH_COMPDUMP="${HOME}/.cache/zsh"
 
 # Start settings
 setopt autocd extendedglob nomatch notify # ZSH options
