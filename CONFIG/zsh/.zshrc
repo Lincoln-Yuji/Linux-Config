@@ -1,7 +1,10 @@
 # If not running interactively, don't do anything
 [[ $- == *i* ]] || return
 
-export ZSH_COMPDUMP="${HOME}/.cache/zsh"
+# History settings
+export HISTFILE="${XDG_CACHE_HOME}/zsh/zhistory"
+export HISTSIZE=1500
+export SAVEHIST=1500
 
 # Start settings
 setopt autocd extendedglob nomatch notify # ZSH options
@@ -29,7 +32,9 @@ SAVEHIST=1500
 autoload -Uz compinit
 zstyle ':completion:*' menu select
 zmodload zsh/complist
-compinit
+
+compinit -d "${XDG_CACHE_HOME}/zsh/.zcompdump"
+
 _comp_options+=(globdots)
 
 # Enable vi mode
