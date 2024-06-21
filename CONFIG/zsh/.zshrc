@@ -79,5 +79,11 @@ alias ytd='youtube-dl -f' # Download ONLY the specified format (i.e 22)
 alias ytp='youtube-dl -i -f mp4 --yes-playlist' # Download an entire playlist
 
 # Enabling zsh plugins
+
+# Arch
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2> /dev/null
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2> /dev/null
+
+# Fedora
+# source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2> /dev/null
+# source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh 2> /dev/null
