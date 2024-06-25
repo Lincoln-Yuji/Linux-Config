@@ -5,11 +5,18 @@
 export HISTFILE="${XDG_CACHE_HOME}/zsh/zhistory"
 export HISTSIZE=1500
 export SAVEHIST=1500
+export HISTDUP='erase'
+
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_dups
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_find_no_dups
 
 # Start settings
 setopt autocd extendedglob nomatch notify # ZSH options
-setopt hist_ignore_dups
-setopt hist_ignore_space
 unsetopt beep                             # Turn off beeping sounds
 autoload -U colors && colors              # Enable color
 
@@ -21,15 +28,12 @@ function parse_git_branch() {
 }
 setopt PROMPT_SUBST
 CR=$'\n'
-PS1="%F{blue} : %f[%F{cyan}%n@%m %f%F{blue}%~%f] %F{red}(\$(parse_git_branch))${CR}%f❱❱❱ "
+PS1="[🐧]%f[%F{cyan}%n@%m %f%F{blue}%~%f] %F{red}(\$(parse_git_branch))${CR}%f❱❱❱ "
 
-# History settings
-HISTFILE="${HOME}/.cache/zsh/history"
-HISTSIZE=1500
-SAVEHIST=1500
 
 # Auto completion (Amazing tab completion btw)
 autoload -Uz compinit
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' menu select
 zmodload zsh/complist
 
@@ -42,6 +46,9 @@ bindkey -v
 bindkey "^?" backward-delete-char
 export KEYTIMEOUT=1
 
+bindkey '^j' history-search-forward
+bindkey '^k' history-search-backward
+
 # Changing the prompt cursor for different vi modes (Taken from Luke Smith video)
 function zle-keymap-select {
   if [[ ${KEYMAP} == vicmd ]] || [[ $1 = 'block' ]]; then
@@ -53,7 +60,7 @@ function zle-keymap-select {
 }
 zle -N zle-keymap-select
 zle-line-init() {
-    zle -K viins 
+    zle -K viins
     echo -ne "\e[5 q"
 }
 zle -N zle-line-init
