@@ -2,7 +2,7 @@
 
 return {
   'Mofiqul/vscode.nvim',
-  event = 'VimEnter',
+  priority = 1000,
   config = function()
     vim.cmd.colorscheme 'vscode'
     vim.api.nvim_set_hl(0, '@comment', { fg = '#5A5A5A' })
