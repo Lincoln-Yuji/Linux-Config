@@ -3,7 +3,11 @@
 return { -- Autocompletion
   'hrsh7th/nvim-cmp',
   event = 'InsertEnter',
-  dependencies = { 'hrsh7th/cmp-nvim-lsp', 'hrsh7th/cmp-path' },
+  dependencies = {
+    'hrsh7th/cmp-nvim-lsp',
+    'hrsh7th/cmp-path',
+    'hrsh7th/cmp-buffer',
+  },
   config = function()
     -- See `:help cmp`
     local cmp = require 'cmp'
@@ -28,7 +32,7 @@ return { -- Autocompletion
         -- Accept ([y]es) the completion.
         --  This will auto-import if your LSP supports it.
         --  This will expand snippets if the LSP sent a snippet.
-        ['<C-y>'] = cmp.mapping.confirm { select = true },
+        ['<Enter>'] = cmp.mapping.confirm { select = true },
 
         -- If you prefer more traditional completion keymaps,
         -- you can uncomment the following lines
@@ -53,6 +57,7 @@ return { -- Autocompletion
       sources = {
         { name = 'nvim_lsp' },
         { name = 'path' },
+        { name = 'buffer' },
       },
     }
   end,
