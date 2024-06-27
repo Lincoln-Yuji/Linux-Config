@@ -23,7 +23,8 @@ white = "#E5E9F0"
 yellow = "#EBCB8B"
 
 [colors.primary]
-background = "#28282C"
+background = "#1F1F1F"
+# background = "#28282C"
 foreground = "#D8DEE9"
 
 [colors.selection]
@@ -42,7 +43,7 @@ style = "Bold"
 
 [font.normal]
 family = "GeistMono Nerd Font"
-style = "Bold"
+# style = "Bold"
 
 [shell]
 program = "/bin/zsh"
