@@ -18,5 +18,8 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
--- Toggle Neotree
-vim.keymap.set('n', '<leader>E', '<cmd>Neotree toggle<CR>', { desc = 'Toggle Neotree' })
+-- [[ Neotree ]]
+vim.keymap.set('n', '<leader>nn', '<cmd>Neotree toggle<CR>', { desc = 'Toggle [N]eotree' })
+
+-- [[ Telescope ]]
+vim.keymap.set('n', '<leader>ff', '<cmd>Telescope find_files<CR>', { desc = '[F]ind [F]iles' })

@@ -15,6 +15,7 @@ return {
       width = 35,
       mappings = {
         ['<tab>'] = 'toggle_node',
+        ['<space>'] = 'none',
       },
     },
   },
