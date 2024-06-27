@@ -20,8 +20,16 @@ vim.opt.rtp:prepend(lazypath)
 --    :Lazy update
 --
 require('lazy').setup({
-  'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
-
+  -- Detect tabstop and shiftwidth automatically and draw lines for indented blocks of code
+  'tpope/vim-sleuth',
+  {
+    'lukas-reineke/indent-blankline.nvim',
+    main = 'ibl',
+    opts = {
+      indent = { char = '│' },
+      scope = { enabled = false },
+    },
+  },
   --  Use `opts = {}` to force a plugin to be loaded.
   --  This is equivalent to:
   --    require('Comment').setup({})

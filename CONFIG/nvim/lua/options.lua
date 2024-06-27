@@ -43,8 +43,16 @@ vim.opt.splitright = true
 vim.opt.splitbelow = true
 
 -- Sets how neovim will display certain whitespace characters in the editor.
-vim.opt.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+-- vim.opt.list = true
+-- vim.opt.listchars = { tab = '| ', trail = '·', lead = '·' }
+
+-- Tab configuration
+vim.opt.autoindent = true
+-- vim.opt.expandtab = true
+-- vim.opt.smarttab = true
+-- vim.opt.tabstop = 2
+-- vim.opt.softtabstop = 2
+-- vim.opt.shiftwidth = 2
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'
@@ -53,7 +61,13 @@ vim.opt.inccommand = 'split'
 vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
-vim.opt.scrolloff = 10
+vim.opt.scrolloff = 8
 
 -- Set highlight on search
 vim.opt.hlsearch = true
+
+-- Disable line wrap for long lines
+vim.opt.wrap = false
+
+-- Don't show mode since we have a status line
+vim.opt.showmode = false
