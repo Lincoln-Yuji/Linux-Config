@@ -5,18 +5,20 @@ return {
   branch = 'v3.x',
   dependencies = {
     'nvim-lua/plenary.nvim',
-    'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
+    'nvim-tree/nvim-web-devicons',
     'MunifTanjim/nui.nvim',
-    -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
   },
-  opts = {
-    window = {
-      position = 'left',
-      width = 35,
-      mappings = {
-        ['<tab>'] = 'toggle_node',
-        ['<space>'] = 'none',
+  config = function()
+    require('neo-tree').setup({
+      window = {
+        position = 'left',
+        width = 35,
+        mappings = {
+          ['<tab>'] = 'toggle_node',
+          ['<space>'] = 'none', -- Avoid conflict with our <leader> key
+        },
       },
-    },
-  },
+    })
+    vim.keymap.set('n', '<leader>nn', ':Neotree toggle<CR>', { desc = 'Toggle [N]eotree' })
+  end,
 }
