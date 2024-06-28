@@ -25,6 +25,3 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 
 -- [[ Neotree ]]
 vim.keymap.set('n', '<leader>nn', '<cmd>Neotree toggle<CR>', { desc = 'Toggle [N]eotree' })
-
--- [[ Telescope ]]
-vim.keymap.set('n', '<leader>ff', '<cmd>Telescope find_files<CR>', { desc = '[F]ind [F]iles' })

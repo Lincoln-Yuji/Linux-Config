@@ -12,13 +12,11 @@ end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
 -- [[ Default plugins ]]
+-- To check the current status of your plugins, run
+--  :Lazy
 --
---  To check the current status of your plugins, run
---    :Lazy
---
---  To update plugins you can run
---    :Lazy update
---
+-- To update plugins you can run
+--  :Lazy update
 require('lazy').setup({
   -- Detect tabstop and shiftwidth automatically and draw lines for indented blocks of code
   'tpope/vim-sleuth',
@@ -55,9 +53,11 @@ require('lazy').setup({
         ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
         ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
         ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
+        -- [S]earch is used to call Telescope's functions
         ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
-        ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
         ['<leader>t'] = { name = '[T]oggle', _ = 'which_key_ignore' },
+        -- [W]orkspace is used for navigation between open windows
+        ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
         ['<leader>h'] = { name = 'Git [H]unk', _ = 'which_key_ignore' },
       }
       -- Visual Mode
