@@ -28,6 +28,15 @@ require('lazy').setup({
       scope = { enabled = false },
     },
   },
+  -- Toggle Terminal (offers an easier way to use TERMINAL mode in Neovim)
+  {
+    'akinsho/toggleterm.nvim',
+    version = "*",
+    opts = {
+      shell = '/bin/zsh',
+      size = 25,
+    },
+  },
   --  Use `opts = {}` to force a plugin to be loaded.
   { 'numToStr/Comment.nvim', opts = {} }, -- "gc" to comment visual regions/lines
   -- Adds git related signs to the gutter, as well as utilities for managing changes
