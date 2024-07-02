@@ -1,4 +1,4 @@
--- Neotree configuration
+-- [[ Neotree configuration ]]
 
 return {
   'nvim-neo-tree/neo-tree.nvim',
@@ -9,6 +9,7 @@ return {
     'MunifTanjim/nui.nvim',
   },
   config = function()
+    -- [[ Options ]]
     require('neo-tree').setup({
       window = {
         position = 'left',
@@ -19,6 +20,8 @@ return {
         },
       },
     })
-    vim.keymap.set('n', '<leader>nn', ':Neotree toggle<CR>', { desc = 'Toggle [N]eotree' })
+    -- [[ Keymaps ]]
+    vim.keymap.set('n', '<leader>nn', '<cmd>Neotree toggle<CR>',
+      { desc = 'Toggle [N]eotree' })
   end,
 }
