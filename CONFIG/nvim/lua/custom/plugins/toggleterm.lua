@@ -16,6 +16,6 @@ return {
 
     -- Default keybind to toggle the terminal window
     vim.api.nvim_set_keymap('n', '<C-t>', '<cmd>ToggleTerm<CR>', map_opts)
-    vim.keymap.set('n', '<leader>tt', '<cmd>ToggleTerm<CR>', { desc = '[T]erminal [T]oggle (Ctrl+t)' })
+    vim.keymap.set('n', '<leader>tt', '<cmd>ToggleTerm<CR>', { desc = '[T]oggle [T]erminal (Ctrl+t)' })
   end,
 }
