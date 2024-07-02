@@ -21,7 +21,7 @@ return {
       },
     })
     -- [[ Keymaps ]]
-    vim.keymap.set('n', '<leader>nn', '<cmd>Neotree toggle<CR>',
-      { desc = 'Toggle [N]eotree' })
+    vim.keymap.set('n', '<leader>tn', '<cmd>Neotree toggle<CR>',
+      { desc = '[T]oggle [N]eotree' })
   end,
 }
