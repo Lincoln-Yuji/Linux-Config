@@ -220,11 +220,5 @@ extremely discouraged unless the user desperately needs to free more storage.
 
 ## 6. Failed Upgrade with corrupted PGP keys
 
-If a system upgrade fails because of corrupted or outdated keys, you have to update your `archlinux-keyring`
-package first:
-
-```
-$ sudo pacman -Sy archlinux-keyring
-```
-
-After updating your keys, you can upgrade your system with `pacman -Syu`.
+I've written a blogpost talking about this issue, since it's so common on Arch Linux and the
+maintainers refuse to fix this crap: [Updating Arch Linux keyrings](https://lincoln-yuji.github.io/posts/archlinux-keyring/).
