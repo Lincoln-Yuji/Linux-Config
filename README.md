@@ -8,7 +8,7 @@ This repository may be cloned anywhere i.e. ~/.config
 
 ```bash
 cd ~/.config
-git clone https://gitlab.com/Lincoln-Yuji/zoomer-config
+git clone https://gitlab.com/Lincoln-Yuji/Linux-Config linux-config
 ```
 
 ## Installation
@@ -17,7 +17,7 @@ This repositories are organized in such way we can use [stow](https://github.com
 to setup everything. Stow has many uses and we can use it to easily create symbolic links.
 
 ```bash
-cd ~/.config/zoomer-config
+cd ~/.config/linux-config
 stow <dir-01> <dir-02> ...
 ```
 
@@ -63,8 +63,8 @@ stow -t $HOME/.local/bin SHELL-SCRIPT/
 For .bashrc and .bash\_profile it's easier to just symlink them directly:
 ```bash
 cd ~
-ln -s .config/zoomer-config/.bashrc .bashrc
-ln -s .config/zoomer-config/.profile .profile
+ln -s .config/linux-config/.bashrc .bashrc
+ln -s .config/linux-config/.profile .profile
 ```
 
 
