@@ -23,13 +23,12 @@ autoload -U colors && colors              # Enable color
 # Setting prompt
 # This function gives us the current git branch in the current repository
 function parse_git_branch() {
-    current_branch="$(git branch --show-current 2>/dev/null)"
-    [ -z ${current_branch} ] && echo "None" || echo "${current_branch}"
+    current_branch="$(git branch --show-current 2> /dev/null)"
+    [ -n "$current_branch" ] && echo "(${current_branch})"
 }
 setopt PROMPT_SUBST
-CR=$'\n'
-PS1="[🐧]%f[%F{cyan}%n@%m %f%F{blue}%~%f] %F{red}(\$(parse_git_branch))${CR}%f❱❱❱ "
-
+local CR=$'\n'
+PS1="[🐧]%f[%F{cyan}%n@%m %f%F{blue}%~%f] %F{red}\$(parse_git_branch)${CR}%f❱❱❱ "
 
 # Auto completion (Amazing tab completion btw)
 autoload -Uz compinit
