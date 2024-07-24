@@ -45,8 +45,9 @@ bindkey -v
 bindkey "^?" backward-delete-char
 export KEYTIMEOUT=1
 
-bindkey '^j' history-search-forward
-bindkey '^k' history-search-backward
+# Verify if fzf is installed. If it is, then load the fzf-zsh script extension
+# The history can be accessed via 'Ctrl+r' keybind
+[[ -n "$(which fzf)" ]] && source <(fzf --zsh)
 
 # Changing the prompt cursor for different vi modes (Taken from Luke Smith video)
 function zle-keymap-select {
