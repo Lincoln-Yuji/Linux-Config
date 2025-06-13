@@ -7,6 +7,10 @@ export HISTSIZE=1500
 export SAVEHIST=1500
 export HISTDUP='erase'
 
+if [[ ! -f ${HISTFILE} ]]; then
+    touch ${HISTFILE}
+fi
+
 setopt appendhistory
 setopt sharehistory
 setopt hist_ignore_space
