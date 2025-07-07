@@ -8,7 +8,7 @@ export SAVEHIST=1500
 export HISTDUP='erase'
 
 if [[ ! -f ${HISTFILE} ]]; then
-    touch ${HISTFILE}
+    touch ${HSTFILE}
 fi
 
 setopt appendhistory
@@ -50,7 +50,8 @@ bindkey "^?" backward-delete-char
 export KEYTIMEOUT=1
 
 # Verify if fzf is installed. If it is, then load the fzf-zsh script extension
-# The history can be accessed via 'Ctrl+r' keybind
+# [Ctrl+r]: access shell history
+# [Ctrl+t]: access file tree from current directory
 [[ -n "$(which fzf)" ]] && source <(fzf --zsh)
 
 # Changing the prompt cursor for different vi modes (Taken from Luke Smith video)
@@ -74,6 +75,7 @@ preexec() { echo -ne '\e[5 q' ;}
 # My aliases
 alias xx='clear'
 alias nv='nvim'
+alias zj='zellij'
 alias zz='~/.config/zz-config-setup'
 alias rsbook='rustup docs --book'
 
@@ -97,9 +99,9 @@ alias ytp='youtube-dl -i -f mp4 --yes-playlist' # Download an entire playlist
 # Enabling zsh plugins
 
 # Arch
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2> /dev/null
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2> /dev/null
+# source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2> /dev/null
+# ssource /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2> /dev/null
 
 # Fedora
-# source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2> /dev/null
-# source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh 2> /dev/null
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2> /dev/null
+source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh 2> /dev/null
