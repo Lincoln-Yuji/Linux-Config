@@ -54,6 +54,15 @@ export KEYTIMEOUT=1
 # [Ctrl+t]: access file tree from current directory
 [[ -n "$(which fzf)" ]] && source <(fzf --zsh)
 
+# Custom Functions
+# [Ctrl+a]: access my aliases defined for ZSH
+function search_zsh_aliases() {
+    local searched_alias="$(cat ~/.config/zsh/.zshrc | grep '^[[:blank:]]*alias' | sed -e 's/^[[:blank:]]*alias[[:blank:]]//' | fzf | sed -e 's/=.*//')"
+    BUFFER="${BUFFER}${searched_alias}"
+    CURSOR=${#BUFFER}
+}
+[[ -n "$(which fzf)" ]] && zle -N search_zsh_aliases && bindkey '^a' search_zsh_aliases
+
 # Changing the prompt cursor for different vi modes (Taken from Luke Smith video)
 function zle-keymap-select {
   if [[ ${KEYMAP} == vicmd ]] || [[ $1 = 'block' ]]; then
@@ -76,25 +85,21 @@ preexec() { echo -ne '\e[5 q' ;}
 alias xx='clear'
 alias nv='nvim'
 alias zj='zellij'
-alias zz='~/.config/zz-config-setup'
 alias rsbook='rustup docs --book'
 
 alias ls='ls --color=auto --group-directories-first'
+alias ll='ls -AlhFGX'
+alias la='ls -A'
+
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
+alias rg-telescope='rg --context=4'
 
 alias free='free --mega'
 alias du='du -sh'
 alias df='df -h'
-alias ll='ls -AlhFGX'
-alias la='ls -A'
 alias br='br -spd'
-alias wttr='curl wttr.in'
-
-alias ytf='youtube-dl -F' # Check the formats available
-alias ytd='youtube-dl -f' # Download ONLY the specified format (i.e 22)
-alias ytp='youtube-dl -i -f mp4 --yes-playlist' # Download an entire playlist
 
 # Enabling zsh plugins
 
