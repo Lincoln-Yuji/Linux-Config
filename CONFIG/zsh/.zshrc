@@ -44,11 +44,6 @@ compinit -d "${XDG_CACHE_HOME}/zsh/.zcompdump"
 
 _comp_options+=(globdots)
 
-# Enable vi mode
-bindkey -v
-bindkey "^?" backward-delete-char
-export KEYTIMEOUT=1
-
 # Verify if fzf is installed. If it is, then load the fzf-zsh script extension
 # [Ctrl+r]: access shell history
 # [Ctrl+t]: access file tree from current directory
@@ -62,24 +57,6 @@ function search_zsh_aliases() {
     CURSOR=${#BUFFER}
 }
 [[ -n "$(which fzf)" ]] && zle -N search_zsh_aliases && bindkey '^a' search_zsh_aliases
-
-# Changing the prompt cursor for different vi modes (Taken from Luke Smith video)
-function zle-keymap-select {
-  if [[ ${KEYMAP} == vicmd ]] || [[ $1 = 'block' ]]; then
-    echo -ne '\e[1 q'
-  elif [[ ${KEYMAP} == main ]] || [[ ${KEYMAP} == viins ]] || [[ ${KEYMAP} = '' ]] ||
-       [[ $1 = 'beam' ]]; then
-    echo -ne '\e[5 q'
-  fi
-}
-zle -N zle-keymap-select
-zle-line-init() {
-    zle -K viins
-    echo -ne "\e[5 q"
-}
-zle -N zle-line-init
-echo -ne '\e[5 q'
-preexec() { echo -ne '\e[5 q' ;}
 
 # My aliases
 alias xx='clear'
@@ -102,6 +79,9 @@ alias df='df -h'
 alias br='br -spd'
 
 # Enabling zsh plugins
+
+# Vi Mode
+source "${XDG_CONFIG_HOME}/zsh/vimode.sh"
 
 # Arch
 # source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2> /dev/null
