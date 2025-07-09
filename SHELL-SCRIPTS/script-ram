@@ -1,1 +1,0 @@
-echo "$(free --mega | grep Mem | tr -s ' ' | cut -d ' ' -f3)MB"
