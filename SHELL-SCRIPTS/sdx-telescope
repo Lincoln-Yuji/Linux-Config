@@ -1,0 +1,52 @@
+#!/bin/env bash
+
+declare JSON_MACTHES
+declare FILE_MATCHES
+declare LINE_RANGE
+declare REGEXP
+
+REGEXP="$1"
+
+if [[ -z "$REGEXP" ]]; then
+    echo "Usage: $0 <regexp>"
+    exit 1
+fi 
+
+LINE_RANGE=4
+FILE_MATCHES='[]'
+JSON_MACTHES=$(rg --context 4 --regexp="$REGEXP" --json)
+
+while IFS= read -r json_match; do
+    file=$(echo "$json_match" | jq -r '.file')
+    line=$(echo "$json_match" | jq -r '.line_number')
+
+    start=$((line - LINE_RANGE))
+    if [[ $start -lt 0 ]]; then
+        start=0
+    fi
+
+    final=$((line + LINE_RANGE))
+
+    last_obj=$(echo "$FILE_MATCHES" | jq '.[-1]')
+    last_file=$(echo "$last_obj" | jq -r '.file')
+    last_final=$(echo "$last_obj" | jq -r '.final')
+
+    if [[ "$file" == "$last_file" && "$start" -le "$last_final" ]]; then
+        # Overlap: update the last object's final
+        FILE_MATCHES=$(echo "$FILE_MATCHES" | jq ".[-1].final = $final")
+    else
+        # No overlap: append new object
+        added_obj='{"file": $file, "start": $start, "final": $final}'
+        FILE_MATCHES=$(jq --arg file "$file" --arg start "$start" --arg final "$final" ". + [${added_obj}]" <<< "$FILE_MATCHES")
+    fi
+
+done < <(echo "$JSON_MACTHES" | jq -c 'select(.type == "match") | {file: .data.path.text, line_number: .data.line_number}')
+
+while IFS= read -r file_match; do
+    start=$(echo "$file_match" | jq -r '.start')
+    final=$(echo "$file_match" | jq -r '.final')
+    file=$(echo "$file_match"  | jq -r '.file')
+
+    bat --theme='Visual Studio Dark+' --paging='never' --line-range "${start}:${final}" "$file"
+
+done < <(echo "$FILE_MATCHES" | jq -c '.[]')
