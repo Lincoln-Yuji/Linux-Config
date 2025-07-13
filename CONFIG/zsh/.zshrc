@@ -36,27 +36,12 @@ PS1="[üêß]%f[%F{cyan}%n@%m %f%F{blue}%~%f] %F{red}\$(parse_git_branch)${CR}%f‚ù
 
 # Auto completion (Amazing tab completion btw)
 autoload -Uz compinit
+compinit -d "${XDG_CACHE_HOME}/zsh/.zcompdump"
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' menu select
 zmodload zsh/complist
 
-compinit -d "${XDG_CACHE_HOME}/zsh/.zcompdump"
-
 _comp_options+=(globdots)
-
-# Verify if fzf is installed. If it is, then load the fzf-zsh script extension
-# [Ctrl+r]: access shell history
-# [Ctrl+t]: access file tree from current directory
-[[ -n "$(which fzf)" ]] && source <(fzf --zsh)
-
-# Custom Functions
-# [Ctrl+a]: access my aliases defined for ZSH
-function search_zsh_aliases() {
-    local searched_alias="$(cat ~/.config/zsh/.zshrc | grep '^[[:blank:]]*alias' | sed -e 's/^[[:blank:]]*alias[[:blank:]]//' | fzf | sed -e 's/=.*//')"
-    BUFFER="${BUFFER}${searched_alias}"
-    CURSOR=${#BUFFER}
-}
-[[ -n "$(which fzf)" ]] && zle -N search_zsh_aliases && bindkey '^a' search_zsh_aliases
 
 # My aliases
 alias xx='clear'
@@ -68,6 +53,9 @@ alias ls='ls --color=auto --group-directories-first'
 alias ll='ls -AlhFGX'
 alias la='ls -A'
 
+alias tree="tree -L 3 -a -I '.git' --charset X"
+alias dtree="tree -L 3 -a -d -I '.git' --charset X"
+
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
@@ -78,10 +66,11 @@ alias du='du -sh'
 alias df='df -h'
 alias br='br -spd'
 
-# Enabling zsh plugins
-
 # Vi Mode
 source "${XDG_CONFIG_HOME}/zsh/vimode.sh"
+
+# Fzf-Zsh scripts
+source "${XDG_CONFIG_HOME}/zsh/fzf-config.sh"
 
 # Arch
 # source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2> /dev/null

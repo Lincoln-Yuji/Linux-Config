@@ -5,20 +5,14 @@
 # Fedora
 sudo dnf copr enable sramanujam/zellij
 
-sudo dnf install \
-    alacritty \
-    zsh \
-    zsh-autosuggestions \
-    zsh-syntax-highlighting \
-    fzf \
-    zellij
+terminal_tools='
+alacritty
+zsh zsh-autosuggestions zsh-syntax-highlighting zsh-completions
+fzf fd bat eza ripgrep
+zellij
+'
+
+sudo $terminal_tools
 
 # Arch
-sudo pacman -S \
-    alacritty \
-    zsh \
-    zsh-syntax-highlighting \
-    zsh-autosuggestions \
-    zsh-completions\
-    fzf \
-    zellij
+sudo pacman -S $terminal_tools

@@ -1,6 +1,7 @@
 # Enable vi mode
 bindkey -v
 bindkey "^?" backward-delete-char
+
 export KEYTIMEOUT=1
 
 # Changing the prompt cursor for different vi modes (Taken from Luke Smith video)

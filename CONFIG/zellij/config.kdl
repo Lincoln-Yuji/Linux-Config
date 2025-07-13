@@ -219,7 +219,7 @@ themes {
 theme "alacritty"
 
 // The name of the default layout to load on startup
-// Default: "default"
+// Default: "default" (alt: "compact")
 //
 default_layout "compact"
 
