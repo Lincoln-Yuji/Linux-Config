@@ -1,10 +1,10 @@
-# My Config Setup
+# Configuration Repo for Stow
 
-Personal configuration files.
+Personal configuration files, that can be quickly setup using **Stow**.
 
 ## Cloning
 
-This repository may be cloned anywhere i.e. ~/.config
+This repository may be cloned anywhere, but it's usual to clone it into `~/.config`:
 
 ```bash
 cd ~/.config
@@ -18,55 +18,31 @@ to setup everything. Stow has many uses and we can use it to easily create symbo
 
 ```bash
 cd ~/.config/linux-config
-stow <dir-01> <dir-02> ...
+stow <directory_01> <directory_02> ...
 ```
 
 Stow uses the parent directory as target directory by default. This is why we cloned the repo into ~/.config so stow
 will use that as target directory.
 
-It's possible to change the target directory though:
-
-```bash
-stow --target=<path> CFG/
-```
-
-So in case the repository is not into ~/.config we can use --target flag to force a different
-target.
-
-We can also use -t as a simpler aproach:
-
-```bash
-stow -t <path> CFG/
-```
-
 ## Directories
 
-Depending on the directory, they have to be symlinked from different places.
+It's possible to change the target directory in some cases. This section covers that...
 
-+ CFG directory: contains all the config files and directories that go into .config
++ **HOME** direcory: contains configuration files that stay in user's `home` folder:
 
-The following command should be enough.
 ```bash
-# Optionally stow CONFIG/ NON-DESKTOP-CFG/
-stow CONFIG/
+cd ~/.config/linux-config
+stow --target="$HOME" HOME/
 ```
 
-+ SHELL-SCRIPT directory: contains some shell scripts for task automation.
++ **SHELL-SCRIPT** directory: contains some shell scripts for task automation.
 
 They must be targeted to .local/bin so our $PATH will find them:
+
 ```bash
-stow -t $HOME/.local/bin SHELL-SCRIPT/
+cd ~/.config/linux-config
+stow --target="${HOME}/.local/bin" SHELL-SCRIPTS/
 ```
-
-## Bash
-
-For .bashrc and .bash\_profile it's easier to just symlink them directly:
-```bash
-cd ~
-ln -s .config/linux-config/.bashrc .bashrc
-ln -s .config/linux-config/.profile .profile
-```
-
 
 ## Optional
 
