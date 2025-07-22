@@ -16,6 +16,7 @@ export TERMINAL="alacritty"    # Default terminal emulator
 
 # ZSH dot files directory
 export ZDOTDIR="$HOME/.config/zsh"
+export SHELL='/bin/zsh'
 
 # XDG Base Directory specification
 export XDG_DATA_HOME="${HOME}/.local/share"

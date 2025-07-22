@@ -29,6 +29,7 @@ text = "CellBackground"
 
 [colors.selection]
 background = "#4C566A"
+foreground = "CellForeground"
 text = "CellForeground"
 
 [env]
@@ -39,18 +40,17 @@ size = 12.0
 
 [font.normal]
 family = "GeistMono Nerd Font"
-style = "Regular"
+style = "Bold"
 
 [font.bold]
 family = "GeistMono Nerd Font"
-style = "Bold"
+style = "Black"
 
 [terminal.shell]
 program = "/bin/zsh"
 
 [window]
 dynamic_padding = true
-# decorations = 'none'
 
 [window.padding]
 x = 2

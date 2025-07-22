@@ -50,7 +50,8 @@ alias zj='zellij'
 alias rsbook='rustup docs --book'
 
 alias ls='ls --color=auto --group-directories-first'
-alias ll='ls -AlhFGX'
+# alias ll='ls -AlhFGX'
+alias ll='eza -la --icons=auto --group-directories-first'
 alias la='ls -A'
 
 alias tree="tree -L 3 -a -I '.git' --charset X"

@@ -1,0 +1,9 @@
+layout {
+  pane {
+    plugin location="zellij:tab-bar"
+  }
+  pane size=30
+  pane {
+    plugin location="zellij:compact-bar"
+  }
+}
