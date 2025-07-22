@@ -2,13 +2,16 @@
 [[ $- == *i* ]] || return
 
 # History settings
+
+export HISTPATH="${XDG_CACHE_HOME}/zsh"
 export HISTFILE="${XDG_CACHE_HOME}/zsh/zhistory"
 export HISTSIZE=1500
 export SAVEHIST=1500
 export HISTDUP='erase'
 
-if [[ ! -f ${HISTFILE} ]]; then
-    touch ${HSTFILE}
+if [[ ! -d "$HISTPATH" ]]; then
+    mkdir -p "$HISTPATH"
+    touch "$HISTFILE"
 fi
 
 setopt appendhistory
