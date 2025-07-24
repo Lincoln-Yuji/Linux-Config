@@ -1,42 +1,13 @@
-[colors.normal]
-black = "#3B4252"
-white = "#E5E9F0"
-red = "#BF616A"
-green = "#A3BE8C"
-blue = "#81A1C1"
-yellow = "#EBCB8B"
-cyan = "#88C0D0"
-magenta = "#B48EAD"
-
-[colors.bright]
-black = "#4C566A"
-white = "#ECEFF4"
-red = "#BF616A"
-green = "#A3BE8C"
-blue = "#81A1C1"
-yellow = "#EBCB8B"
-cyan = "#8FBCBB"
-magenta = "#B48EAD"
-
-[colors.primary]
-background = "#1F1F1F"
-# background = "#28282C"
-foreground = "#D8DEE9"
-
-[colors.cursor]
-cursor = "CellForeground"
-text = "CellBackground"
-
-[colors.selection]
-background = "#4C566A"
-foreground = "CellForeground"
-text = "CellForeground"
+[general]
+import = [
+    "~/.config/alacritty/colorschemes/default.toml"
+]
 
 [env]
 TERM = "xterm-256color"
 
 [font]
-size = 12.0
+size = 10.0
 
 [font.normal]
 family = "GeistMono Nerd Font"
@@ -54,3 +25,4 @@ dynamic_padding = true
 
 [window.padding]
 x = 2
+y = 2
