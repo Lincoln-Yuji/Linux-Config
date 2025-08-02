@@ -1,1 +1,5 @@
+# ZSH
 .zcompdump
+
+# Lazy Vim
+lazy-lock.json

@@ -7,13 +7,6 @@
 # Defining evironmental variables
 export HISTCONTROL=ignoreboth  # Ignore duplicate lines or lines starting with space
 
-# Default editor for some applications (e.g. git)
-export EDITOR="nvim"
-export VISUAL="nvim"
-
-export TERM="xterm-256color"   # Pretty colors to terminal
-export TERMINAL="alacritty"    # Default terminal emulator
-
 # ZSH dot files directory
 export ZDOTDIR="$HOME/.config/zsh"
 export SHELL='/bin/zsh'
