@@ -1,5 +1,6 @@
 # ZSH
 **/.zcompdump
 
-# Lazy Vim
+# Lazy Lock NeoVim
 **/lazy-lock.json
+nvim/nvim/lazy-lock.json
