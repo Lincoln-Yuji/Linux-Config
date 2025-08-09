@@ -20,10 +20,10 @@ export FZF_ALT_C_OPTS="--preview '${path_preview} {}' --preview-window=right:60%
 eval "$(fzf --zsh)"
 
 # Custom Functions
-# [Ctrl+a]: access my aliases defined for ZSH
-function search_zsh_aliases() {
-    local searched_alias="$(grep '^[[:blank:]]*alias' ~/.config/zsh/.zshrc | sed -e 's/^[[:blank:]]*alias[[:blank:]]//' | fzf | sed -e 's/=.*//')"
-    BUFFER="${BUFFER}${searched_alias}"
+# [Ctrl+H]: history (similar to Ctrl+R) but with EXACT search matches
+function search_exact_history() {
+    local searched_command="$(history 1 | fzf --exact | sed 's/^\s*[0-9]*\s*//g')"
+    BUFFER="${BUFFER}${searched_command}"
     CURSOR=${#BUFFER}
 }
-zle -N search_zsh_aliases && bindkey '^a' search_zsh_aliases
+zle -N search_exact_history && bindkey '^h' search_exact_history

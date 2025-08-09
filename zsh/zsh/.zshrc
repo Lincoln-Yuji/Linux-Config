@@ -2,11 +2,10 @@
 [[ $- == *i* ]] || return
 
 # History settings
-
 export HISTPATH="${XDG_CACHE_HOME}/zsh"
 export HISTFILE="${XDG_CACHE_HOME}/zsh/zhistory"
-export HISTSIZE=1500
-export SAVEHIST=1500
+export HISTSIZE=5000
+export SAVEHIST=5000
 export HISTDUP='erase'
 
 if [[ ! -d "$HISTPATH" ]]; then
@@ -57,8 +56,9 @@ alias ls='ls --color=auto --group-directories-first'
 alias ll='eza -la --icons=auto --group-directories-first'
 alias la='ls -A'
 
-alias tree="tree -L 3 -a -I '.git' --charset X"
-alias dtree="tree -L 3 -a -d -I '.git' --charset X"
+alias tree="tree -L 3 -a -I '.git'"
+alias dtree="tree -L 3 -a -d -I '.git'"
+alias less='less --use-color --no-init'
 
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
@@ -70,16 +70,27 @@ alias du='du -sh'
 alias df='df -h'
 alias br='br -spd'
 
+echo -ne '\e[5 q'
+preexec() { echo -ne '\e[5 q' ;}
+
 # Vi Mode
 source "${XDG_CONFIG_HOME}/zsh/vimode.sh"
 
 # Fzf-Zsh scripts
 source "${XDG_CONFIG_HOME}/zsh/fzf-config.sh"
 
-# Arch
-# source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2> /dev/null
-# ssource /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2> /dev/null
+# The plugins are installed in different places, depending on our distro
+running_ditro_name="$(grep '/etc/os-release' --regexp='^NAME=' | cut --delimiter='=' -f2)"
 
-# Fedora
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2> /dev/null
-source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh 2> /dev/null
+if [[ "$running_ditro_name" == *"Fedora Linux"* ]]; then
+    # Fedora
+    source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2> /dev/null
+    source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh 2> /dev/null
+else
+    # Arch (or other distros)
+    source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2> /dev/null
+    source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2> /dev/null
+fi
+
+
+
