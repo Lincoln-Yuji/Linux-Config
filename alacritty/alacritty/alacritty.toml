@@ -21,6 +21,12 @@ style = "Black"
 [terminal.shell]
 program = "/bin/zsh"
 
+[keyboard]
+bindings = [
+    { key = "PageUp", mods = "Shift", mode = "~Alt",  action = "ScrollHalfPageUp" },
+    { key = "PageDown", mods = "Shift", mode = "~Alt",  action = "ScrollHalfPageDown" },
+]
+
 [window]
 dynamic_padding = true
 
